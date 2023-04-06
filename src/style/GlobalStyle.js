@@ -1,7 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
+import { variables } from './variables';
+// import { mediaQueries } from './mediaQueries';
 
 export const GlobalStyle = createGlobalStyle`
+
+${variables}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -30,3 +35,10 @@ h1, h2, h3, h4, h5, h6, h7 {
   margin: 10px auto;
 }
 `;
+
+//пример использования внутри styled-components
+
+// ${mediaQueries('desktop')`
+// flex-direction: ....;
+// align-items: ....;
+//   `};

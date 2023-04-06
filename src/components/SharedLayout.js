@@ -1,12 +1,13 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-// import { Header } from './Header/Header'; //наш header
-// import { Footer } from './Footer/Footer'; //наш header
 
-export const SharedLayout = () => {
+import Header from './Header/Header';
+// import  Footer  from './Footer/Footer'; //наш footer
+
+export const SharedLayout = ({ toggleTheme, isDarkTheme }) => {
   return (
     <>
-      {/* <Header /> */}
+      <Header toggleTheme={toggleTheme} isDarkTheme={isDarkTheme} />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
