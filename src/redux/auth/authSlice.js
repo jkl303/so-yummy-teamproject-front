@@ -74,6 +74,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoading = false;
       });
+
   },
 });
 
