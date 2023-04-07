@@ -15,23 +15,28 @@ import {
   CorrectIcon,
   WarningIcon,
   ErrorIcon,
-} from "./RegistrationForm.styled";
+} from "./RegisterForm.styled";
 import { signUp } from "../../../redux/auth/authOperations";
 
-const RegistrationForm = () => {
+export default function RegisterForm () {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isNameValid, setIsNameValid] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
-  const [passwordValidationState, setPasswordValidationState] = useState(null);
+  const [passwordValidationState, setPasswordValidationState] =
+    useState('weak');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   // const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    setIsNameValid(/^[\p{L}\s'`’]{3,}$/u.test(name));
-    setIsEmailValid(/^\w+([\w-]\w+)@\w+(?:[.-]\w+)*(.\w{2,3})+$/.test(email));
+    const nameRegexp = /^[\p{L}\s'`’]{3,}$/u;
+    const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
+    // const emailRegexp = /^\w+([\w.-]*\w+)?@\w+([.-]?\w+)*(\.\w{2,3})+$/;  // більш строгий
+
+    setIsNameValid(nameRegexp.test(name));
+    setIsEmailValid(emailRegexp.test(email));
     passwordValidation();
 
     function passwordValidation() {
@@ -41,11 +46,8 @@ const RegistrationForm = () => {
       const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
       const isValidLength = password.length >= 6;
 
-      if (!password.length) {
-        return setPasswordValidationState(null);
-      }
-      if (!(hasLowercase || hasUppercase) || !hasNumber || !isValidLength) {
-        return setPasswordValidationState("weak");
+      if (!isValidLength) {
+        return setPasswordValidationState('weak');
       }
       if (
         hasLowercase &&
@@ -54,20 +56,19 @@ const RegistrationForm = () => {
         hasSpecialChar &&
         isValidLength
       ) {
-        return setPasswordValidationState("strong");
+        return setPasswordValidationState('strong');
       }
-      return setPasswordValidationState("medium");
+      return setPasswordValidationState('medium');
     }
   }, [name, email, password]);
 
-
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     if (
       !isNameValid ||
       !isEmailValid ||
       passwordValidationState === null ||
-      passwordValidationState === "weak"
+      passwordValidationState === 'weak'
     ) {
       return;
     }
@@ -77,56 +78,55 @@ const RegistrationForm = () => {
     event.target.reset();
   };
 
-
   const handlePasswordVisibilityToggle = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
   const getNameColor = () => {
     if (!name) {
-      return "#fafafa";
+      return '#fafafa';
     }
     if (!isNameValid && name.length > 2) {
-      return "#e74a3b";
+      return '#e74a3b';
     }
     if (isNameValid && name.length > 2) {
-      return "#3cbc81";
+      return '#3cbc81';
     }
     if (name.length >= 2) {
-      return "#fafafa";
+      return '#fafafa';
     }
   };
 
   const getEmailColor = () => {
     if (!email) {
-      return "#fafafa";
+      return '#fafafa';
     }
     if (!isEmailValid && email.length > 8) {
-      return "#e74a3b";
+      return '#e74a3b';
     }
     if (isEmailValid && email.length > 8) {
-      return "#3cbc81";
+      return '#3cbc81';
     }
     if (email.length <= 8) {
-      return "#fafafa";
+      return '#fafafa';
     }
   };
 
   const getPasswordColor = () => {
     if (!password) {
-      return "#fafafa";
+      return '#fafafa';
     }
-    if (passwordValidationState === "weak" && password.length > 5) {
-      return "#e74a3b";
+    if (passwordValidationState === 'weak' && password.length > 2) {
+      return '#e74a3b';
     }
-    if (passwordValidationState === "medium" && password.length > 5) {
-      return "#f6c23e";
+    if (passwordValidationState === 'medium' && password.length > 2) {
+      return '#f6c23e';
     }
-    if (passwordValidationState === "strong" && password.length > 5) {
-      return "#3cbc81";
+    if (passwordValidationState === 'strong' && password.length > 2) {
+      return '#3cbc81';
     }
-    if (email.length <= 5) {
-      return "#fafafa";
+    if (password.length <= 2) {
+      return '#fafafa';
     }
   };
 
@@ -137,13 +137,13 @@ const RegistrationForm = () => {
         <Input
           type="text"
           value={name}
-          onChange={(event) => setName(event.target.value)}
+          onChange={event => setName(event.target.value)}
           placeholder="Name"
           onBlur={() => {
             !isNameValid &&
               name.length > 2 &&
               toast(
-                "Name must contain 3+ letters, may include apostrophe, no numbers/symbols"
+                'Name must contain 3+ letters, may include apostrophe, no numbers/symbols'
               );
           }}
         />
@@ -156,10 +156,10 @@ const RegistrationForm = () => {
         <Input
           type="email"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={event => setEmail(event.target.value)}
           placeholder="Email"
           onBlur={() => {
-            !isEmailValid && email.length > 0 && toast("Email is invalid");
+            !isEmailValid && email.length > 0 && toast('Email is invalid');
           }}
         />
         <MailIcon emailcolor={getEmailColor()} />
@@ -169,22 +169,22 @@ const RegistrationForm = () => {
       </InputContainer>
       <InputContainer passwordcolor={getPasswordColor()}>
         <Input
-          type={isPasswordVisible ? "text" : "password"}
+          type={isPasswordVisible ? 'text' : 'password'}
           value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={event => setPassword(event.target.value)}
           placeholder="Password"
           onBlur={() => {
-            !(passwordValidationState === "strong") &&
+            !(passwordValidationState === 'strong') &&
               password.length > 0 &&
               toast(
-                "Password must contain 6+ chars, upper/lowercase letters, numbers, special chars."
+                'Password must contain 6+ chars, upper/lowercase letters, numbers, special chars.'
               );
           }}
         />
         <LockIcon passwordcolor={getPasswordColor()} />
-        {passwordValidationState === "strong" && <CorrectIcon />}
-        {passwordValidationState === "medium" && <WarningIcon />}
-        {passwordValidationState === "weak" && password.length > 5 && (
+        {passwordValidationState === 'strong' && <CorrectIcon />}
+        {passwordValidationState === 'medium' && <WarningIcon />}
+        {passwordValidationState === 'weak' && password.length > 5 && (
           <ErrorIcon />
         )}
         {/* {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>} */}
@@ -193,12 +193,10 @@ const RegistrationForm = () => {
           className="password-visibility-toggle"
           onClick={handlePasswordVisibilityToggle}
         >
-          {isPasswordVisible ? "Hide" : "Show"}
+          {isPasswordVisible ? 'Hide' : 'Show'}
         </PasswordVisibilityButton>
       </InputContainer>
       <Button type="submit">Sign up</Button>
     </FormContainer>
   );
 };
-
-export default RegistrationForm;

@@ -24,7 +24,6 @@ const LogOutModal = handClose => {
         toast.error(
           'Oops... Something went wrong. Please refresh the page and try again!'
         );
-        console.log('Error: ', error);
       });
 
     // handClose(); // handClose - пропс функція компонента "UserAvatar" в Header. UserAvatar рендерить LogOutModal, має стейт "isModalLogOutOpen" та функції ModalLogOutOpen, ModalLogOutClose. ModalLogOutClose передаєтся пропсом через ще один компонет, що містить кнопку відкриття LogOutModal в саму LogOutModal як пропс handClose

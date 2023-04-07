@@ -16,42 +16,42 @@ import {
   MailIcon,
   LockIcon,
   ErrorIcon,
-} from "./LoginForm.styled";
+} from "./SigninForm.styled";
 
-const LoginForm = () => {
+export default function SigninForm() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   // const [isEmailValid, setIsEmailValid] = useState(false);
   // const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   // const [errors, setErrors] = useState({});
+
+  const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
+  const passRegexp = /^.{6,}$/; // має бути >= 6 символів
 
   // useEffect(() => {
   //   setIsEmailValid(/^\w+([\w-]\w+)@\w+(?:[.-]\w+)*(.\w{2,3})+$/.test(email));
   //   setIsPasswordValid(password.length > 5);
   // }, [ email, password]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     // if (!isEmailValid || !isPasswordValid) {
     //   return;
     // }
-    if (
-      !/^\w+([\w-]\w+)@\w+(?:[.-]\w+)*(.\w{2,3})+$/.test(email) ||
-      !/^.{6,}$/.test(password)
-    ) {
-      return toast("email and/or password is invalid");
+    if (!emailRegexp.test(email) || !passRegexp.test(password)) {
+      return toast('email and/or password is invalid');
     }
 
     dispatch(logIn({ email, password }))
       .unwrap()
       .then(({ user }) => toast.success(`Welcome, ${user.name}!`))
-      .catch((error) => {
+      .catch(error => {
         toast.error(
-          "Oops... Something went wrong. Please refresh the page and try again!"
+          'Oops... Something went wrong. Please refresh the page and try again!'
         );
-        console.log("Error: ", error);
+        console.log('Error: ', error);
       });
     event.target.reset();
   };
@@ -61,20 +61,17 @@ const LoginForm = () => {
   };
 
   const getEmailColor = () => {
-    if (
-      !/^\w+([\w-]\w+)@\w+(?:[.-]\w+)*(.\w{2,3})+$/.test(email) &&
-      email.length > 0
-    ) {
-      return "#e74a3b";
+    if (!emailRegexp.test(email) && email.length > 0) {
+      return '#e74a3b';
     }
-    return "#fafafa";
+    return '#fafafa';
   };
 
   const getPasswordColor = () => {
-    if (!/^.{6,}$/.test(password) && password.length > 0) {
-      return "#e74a3b";
+    if (!passRegexp.test(password) && password.length > 0) {
+      return '#e74a3b';
     }
-    return "#fafafa";
+    return '#fafafa';
   };
 
   return (
@@ -85,34 +82,31 @@ const LoginForm = () => {
           type="email"
           value={email}
           placeholder="Email"
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={event => setEmail(event.target.value)}
         />
         <MailIcon emailcolor={getEmailColor()} />
-        {!/^\w+([\w-]\w+)@\w+(?:[.-]\w+)*(.\w{2,3})+$/.test(email) &&
-          email.length > 0 && <ErrorIcon />}
+        {!emailRegexp.test(email) && email.length > 0 && <ErrorIcon />}
         {/* {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>} */}
       </InputContainer>
       <InputContainer passwordcolor={getPasswordColor()}>
         <Input
-          type={isPasswordVisible ? "text" : "password"}
+          type={isPasswordVisible ? 'text' : 'password'}
           value={password}
           placeholder="Password"
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={event => setPassword(event.target.value)}
         />
         <LockIcon passwordcolor={getPasswordColor()} />
-        {!/^.{6,}$/.test(password) && password.length > 0 && <ErrorIcon />}
+        {!passRegexp.test(password) && password.length > 0 && <ErrorIcon />}
         {/* {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>} */}
         <PasswordVisibilityButton
           type="button"
           className="password-visibility-toggle"
           onClick={handlePasswordVisibilityToggle}
         >
-          {isPasswordVisible ? "Hide" : "Show"}
+          {isPasswordVisible ? 'Hide' : 'Show'}
         </PasswordVisibilityButton>
       </InputContainer>
       <Button type="submit">Sign in</Button>
     </FormContainer>
   );
 };
-
-export default LoginForm;
