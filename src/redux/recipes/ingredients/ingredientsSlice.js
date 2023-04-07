@@ -1,15 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchIngredients } from './operations';
-import { categories } from './categories/categories';
 
 const initialState = {
-  category: categories,
   ingredients: [],
   isLoading: false,
   error: null,
 };
 
-const recipesIngSlice = createSlice({
+const ingredientsSlice = createSlice({
   name: 'recipes',
   initialState: initialState,
   extraReducers: builder =>
@@ -25,4 +23,4 @@ const recipesIngSlice = createSlice({
         state.error = action.payload;
       }),
 });
-export const recipesReducer = recipesIngSlice.reducer;
+export const ingredientsReducer = ingredientsSlice.reducer;
