@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SwitchLabel = styled.label`
   margin-left: 50px;
@@ -31,11 +31,10 @@ export const SwitchSlider = styled.span`
   background: #efefef;
   box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
-
   transition: 0.5s;
 
   ::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 3px;
     left: 3px;

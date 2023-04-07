@@ -1,31 +1,35 @@
-// import HeaderNavigation from "../HeaderNavigation/HeaderNavigation";
-import { Logo } from "../Header/HeaderStyled";
+import { Logo } from '../Header/HeaderStyled';
 import {
   Wrap,
   LogoLink,
   Button,
   IconClose,
-} from "../MobileMenu/MobileMenuStyled";
+  SwitchWrap,
+} from '../MobileMenu/MobileMenuStyled';
 
-import HeaderNavigation from "../HeaderNav/HeaderNav";
+import HeaderNavigation from '../HeaderNav/HeaderNav';
+import Switch from '../Switch/Switch';
 
 const MobileMenu = ({ toggleMenu }) => {
   return (
     <Wrap>
-      <div>
-        <LogoLink to="/main">
-          <Logo />
-        </LogoLink>
-        <Button
-          onClick={() => {
-            toggleMenu();
-          }}
-        >
-          <IconClose />
-        </Button>
+      <LogoLink to="/main">
+        <Logo />
+      </LogoLink>
 
-        <HeaderNavigation />
-      </div>
+      <Button
+        onClick={() => {
+          toggleMenu();
+        }}
+      >
+        <IconClose />
+      </Button>
+
+      <HeaderNavigation />
+
+      <SwitchWrap>
+        <Switch/>
+      </SwitchWrap>
     </Wrap>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useWindowDimensions from '../../../hooks/useWindowDimensions';
+import useWindowDimensions from 'hooks/useWindowDimensions';
 import {
   HeaderBlock,
   Container,

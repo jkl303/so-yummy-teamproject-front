@@ -1,5 +1,6 @@
-import { Navigation, Link, IconWrap, Icon } from "./HeaderNavStyled";
-import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import { Navigation, Link, IconWrap, Icon } from './HeaderNavStyled';
+import useWindowDimensions from 'hooks/useWindowDimensions';
+
 const HeaderNavigation = () => {
   const { width } = useWindowDimensions();
 
