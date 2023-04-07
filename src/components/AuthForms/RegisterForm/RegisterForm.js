@@ -31,11 +31,11 @@ export default function RegisterForm () {
   // const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    const nameRegexp = /^[\p{L}\s'`’]{3,}$/u;
+    // const nameRegexp = /^[\p{L}\s'`’]{3,}$/u;
     const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
     // const emailRegexp = /^\w+([\w.-]*\w+)?@\w+([.-]?\w+)*(\.\w{2,3})+$/;  // більш строгий
 
-    setIsNameValid(nameRegexp.test(name));
+    setIsNameValid(name.length > 2);
     setIsEmailValid(emailRegexp.test(email));
     passwordValidation();
 
@@ -73,8 +73,17 @@ export default function RegisterForm () {
       return;
     }
 
-    dispatch(signUp({ name, email, password })); //відправка даних для реєстрації
-    // при успішній реєстрації вивести повідомлення, що треба підтвердити імейл
+    dispatch(signUp({ name, email, password }))
+      .unwrap()
+      .then(({ user }) =>
+        toast.success(
+          `Welcome, ${user.name}! Confirm your email ${user.email} to complete registration`
+        )
+      )
+      .catch(error => {
+        toast.error(error);
+      });
+    
     event.target.reset();
   };
 
@@ -86,13 +95,13 @@ export default function RegisterForm () {
     if (!name) {
       return '#fafafa';
     }
-    if (!isNameValid && name.length > 2) {
+    if (!isNameValid && name.length > 0) {
       return '#e74a3b';
     }
-    if (isNameValid && name.length > 2) {
+    if (isNameValid && name.length > 0) {
       return '#3cbc81';
     }
-    if (name.length >= 2) {
+    if (name.length === 0) {
       return '#fafafa';
     }
   };
