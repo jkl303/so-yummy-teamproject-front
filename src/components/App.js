@@ -52,7 +52,6 @@ export default function App() {
       <Toaster />
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <Routes>
-          <Route index component={<WelcomePage />} />
           <Route
             path="/"
             element={
@@ -62,6 +61,8 @@ export default function App() {
               />
             }
           >
+            <Route index component={<WelcomePage />} />
+
             <Route
               path="/register"
               element={
