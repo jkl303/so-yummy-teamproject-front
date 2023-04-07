@@ -130,9 +130,9 @@ export default function App() {
             />
             <Route
               path="main"
-              element={
-                <PrivateRoute redirectTo="/login" component={<MainPage />} />
-              }
+              element={<MainPage />}
+              //   <PrivateRoute redirectTo="/login" component={<MainPage />} />
+              // }
             />
             <Route
               path="recipe/:recipeId"
