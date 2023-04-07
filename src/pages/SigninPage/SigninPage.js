@@ -1,10 +1,10 @@
 // import {} from './Signin.styled';
-import LoginForm from 'components/AuthForms/LoginForm/LoginForm';
+import SigninForm from 'components/AuthForms/SigninForm/SigninForm';
 
 export default function Signin() {
   return (
     <div>
-      <LoginForm />
+      <SigninForm />
     </div>
   );
 }
