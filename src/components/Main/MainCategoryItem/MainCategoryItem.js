@@ -1,15 +1,17 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { RecipeCard } from '../RecipeCard/RecipeCard';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 
 import {
   CategoryTitle,
   List,
-  ButtonStyled,
+  LinkStyled,
   ButtonWrap,
 } from './MainCategoryItem.styled';
 
 export const MainCategoryItem = ({ category }) => {
+  const location = useLocation();
   const { width } = useWindowDimensions();
 
   return (
@@ -29,7 +31,12 @@ export const MainCategoryItem = ({ category }) => {
               .map(recipe => <RecipeCard key={recipe._id} recipe={recipe} />)}
       </List>
       <ButtonWrap>
-        <ButtonStyled>See all</ButtonStyled>
+        <LinkStyled
+          to={`categories/${category[0].category}`}
+          state={{ from: location }}
+        >
+          See all
+        </LinkStyled>
       </ButtonWrap>
     </div>
   );

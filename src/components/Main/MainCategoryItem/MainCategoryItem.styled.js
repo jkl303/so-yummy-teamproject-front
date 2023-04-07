@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const CategoryTitle = styled.h2`
   font-size: 28px;
@@ -33,7 +34,11 @@ export const ButtonWrap = styled.div`
   flex-direction: row-reverse;
 `;
 
-export const ButtonStyled = styled.button`
+export const LinkStyled = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
   width: 94px;
   height: 38px;
   border: transparent;
