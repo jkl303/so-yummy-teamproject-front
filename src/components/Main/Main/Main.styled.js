@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import spinachTop from '../../../images/mobile/spinach-top375.png';
-import spinachTopTablet from '../../../images/tablet/spinach-top768.png';
-import spinachTopDesk from '../../../images/desktop/spinach-top1440.png';
-import spinach from '../../../images/mobile/spinach-leaves-main375.png';
-import spinachTablet from '../../../images/tablet/spinach-leaves-main768.png';
-import spinachDesk from '../../../images/desktop/spinach-leaves-main1440.png';
+import spinachTop from 'images/mobile/spinach-top375.png';
+import spinachTopTablet from 'images/tablet/spinach-top768.png';
+import spinachTopDesk from 'images/desktop/spinach-top1440.png';
+import spinach from 'images/mobile/spinach-leaves-main375.png';
+import spinachTablet from 'images/tablet/spinach-leaves-main768.png';
+import spinachDesk from 'images/desktop/spinach-leaves-main1440.png';
 
 export const HeroWrap = styled.div`
   position: relative;

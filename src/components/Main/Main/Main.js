@@ -10,9 +10,9 @@ import {
 } from './Main.styled';
 import { nanoid } from 'nanoid';
 import useWindowDimensions from 'hooks/useWindowDimensions';
-import plate from '../../../images/mobile/main-page-plate375.png';
-import plateTablet from '../../../images/tablet/main-page-plate768.png';
-import plateDesk from '../../../images/desktop/main-page-plate1440.png';
+import plate from 'images/mobile/main-page-plate375.png';
+import plateTablet from 'images/tablet/main-page-plate768.png';
+import plateDesk from 'images/desktop/main-page-plate1440.png';
 import { MainCategoryItem } from '../MainCategoryItem/MainCategoryItem';
 import data from '../data.json';
 
