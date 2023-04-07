@@ -116,10 +116,11 @@ export default function App() {
             <Route
               path="shopping-list"
               element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<ShoppingListPage />}
-                />
+                <ShoppingListPage />
+                // <PrivateRoute
+                //   redirectTo="/login"
+                //   component={<ShoppingListPage />}
+                // />
               }
             />
             <Route

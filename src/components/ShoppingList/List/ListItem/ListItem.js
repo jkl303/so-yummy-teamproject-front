@@ -7,6 +7,7 @@ import {
   NumberPadding,
   StyledImg,
 } from 'components/ShoppingList/List/List.styled';
+import { StyledSpan } from './ListItem.styled';
 import { TfiClose } from 'react-icons/tfi';
 export const ListItem = ({ data }) => {
   const { id, name, number, img } = data;
@@ -19,13 +20,13 @@ export const ListItem = ({ data }) => {
       </PicAndNameWrapper>
       <NumberWrapper>
         <NumberPadding>
-          <span>{number}</span>
+          <StyledSpan color={'white'}>{number}</StyledSpan>
         </NumberPadding>
       </NumberWrapper>
       <RemoveWrapper>
-        <span>
+        <StyledSpan color={'black'}>
           <TfiClose />
-        </span>
+        </StyledSpan>
       </RemoveWrapper>
     </ListItemStyled>
   );

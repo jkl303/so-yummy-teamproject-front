@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { mediaQueries } from 'style/mediaQueries';
 
+import '@fontsource/poppins';
+
 export const StyledHeaderList = styled.ul`
   list-style: none;
   display: flex;
@@ -8,6 +10,7 @@ export const StyledHeaderList = styled.ul`
   padding: 10px 10px;
   margin-bottom: 32px;
   background-color: #8baa36;
+  border-radius: 8px;
   ${mediaQueries('tablet')`
   padding: 20px 20px;
     margin-bottom: 50px;
@@ -22,6 +25,18 @@ export const StyledHeaderFirstListItem = styled.li`
   flex-grow: 2;
   flex-basis: 0;
   text-align: left;
+  color: #fafafa;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  ${mediaQueries('tablet')`
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.03em;
+  `}
 `;
 
 export const StyledHeaderOtherListItem = styled.li`
@@ -29,6 +44,17 @@ export const StyledHeaderOtherListItem = styled.li`
   flex-grow: 1;
   flex-basis: 0;
   width: 100%;
-
   text-align: center;
+  color: #fafafa;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+  ${mediaQueries('tablet')`
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.03em;
+  letter: 3%;
+  `}
 `;

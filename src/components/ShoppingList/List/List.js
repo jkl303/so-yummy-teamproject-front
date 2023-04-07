@@ -7,7 +7,7 @@ export const ListBodyReusable = ({ data }) => {
   return (
     <ListBody>
       {data.map(item => (
-        <ListItem data={item} />
+        <ListItem data={item} key={item.id} />
       ))}
     </ListBody>
   );

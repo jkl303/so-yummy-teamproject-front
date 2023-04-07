@@ -45,8 +45,19 @@ export const PicAndNameWrapper = styled.div`
 
 export const StyledName = styled.span`
   margin-left: 10px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #3e4462;
   ${mediaQueries('tablet')`
 margin-left: 16px;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: left;
+
   `}
 `;
 
@@ -59,7 +70,6 @@ export const RemoveWrapper = styled.div`
 
 export const NumberWrapper = styled.div`
   flex-grow: 1;
-  background-color: tomato;
   height: 100%;
   flex-basis: 0;
   width: 100%;
@@ -74,7 +84,7 @@ export const NumberPadding = styled.div`
   border-radius: 4px;
   ${mediaQueries('tablet')`
  width: 68px;
-    height: 35px;
+ height: 35px;
   `}
 `;
 
