@@ -1,4 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import { lazy, useState } from 'react';
@@ -21,9 +22,8 @@ import MainPage from 'pages/MainPage/MainPage';
 import RecipePage from 'pages/RecipePage/RecipePage';
 import { lightTheme } from 'style/lightTheme';
 import { darkTheme } from 'style/darkTheme';
-import { selectAuth } from 'redux/auth/authSelectors';
+// import { selectAuth } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
-import LogOutModal from './AuthForms/LogOutModal/LogOutModal';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const RegistrationPage = lazy(() =>
@@ -33,7 +33,7 @@ const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 
 export default function App() {
   const dispatch = useDispatch();
-  const { isRefreshing } = useSelector(selectAuth);
+  // const { isRefreshing } = useSelector(selectAuth);
 
   const [theme, setTheme] = useState('light');
   const isDarkTheme = theme === 'dark';
@@ -44,7 +44,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(refreshUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

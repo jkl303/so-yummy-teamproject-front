@@ -7,18 +7,18 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   max-width: 335px;
-  heigth: 315px;
+  heigth: 350px;
   padding: 32px 28px 40px;
   color: #fafafa;
   background: #2a2c36;
   border-radius: 30px;
   border: none;
-
-  margin-top: 24px;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
+  margin-left: 0;
   margin-bottom: 18px;
+  padding: 0;
   font-weight: 600;
   font-size: 24px;
   line-height: 1.17;
@@ -37,6 +37,9 @@ export const InputContainer = styled.div`
     margin-bottom: 12px;
   }
   :first-of-type {
+    border: 1.5px solid ${(props) => props.namecolor};
+  }
+  :nth-of-type(2) {
     border: 1.5px solid ${(props) => props.emailcolor};
   }
   :last-of-type {
@@ -54,7 +57,7 @@ export const Input = styled.input`
   color: #fafafa;
   background-color: transparent;
   border-radius: 6px;
-  border: 0 solid #fafafa33;
+  border: 0 solid #fafafa00;
   outline-width: 0rem;
   -webkit-box-shadow: inset 0 0 0 50px #2a2c36;
   -webkit-text-fill-color: #fafafabf;
@@ -103,6 +106,15 @@ export const Button = styled.button`
   }
 `;
 
+export const UserIcon = styled(FiUser)`
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  stroke: ${(props) => props.namecolor};
+`;
+
 export const MailIcon = styled(FiMail)`
   position: absolute;
   top: 12px;
@@ -121,23 +133,23 @@ export const LockIcon = styled(FiLock)`
   stroke: ${(props) => props.passwordcolor};
 `;
 
-// export const CorrectIcon = styled(TbCircleCheckFilled)`
-//   position: absolute;
-//   top: 12px;
-//   right: 14px;
-//   width: 18px;
-//   height: 18px;
-//   color: #3cbc81;
-// `;
+export const CorrectIcon = styled(TbCircleCheckFilled)`
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  color: #3cbc81;
+`;
 
-// export const WarningIcon = styled(MdError)`
-//   position: absolute;
-//   top: 12px;
-//   right: 14px;
-//   width: 18px;
-//   height: 18px;
-//   color: #f6c23e;
-// `;
+export const WarningIcon = styled(MdError)`
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  color: #f6c23e;
+`;
 
 export const ErrorIcon = styled(TbCircleXFilled)`
   position: absolute;
