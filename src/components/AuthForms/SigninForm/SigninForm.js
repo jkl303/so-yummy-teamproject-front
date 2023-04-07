@@ -1,9 +1,9 @@
 import React, {
   // useEffect,
   useState,
-} from "react";
-import { useDispatch } from "react-redux";
-import toast from "react-hot-toast";
+} from 'react';
+import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 import { logIn } from '../../../redux/auth/authOperations';
 import {
   FormContainer,
@@ -16,7 +16,7 @@ import {
   MailIcon,
   LockIcon,
   ErrorIcon,
-} from "./SigninForm.styled";
+} from './SigninForm.styled';
 
 export default function SigninForm() {
   const dispatch = useDispatch();
@@ -48,10 +48,7 @@ export default function SigninForm() {
       .unwrap()
       .then(({ user }) => toast.success(`Welcome, ${user.name}!`))
       .catch(error => {
-        toast.error(
-          'Oops... Something went wrong. Please refresh the page and try again!'
-        );
-        console.log('Error: ', error);
+        toast.error(error);
       });
     event.target.reset();
   };
@@ -109,4 +106,4 @@ export default function SigninForm() {
       <Button type="submit">Sign in</Button>
     </FormContainer>
   );
-};
+}
