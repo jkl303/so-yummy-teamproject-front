@@ -1,5 +1,5 @@
-// import {} from './MainPage.styled';
+import { Main } from 'components/Main/Main/Main';
 
 export default function MainPage() {
-  return <div>MainPage</div>;
+  return (<div><Main/></div>);
 }

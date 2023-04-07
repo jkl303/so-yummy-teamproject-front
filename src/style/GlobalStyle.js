@@ -9,7 +9,7 @@ ${variables}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -38,6 +38,10 @@ h6,
 p {
   margin: 0;
 }
+a {
+  text-decoration: none;
+  color: currentColor;
+}  
 `;
 
 //пример использования внутри styled-components
