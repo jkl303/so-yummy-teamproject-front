@@ -1,3 +1,7 @@
+import { useDispatch } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
 import { lazy, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
@@ -18,6 +22,8 @@ import MainPage from 'pages/MainPage/MainPage';
 import RecipePage from 'pages/RecipePage/RecipePage';
 import { lightTheme } from 'style/lightTheme';
 import { darkTheme } from 'style/darkTheme';
+// import { selectAuth } from 'redux/auth/authSelectors';
+import { refreshUser } from 'redux/auth/authOperations';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const RegistrationPage = lazy(() =>
@@ -26,6 +32,9 @@ const RegistrationPage = lazy(() =>
 const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 
 export default function App() {
+  const dispatch = useDispatch();
+  // const { isRefreshing } = useSelector(selectAuth);
+
   const [theme, setTheme] = useState('light');
   const isDarkTheme = theme === 'dark';
 
@@ -33,13 +42,26 @@ export default function App() {
     setTheme(isDarkTheme ? 'light' : 'dark');
   };
 
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <>
       <GlobalStyle />
       <Toaster />
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <Routes>
-          <Route index element={<WelcomePage />}>
+          <Route index component={<WelcomePage />} />
+          <Route
+            path="/"
+            element={
+              <SharedLayout
+                toggleTheme={toggleTheme}
+                isDarkTheme={isDarkTheme}
+              />
+            }
+          >
             <Route
               path="/register"
               element={
@@ -55,17 +77,6 @@ export default function App() {
                 <RestrictedRoute redirectTo="/" component={<SigninPage />} />
               }
             />
-          </Route>
-
-          <Route
-            path="/"
-            element={
-              <SharedLayout
-                toggleTheme={toggleTheme}
-                isDarkTheme={isDarkTheme}
-              />
-            }
-          >
             <Route
               path="categories/:categoryName"
               element={
@@ -119,9 +130,9 @@ export default function App() {
             />
             <Route
               path="main"
-              element={
-                <PrivateRoute redirectTo="/login" component={<MainPage />} />
-              }
+              element={<MainPage />}
+              //   <PrivateRoute redirectTo="/login" component={<MainPage />} />
+              // }
             />
             <Route
               path="recipe/:recipeId"

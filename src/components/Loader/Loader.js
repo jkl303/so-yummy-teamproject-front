@@ -1,5 +1,17 @@
-// import {} from './Loader.styled';
+import { StyledLoader } from './Loader.styled';
+import { Audio } from 'react-loader-spinner';
 
-export default function Loader() {
-  return <div>Loader</div>;
-}
+export const Loader = () => {
+  return (
+    <StyledLoader>
+      <Audio
+        height="200"
+        width="200"
+        radius="9"
+        color="#22252A"
+        ariaLabel="loading"
+        wrapperStyle
+      />
+    </StyledLoader>
+  );
+};
