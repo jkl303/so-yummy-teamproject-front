@@ -38,7 +38,8 @@ export default function App() {
       <GlobalStyle />
       <Toaster />
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-        <Routes>
+        <ShoppingListPage />
+        {/* <Routes>
           <Route index element={<WelcomePage />}>
             <Route
               path="/register"
@@ -131,7 +132,7 @@ export default function App() {
             />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
-        </Routes>
+        </Routes> */}
       </ThemeProvider>
     </>
   );
