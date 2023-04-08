@@ -12,6 +12,8 @@ export const lightTheme = {
     btnHover: 'var(--accent)',
     btnSec: 'var(--bg-input)', //cancel
     btnFoot: 'var(--accent)',
+    btnInverted: 'var(--accent)',
+    btnHoverInverted: 'var(--bg-btn)',
 
     txt: 'var(--txt)',
     title: 'var(--txt-title)',
@@ -24,18 +26,4 @@ export const lightTheme = {
     txtInputActive: 'var(--txt)',
     txtInputInactive: 'var(--txt-sec)',
   },
-  // пример
-  // fonts: {
-  //   body: "'Open Sans', sans-serif",
-  // },
-  // fontSizes: {
-  //   small: "14px",
-  //   medium: "16px",
-  //   large: "18px",
-  // },
-  // spacing: {
-  //   small: "8px",
-  //   medium: "16px",
-  //   large: "24px",
-  // },
 };

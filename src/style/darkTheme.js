@@ -1,5 +1,3 @@
-
-
 export const darkTheme = {
   colors: {
     accent: 'var(--accent)',
@@ -14,6 +12,8 @@ export const darkTheme = {
     btnHover: 'var(--bg-btn-hover-dark)',
     btnSec: 'var(--bg-input)', //cancel
     btnFoot: 'var(--bg-dark)',
+    btnInverted: 'var(--accent)',
+    btnHoverInverted: 'var(--bg-btn)',
 
     txt: 'var(--txt-dark)',
     title: 'var(--bg)',
@@ -25,18 +25,5 @@ export const darkTheme = {
     txtBtn: 'var(--bg)', //btn white txt+footer
     txtInputActive: 'var(--txt-dark)',
     txtInputInactive: 'var(--txt-content-dark)',
-  },
-  fonts: {
-    body: "'Open Sans', sans-serif",
-  },
-  fontSizes: {
-    small: '14px',
-    medium: '16px',
-    large: '18px',
-  },
-  spacing: {
-    small: '8px',
-    medium: '16px',
-    large: '24px',
   },
 };
