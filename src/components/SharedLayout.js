@@ -6,7 +6,6 @@ import Header from '../components/Header/Header/Header';
 
 export const SharedLayout = () => {
   const location = useLocation();
-  console.log(location);
   const { pathname: path } = location;
   const isRenderedWithoutLayout = path.includes('welcome');
   return isRenderedWithoutLayout ? (

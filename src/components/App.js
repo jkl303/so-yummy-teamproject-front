@@ -56,37 +56,35 @@ export default function App() {
       <AppContext.Provider value={{ toggleTheme }}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
           <Routes>
+            <Route
+              path="/welcome"
+              index
+              element={
+                <RestrictedRoute
+                  redirectTo="/main"
+                  component={<WelcomePage />}
+                />
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/main"
+                  component={<RegistrationPage />}
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute
+                  redirectTo="/main"
+                  component={<SigninPage />}
+                />
+              }
+            />
             <Route path="/" element={<SharedLayout />}>
-              <Route
-                path="/welcome"
-                element={
-                  <RestrictedRoute
-                    redirectTo="/main"
-                    component={<WelcomePage />}
-                  />
-                }
-              >
-                <Route
-                  path="register"
-                  element={
-                    <RestrictedRoute
-                      redirectTo="/main"
-                      component={<RegistrationPage />}
-                    />
-                  }
-                />
-                <Route
-                  path="login"
-                  index
-                  element={
-                    <RestrictedRoute
-                      redirectTo="/main"
-                      component={<SigninPage />}
-                    />
-                  }
-                />
-              </Route>
-
               <Route
                 path="categories/:categoryName"
                 element={<CategoriesPage />}
@@ -95,7 +93,7 @@ export default function App() {
                 path="add"
                 element={
                   <PrivateRoute
-                    redirectTo="/welcome/login"
+                    redirectTo="/login"
                     component={<AddRecipesPage />}
                   />
                 }
@@ -104,7 +102,7 @@ export default function App() {
                 path="my"
                 element={
                   <PrivateRoute
-                    redirectTo="/welcome/login"
+                    redirectTo="/login"
                     component={<MyRecipesPage />}
                   />
                 }
@@ -113,7 +111,7 @@ export default function App() {
                 path="favorite"
                 element={
                   <PrivateRoute
-                    redirectTo="/welcome/login"
+                    redirectTo="/login"
                     component={<FavoriteRecipesPage />}
                   />
                 }
@@ -122,7 +120,7 @@ export default function App() {
                 path="shopping-list"
                 element={
                   <PrivateRoute
-                    redirectTo="/welcome/login"
+                    redirectTo="/login"
                     component={<ShoppingListPage />}
                   />
                 }
@@ -131,7 +129,7 @@ export default function App() {
                 path="search"
                 element={
                   <PrivateRoute
-                    redirectTo="/welcome/login"
+                    redirectTo="/login"
                     component={<SearchPage />}
                   />
                 }
@@ -139,10 +137,7 @@ export default function App() {
               <Route
                 path="main"
                 element={
-                  <PrivateRoute
-                    redirectTo="/welcome/login"
-                    component={<MainPage />}
-                  />
+                  <PrivateRoute redirectTo="/login" component={<MainPage />} />
                 }
               />
 
@@ -150,7 +145,7 @@ export default function App() {
                 path="recipe/:recipeId"
                 element={
                   <PrivateRoute
-                    redirectTo="/welcome/login"
+                    redirectTo="/login"
                     component={<RecipePage />}
                   />
                 }
