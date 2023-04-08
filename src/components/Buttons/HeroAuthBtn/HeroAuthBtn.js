@@ -6,11 +6,11 @@ export const HeroAuthBtn = ({ active, children }) => {
     t: { w: 141, h: 67, padH: 44, padV: 22 },
   };
   return active ? (
-    <CustomBtn variant="changeBgInvert" sizes={sizes}>
+    <CustomBtn as="a" variant="changeBgInvert" sizes={sizes}>
       {children}
     </CustomBtn>
   ) : (
-    <CustomBtn variant="changeOutline" sizes={sizes}>
+    <CustomBtn as="a" variant="changeOutline" sizes={sizes}>
       {children}
     </CustomBtn>
   );

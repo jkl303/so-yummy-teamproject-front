@@ -4,24 +4,14 @@ import styled, { css } from 'styled-components';
 sizes:[m: {w, h, padH, padV, fz}, t, d] 
 variant [changeBg, changeBgInvert, changeOutline, changeAll (categories && add to favorite)], */
 
-export const CustomBtn = styled.a`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+export const CustomBtn = styled.button`
   min-width: ${({ sizes: { m } }) => m.w + 'px'};
   min-height: ${({ sizes: { m } }) => m.h + 'px'};
   padding: ${({ sizes: { m } }) => `${m.padV}px ${m.padH} px`};
-  border-radius: ${({
-    sizes: {
-      m: { h },
-    },
-  }) => `${h * 0.35}px ${h * 0.65}px`};
+  border-radius: 24px 44px;
 
   font-family: 'Poppins';
   font-size: ${({ sizes: { m } }) => (m.fz ? m.fz + 'px' : '14px')};
-  text-align: center;
-  align-items: center;
-
   color: ${({ variant, theme: { colors } }) =>
     variant === 'changeAll' ? colors.txtBtnSec : colors.txtBtn};
 
@@ -56,11 +46,6 @@ export const CustomBtn = styled.a`
         padding-left: ${t.padh && t.padh + 'px'} ;
         padding-bottom: ${t.padV && t.padV + 'px'} ;
         font-size: ${t.fz ? t.fz + 'px' : '16px'};
-        border-radius: ${({
-          sizes: {
-            t: { h },
-          },
-        }) => `${h * 0.35}px ${h * 0.65}px`};
     `}
 
     ${({ sizes: { d } }) =>
@@ -74,11 +59,6 @@ export const CustomBtn = styled.a`
         padding-left: ${d.padh && d.padh + 'px'};
         padding-bottom: ${d.padV && d.padV + 'px'};
         font-size: ${d.fz ? d.fx + 'px' : '16px'};
-        border-radius: ${({
-          sizes: {
-            d: { h },
-          },
-        }) => `${h * 0.35}px ${h * 0.65}px`};
       }
     `}
 

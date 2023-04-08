@@ -3,7 +3,6 @@ import { CustomBtn } from 'components/Buttons/templates/CustomBtn/CustomBtn.styl
 export const AddToFavoriteBtn = () => {
   return (
     <CustomBtn
-      as="button"
       type="button"
       variant="changeAll"
       sizes={{

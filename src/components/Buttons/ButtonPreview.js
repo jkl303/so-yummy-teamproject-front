@@ -1,42 +1,50 @@
 import { SearchBtn } from './SearchBtn/SearchBth';
 import { OtherCategoriesBtn } from './OtherCategoriesBtn/OtherCategoriesBtn';
-import { SubscribeBtn } from './SubcribeBtn/SubcribeBtn';
-import { LogOutMenuBtn } from './LogOutBtn/LogOutMenuBtn';
-import { LogoutModalBtn } from './LogoutModalBtn/LogoutModalBtn';
-import { SeeAllBtn } from './SeeAllBtn/SeeAllBtn';
-import { SeeRecipeBtn } from './SeeRecipeBtn/SeeRecipeBtn';
+import { SubscribeBtn } from './AddToFavoriteBtn/SubcribeBtn/SubcribeBtn';
+import { LogOutBtn } from './LogOutBtn/LogOutBtn';
+import { CancelBtn } from './CancelBtn/CancelBtn';
+import { SeeAllBtn } from './AddToFavoriteBtn/SeeAllBtn/SeeAllBtn';
+import { SeeRecipeBtn } from './AddToFavoriteBtn/SeeRecipeBtn/SeeRecipeBtn';
 import { AddToFavoriteBtn } from './AddToFavoriteBtn/AddToFavoriteBtn';
 import { HeroAuthBtn } from './HeroAuthBtn/HeroAuthBtn';
 
-export default function ButtonPreview() {
+
+export default function ButtonPreview () {
   return (
-    <>
-      <div
-        style={{
-          backgroundColor: '#666',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
+    <>      
+        <div
+          style={{
+            backgroundColor: '#666',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
 
-          alignItems: 'flex-start',
-        }}
-      >
-        <SearchBtn />
-        <OtherCategoriesBtn />
-        <SubscribeBtn />
-        <LogOutMenuBtn />
-        <div style={{ display: 'flex' }}>
-          <LogoutModalBtn text="Logout" />
+            alignItems: 'flex-start',
+          }}
+        >
+          <SearchBtn invertBg />
           <br />
-          <LogoutModalBtn secondary text="Cancel" />
+          <OtherCategoriesBtn />
+          <br />
+          <SubscribeBtn />
+          <br />
+          <div style={{ display: 'flex' }}>
+            <LogOutBtn />
+            <br />
+            <CancelBtn />
+          </div>
+          <br />
+          <SeeAllBtn />
+          <br />
+          <SeeRecipeBtn />
+          <br />
+          <AddToFavoriteBtn />
+          <br />
+          <HeroAuthBtn active>Active</HeroAuthBtn>
+          <br />
+          <HeroAuthBtn>Button</HeroAuthBtn>
         </div>
-
-        <SeeAllBtn />
-        <SeeRecipeBtn />
-        <AddToFavoriteBtn />
-        <HeroAuthBtn active>Active</HeroAuthBtn>
-        <HeroAuthBtn>Button</HeroAuthBtn>
-      </div>
+      
     </>
   );
-}
+};
