@@ -7,13 +7,22 @@ export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 87px;
   background-color: #fafafa;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 96px;
+  }
 `;
 
 export const Img = styled.img`
   width: 285px;
   height: 250px;
-  margin-top: 87px;
+
+  @media screen and (min-width: 768px) {
+    width: 409px;
+    height: 359px;
+  }
 `;
 
 export const BottomWrap = styled.div`
@@ -25,12 +34,13 @@ export const BottomWrap = styled.div`
   width: 100%;
   margin-top: -15px;
   padding-top: 351px;
-  padding-bottom: 98px;
+  padding-bottom: 107px;
   background-color: #1e1f28;
-`;
 
-export const GoogleLink = styled.a`
-  margin-right: 24px;
+  @media screen and (min-width: 768px) {
+    padding-top: 500px;
+    padding-bottom: 42px;
+  }
 `;
 
 export const IconWrap = styled.div`
@@ -39,17 +49,28 @@ export const IconWrap = styled.div`
   justify-content: center;
   width: 32px;
   height: 32px;
+  margin-right: 24px;
   border-radius: 4px;
   background-color: #fafafa33;
   :hover,
   :focus {
     background-color: #fafafa11;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 42px;
+    height: 42px;
+  }
 `;
 
 export const GoogleIcon = styled(FcGoogle)`
   width: 24px;
   height: 24px;
+
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 export const RegLink = styled(NavLink)`
@@ -59,5 +80,9 @@ export const RegLink = styled(NavLink)`
   :hover,
   :focus {
     color: #8baa36;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
   }
 `;
