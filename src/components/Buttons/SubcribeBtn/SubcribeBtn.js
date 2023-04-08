@@ -1,9 +1,9 @@
 import { BasicBtn } from 'components/Buttons/templates/BasicBtn/BasicBtn.styled';
 
-export const LogOutBtn = () => {
+export const SubscribeBtn = () => {
   return (
-    <BasicBtn type="submit" variant="changeBg" size="wide">
-      Log out
+    <BasicBtn variant="changeTxt" origin="footer" size="md">
+      Subscribe
     </BasicBtn>
   );
 };
