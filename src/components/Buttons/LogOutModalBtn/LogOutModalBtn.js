@@ -1,6 +1,6 @@
 import { BasicBtn } from 'components/Buttons/templates/BasicBtn/BasicBtn.styled';
 
-export const LogoutModalBtn = ({ text, secondary }) => {
+export const LogOutModalBtn = ({ text, secondary }) => {
   return secondary ? (
     <BasicBtn type="button" variant="changeBg" origin="secondary" size="wide">
       {text}
