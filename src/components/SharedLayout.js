@@ -1,16 +1,19 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import Container from '../components/Container/Container';
 import Header from '../components/Header/Header/Header';
 // import  Footer  from './Footer/Footer'; //наш footer
 
 export const SharedLayout = () => {
   return (
     <>
-      <Header />
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+      <Container>
+        <Header />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </Container>
       {/* <Footer /> */}
     </>
   );
