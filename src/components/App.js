@@ -52,7 +52,6 @@ export default function App() {
       <Toaster />
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <Routes>
-          <Route index component={<WelcomePage />} />
           <Route
             path="/"
             element={
@@ -62,6 +61,17 @@ export default function App() {
               />
             }
           >
+            <Route index element={<WelcomePage />} />
+            {/* <Route index component={<WelcomePage />} />
+          <Route
+            path="/"
+            element={
+              <SharedLayout
+                toggleTheme={toggleTheme}
+                isDarkTheme={isDarkTheme}
+              />
+            }
+          > */}
             <Route
               path="/register"
               element={
@@ -114,15 +124,15 @@ export default function App() {
               }
             />
             <Route
-              path="shopping-list"
+              path="/shopping-list"
               element={
-                <ShoppingListPage />
-                // <PrivateRoute
-                //   redirectTo="/login"
-                //   component={<ShoppingListPage />}
-                // />
+                <PrivateRoute
+                  component={<ShoppingListPage />}
+                  redirectTo="/login"
+                />
               }
             />
+
             <Route
               path="search"
               element={
@@ -138,7 +148,7 @@ export default function App() {
             <Route
               path="recipe/:recipeId"
               element={
-                <PrivateRoute redirectTo="/login" component={<RecipePage />} />
+                <PrivateRoute component={<RecipePage />} redirectTo="/login" />
               }
             />
             <Route path="*" element={<NotFoundPage />} />

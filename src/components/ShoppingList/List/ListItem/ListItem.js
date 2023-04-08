@@ -7,13 +7,25 @@ import {
   NumberPadding,
   StyledImg,
 } from 'components/ShoppingList/List/List.styled';
+import { useDispatch } from 'react-redux';
+import { deleteShoppingListItemThunkOperation } from '../../../../redux/shoppingList/shoppingListOperations';
 import { StyledSpan } from './ListItem.styled';
+
 import { TfiClose } from 'react-icons/tfi';
+
 export const ListItem = ({ data }) => {
-  const { id, name, number, img } = data;
+  const dispatch = useDispatch();
+
+  const { _id, ingredientQuantity: number, ingredientId } = data;
+  const { ttl: name, thb: img } = ingredientId;
+  console.log(_id, name, number, img);
+
+  const onDeleteClick = id => {
+    dispatch(deleteShoppingListItemThunkOperation(id));
+  };
 
   return (
-    <ListItemStyled key={id}>
+    <ListItemStyled key={_id}>
       <PicAndNameWrapper>
         <StyledImg src={img} alt="pic"></StyledImg>
         <StyledName>{name}</StyledName>
@@ -25,7 +37,7 @@ export const ListItem = ({ data }) => {
       </NumberWrapper>
       <RemoveWrapper>
         <StyledSpan color={'black'}>
-          <TfiClose />
+          <TfiClose onClick={() => onDeleteClick(_id)} />
         </StyledSpan>
       </RemoveWrapper>
     </ListItemStyled>

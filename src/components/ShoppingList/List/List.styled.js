@@ -78,7 +78,7 @@ export const NumberPadding = styled.div`
   text-align: center;
   height: 23px;
   width: 37px;
-  background-color: #8baa36;
+  background-color: var(--accent);
   margin-left: auto;
   margin-right: auto;
   border-radius: 4px;
