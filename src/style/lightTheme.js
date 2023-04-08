@@ -3,6 +3,7 @@ export const lightTheme = {
     accent: 'var(--accent)',
     bg: 'var(--bg)',
     bgSec: 'var(--bg-sec)', //lists, cards etc
+    bgFooter: 'var(--bg-btn)',
     bgModal: 'var(--bg)',
     input: 'var(--bg-input)',
     select: 'var(--bg)',

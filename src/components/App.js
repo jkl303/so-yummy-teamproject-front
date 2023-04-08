@@ -25,7 +25,7 @@ import { darkTheme } from 'style/darkTheme';
 // import { selectAuth } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
 
-const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
+// const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const RegistrationPage = lazy(() =>
   import('../pages/RegistrationPage/RegistrationPage')
 );
@@ -56,8 +56,14 @@ export default function App() {
       <AppContext.Provider value={{ toggleTheme }}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
           <Routes>
-            <Route index component={<WelcomePage />} />
+            {/* <Route index component={<WelcomePage />} /> */}
             <Route path="/" element={<SharedLayout />}>
+              <Route
+                path="/main"
+                element={<MainPage />}
+                //   <PrivateRoute redirectTo="/login" component={<MainPage />} />
+                // }
+              />
               <Route
                 path="/register"
                 element={
@@ -76,12 +82,12 @@ export default function App() {
               <Route
                 path="categories/:categoryName"
                 element={<CategoriesPage />}
-              //   <PrivateRoute
-              //     redirectTo="/login"
-              //     component={<CategoriesPage />}
-              //   />
-              // }
-            />
+                //   <PrivateRoute
+                //     redirectTo="/login"
+                //     component={<CategoriesPage />}
+                //   />
+                // }
+              />
               <Route
                 path="add"
                 element={
@@ -127,24 +133,18 @@ export default function App() {
                   />
                 }
               />
+
               <Route
-                path="main"
-                element={<MainPage />}
-                //   <PrivateRoute redirectTo="/login" component={<MainPage />} />
+                path="recipe/:recipeId"
+                element={<RecipePage />}
+                //   <PrivateRoute redirectTo="/login" component={<RecipePage />} />
                 // }
               />
-              <Route
-              path="recipe/:recipeId"
-              element={<RecipePage />}
-              //   <PrivateRoute redirectTo="/login" component={<RecipePage />} />
-              // }
-            />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </ThemeProvider>
       </AppContext.Provider>
-
     </>
   );
 }

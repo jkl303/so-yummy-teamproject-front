@@ -1,30 +1,28 @@
 import {
   FooterComponent,
-  Wrap,
-  FooterWrap,
+  FooterMainBlockItem,
+  DescroptionWrap,
   LogoWrap,
   LogoLink,
   Logo,
   Link,
   Copyright,
-  CopyrightText,
-  CopyrightText2,
-  Div,
+  FooterMainBlock,
 } from './Footer.styled';
-import { TextList } from '../TextList/TextList';
-import { Navigation } from '../Navigation/Navigation';
-import { SubscribeForm } from '../SubscribeForm/SubscribeForm';
-import { SocialList } from '../SocialList/SocialList';
+import { TextList } from 'components/TextList/TextList';
+import { Navigation } from 'components/Navigation/Navigation';
+import { SubscribeForm } from 'components/SubscribeForm/SubscribeForm';
+import { SocialList } from 'components/SocialList/SocialList';
 
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import useWindowDimensions from 'hooks/useWindowDimensions';
 
-const Footer = () => {
+export default function Footer() {
   const { width } = useWindowDimensions();
   return (
     <FooterComponent>
-      <Div>
-        <Wrap>
-          <FooterWrap>
+      <FooterMainBlock>
+        <FooterMainBlockItem>
+          <DescroptionWrap>
             <LogoWrap>
               <LogoLink to="/main">
                 <Logo />
@@ -32,18 +30,16 @@ const Footer = () => {
               <Link>So Yummy</Link>
             </LogoWrap>
             {width > 767 && <TextList />}
-          </FooterWrap>
+          </DescroptionWrap>
           <Navigation />
-        </Wrap>
+        </FooterMainBlockItem>
         <SubscribeForm />
-      </Div>
+      </FooterMainBlock>
       <SocialList />
       <Copyright>
-        <CopyrightText>© 2023 All Rights Reserved.</CopyrightText>
-        <CopyrightText2>Terms of Service</CopyrightText2>
+        <span>© 2023 All Rights Reserved.</span>
+        <span>Terms of Service</span>
       </Copyright>
     </FooterComponent>
   );
-};
-
-export default Footer;
+}

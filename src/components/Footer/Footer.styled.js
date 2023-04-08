@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as SvgLogo } from '../../images/svg/logo.svg';
+import { ReactComponent as SvgLogo } from 'images/svg/logo.svg';
 import spinachMob from 'images/mobile/spinach-bottom-right375.png';
 import spinachTab from 'images/tablet/spinach-bottom-right768.png';
 import spinachDesk from 'images/desktop/spinach-bottom-right1440.png';
 
 export const FooterComponent = styled.footer`
-  z-index: 10;
   margin-top: auto;
   padding-top: 28px;
   font-family: 'Poppins';
   font-style: normal;
-  background: #22252a;
+  background: ${({ theme: { colors } }) => colors.bgFooter};
   @media screen and (min-width: 768px) {
     padding-top: 50px;
   }
@@ -20,7 +19,7 @@ export const FooterComponent = styled.footer`
   } ;
 `;
 
-export const Div = styled.div`
+export const FooterMainBlock = styled.div`
   @media screen and (min-width: 1440px) {
     display: flex;
     align-items: center;
@@ -30,7 +29,7 @@ export const Div = styled.div`
   } ;
 `;
 
-export const Wrap = styled.div`
+export const FooterMainBlockItem = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
@@ -43,7 +42,7 @@ export const Wrap = styled.div`
   } ;
 `;
 
-export const FooterWrap = styled.div`
+export const DescroptionWrap = styled.div`
   @media screen and (min-width: 768px) {
    display: flex;
    flex-direction: column;
@@ -92,9 +91,6 @@ export const Link = styled(NavLink)`
 `;
 
 export const Copyright = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 14px;
   padding-top: 28px;
   padding-bottom: 28px;
   font-family: 'Poppins';
@@ -102,35 +98,38 @@ export const Copyright = styled.div`
   font-size: 10px;
   line-height: 1;
   letter-spacing: -0.01em;
-  color: #22252a;
-  background-color: #ececec;
-  background-image: url(${spinachMob});
-  background-position: 100%;
-  background-repeat: no-repeat;
+  color: ${({ theme: { colors } }) => colors.txt};
+  text-align: center;
+  background: url(${spinachMob}) 100% no-repeat;
+  background-color: ${({ theme: { colors } }) => colors.bg};
   background-position-y: bottom;
+
+  span:first-child {
+    margin-right: 14px;
+  }
 
   @media screen and (min-width: 768px) {
     padding-top: 32px;
     padding-bottom: 32px;
-    gap: 28px;
     font-size: 14px;
     background-image: url(${spinachTab});
+
+    span:first-child {
+      margin-right: 28px;
+    }
   }
 
   @media screen and (min-width: 1440px) {
     padding-top: 50px;
     padding-bottom: 50px;
-    gap: 40px;
     background-image: url(${spinachDesk});
+
+    span:first-child {
+      margin-right: 40px;
+    }
   }
-`;
 
-export const CopyrightText = styled.p`
-  margin: 0;
-  font-weight: 500;
-`;
-
-export const CopyrightText2 = styled.p`
-  margin: 0;
-  font-weight: 400;
+  span {
+    opacity: 0.5;
+  }
 `;
