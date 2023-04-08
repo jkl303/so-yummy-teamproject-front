@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 // import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, createContext, useContext } from 'react';
 
 import { lazy, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
@@ -31,6 +31,9 @@ const RegistrationPage = lazy(() =>
 );
 const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
 
+const AppContext = createContext(null);
+export const useToggleTheme = () => useContext(AppContext);
+
 export default function App() {
   const dispatch = useDispatch();
   // const { isRefreshing } = useSelector(selectAuth);
@@ -50,100 +53,98 @@ export default function App() {
     <>
       <GlobalStyle />
       <Toaster />
-      <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-        <Routes>
-          <Route index component={<WelcomePage />} />
-          <Route
-            path="/"
-            element={
-              <SharedLayout
-                toggleTheme={toggleTheme}
-                isDarkTheme={isDarkTheme}
+      <AppContext.Provider value={{ toggleTheme }}>
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+          <Routes>
+            <Route index component={<WelcomePage />} />
+            <Route path="/" element={<SharedLayout />}>
+              <Route
+                path="/register"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/login"
+                    component={<RegistrationPage />}
+                  />
+                }
               />
-            }
-          >
-            <Route
-              path="/register"
-              element={
-                <RestrictedRoute
-                  redirectTo="/login"
-                  component={<RegistrationPage />}
-                />
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <RestrictedRoute redirectTo="/" component={<SigninPage />} />
-              }
-            />
-            <Route
-              path="categories/:categoryName"
-              element={<CategoriesPage />}
+              <Route
+                path="/login"
+                element={
+                  <RestrictedRoute redirectTo="/" component={<SigninPage />} />
+                }
+              />
+              <Route
+                path="categories/:categoryName"
+                element={<CategoriesPage />}
               //   <PrivateRoute
               //     redirectTo="/login"
               //     component={<CategoriesPage />}
               //   />
               // }
             />
-            <Route
-              path="add"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<AddRecipesPage />}
-                />
-              }
-            />
-            <Route
-              path="my"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<MyRecipesPage />}
-                />
-              }
-            />
-            <Route
-              path="favorite"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<FavoriteRecipesPage />}
-                />
-              }
-            />
-            <Route
-              path="shopping-list"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<ShoppingListPage />}
-                />
-              }
-            />
-            <Route
-              path="search"
-              element={
-                <PrivateRoute redirectTo="/login" component={<SearchPage />} />
-              }
-            />
-            <Route
-              path="main"
-              element={<MainPage />}
-              //   <PrivateRoute redirectTo="/login" component={<MainPage />} />
-              // }
-            />
-            <Route
+              <Route
+                path="add"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<AddRecipesPage />}
+                  />
+                }
+              />
+              <Route
+                path="my"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<MyRecipesPage />}
+                  />
+                }
+              />
+              <Route
+                path="favorite"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<FavoriteRecipesPage />}
+                  />
+                }
+              />
+              <Route
+                path="shopping-list"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<ShoppingListPage />}
+                  />
+                }
+              />
+              <Route
+                path="search"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<SearchPage />}
+                  />
+                }
+              />
+              <Route
+                path="main"
+                element={<MainPage />}
+                //   <PrivateRoute redirectTo="/login" component={<MainPage />} />
+                // }
+              />
+              <Route
               path="recipe/:recipeId"
               element={<RecipePage />}
               //   <PrivateRoute redirectTo="/login" component={<RecipePage />} />
               // }
             />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </ThemeProvider>
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </ThemeProvider>
+      </AppContext.Provider>
+
     </>
   );
 }

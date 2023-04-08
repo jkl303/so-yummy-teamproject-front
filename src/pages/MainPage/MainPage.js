@@ -18,6 +18,7 @@ import plateDesk from 'images/desktop/main-page-plate1440.png';
 import plateDesk2x from 'images/desktop/main-page-plate1440-2x.png';
 import { MainCategoryItem } from 'components/Main/MainCategoryItem/MainCategoryItem';
 import data from 'components/Main/data.json';
+// import ButtonPreview from 'components/Buttons/ButtonPreview';
 
 export default function MainPage() {
   const { width } = useWindowDimensions();
@@ -66,6 +67,7 @@ export default function MainPage() {
           ))}
         </CategoryList>
       </Container>
+      {/* <ButtonPreview /> */}
     </>
   );
 }

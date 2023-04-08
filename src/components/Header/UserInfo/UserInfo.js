@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState } from 'react';
 import {
   UserWrap,
   UserAvatar,
@@ -9,12 +8,10 @@ import {
   Button,
   ButtonLogout,
   ArrowIcon,
-} from "./UserInfoStyled";
+} from './UserInfoStyled';
 
-import { ReactComponent as EditBtn } from "../../../images/svg/edit.svg";
-import User from '../../../images/svg/user.svg';
-
-
+import { FiEdit2 } from 'react-icons/fi';
+import User from 'images/svg/user.svg';
 
 const UserInfo = () => {
   const [userOpenModal, setUserOpenModal] = useState(false);
@@ -40,7 +37,7 @@ const UserInfo = () => {
         <Wrap>
           <Button onClick={() => editProfile()}>
             <p>Edit profile</p>
-            <EditBtn />
+            <FiEdit2 />
           </Button>
 
           <ButtonLogout onClick={() => logOut()}>

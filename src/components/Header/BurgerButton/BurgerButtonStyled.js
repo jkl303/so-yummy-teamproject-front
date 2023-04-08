@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { ReactComponent as BurgerMenu } from "../../../images/svg/burgerMenu.svg";
+import styled from 'styled-components';
+import { HiMenuAlt2 } from 'react-icons/hi';
 
 export const Button = styled.button`
   display: flex;
@@ -8,13 +8,15 @@ export const Button = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+  margin-left: 12px;
 
   @media screen and (min-width: 1440px) {
     display: none;
   }
 `;
 
-export const IconOpen = styled(BurgerMenu)`
+export const IconOpen = styled(HiMenuAlt2)`
+  color: #22252a;
   width: 40px;
   height: 40px;
 
