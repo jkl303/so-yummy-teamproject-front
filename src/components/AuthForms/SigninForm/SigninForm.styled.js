@@ -3,6 +3,8 @@ import { FiMail, FiLock } from 'react-icons/fi';
 import { TbCircleXFilled } from 'react-icons/tb';
 
 export const FormContainer = styled.form`
+  position: absolute;
+  top: 305px;
   display: flex;
   flex-direction: column;
   max-width: 335px;
