@@ -50,8 +50,6 @@ export const Title = styled.h2`
 
 export const InputContainer = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
   width: 100%;
   height: 45px;
   border-radius: 6px;
