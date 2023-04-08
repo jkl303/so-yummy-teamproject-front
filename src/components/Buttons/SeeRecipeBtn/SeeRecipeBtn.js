@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 export const SeeRecipeBtn = () => {
   const location = useLocation();
-  const inverted = location.pathname.includes('my');
+  const inverted = location.pathname.includes('/my');
   return (
     <CustomBtn
       variant={inverted ? 'changeBgInvert' : 'changeBg'}

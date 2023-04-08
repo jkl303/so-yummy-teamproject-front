@@ -1,5 +1,5 @@
 import App from 'components/App';
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -13,9 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <HelmetProvider>
-            <Suspense fallback={null}>
-              <App />
-            </Suspense>
+            <App />
           </HelmetProvider>
         </PersistGate>
       </Provider>
