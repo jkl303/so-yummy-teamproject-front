@@ -15,6 +15,7 @@ import plateTablet from 'images/tablet/main-page-plate768.png';
 import plateDesk from 'images/desktop/main-page-plate1440.png';
 import { MainCategoryItem } from 'components/Main/MainCategoryItem/MainCategoryItem';
 import data from 'components/Main/data.json';
+// import ButtonPreview from 'components/Buttons/ButtonPreview';
 
 export default function MainPage() {
   const { width } = useWindowDimensions();
@@ -48,6 +49,7 @@ export default function MainPage() {
           ))}
         </CategoryList>
       </Container>
+      {/* <ButtonPreview /> */}
     </>
   );
 }

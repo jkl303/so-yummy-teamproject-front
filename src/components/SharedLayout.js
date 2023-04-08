@@ -4,10 +4,10 @@ import { Outlet } from 'react-router-dom';
 import Header from '../components/Header/Header/Header';
 // import  Footer  from './Footer/Footer'; //наш footer
 
-export const SharedLayout = ({ toggleTheme, isDarkTheme }) => {
+export const SharedLayout = () => {
   return (
     <>
-      <Header toggleTheme={toggleTheme} isDarkTheme={isDarkTheme} />
+      <Header />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>

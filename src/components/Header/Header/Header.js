@@ -15,20 +15,14 @@ import HeaderNavigation from '../HeaderNav/HeaderNav';
 import UserInfo from '../UserInfo/UserInfo';
 import Switch from '../Switch/Switch';
 
-const Header = (toggleTheme, isDarkTheme) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [isToggled, setIsTogglet] = useState(isDarkTheme);
 
   const { width } = useWindowDimensions();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  //  const onToggle = () => {
-  //    setIsTogglet(!isToggled);
-  //    toggleTheme();
-  //  };
 
   return (
     <HeaderBlock>
