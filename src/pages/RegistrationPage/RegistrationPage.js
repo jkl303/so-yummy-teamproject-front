@@ -4,7 +4,6 @@ import {
   Img,
   PageWrapper,
   BottomWrap,
-  GoogleLink,
   GoogleIcon,
   IconWrap,
   RegLink,
@@ -15,11 +14,11 @@ export default function RegistrationPage() {
     <PageWrapper>
       <Img src={image} alt="girl in a chair" />
       <BottomWrap>
-        <GoogleLink href={`${process.env.REACT_APP_API_URL}/auth/google`}>
+        <a href={`${process.env.REACT_APP_API_URL}/auth/google`}>
           <IconWrap>
             <GoogleIcon />
           </IconWrap>
-        </GoogleLink>
+        </a>
         <RegLink to="/login">Sign In</RegLink>
       </BottomWrap>
       <RegisterForm />

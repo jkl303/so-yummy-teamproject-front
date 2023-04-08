@@ -15,6 +15,13 @@ export const FormContainer = styled.form`
   background: #2a2c36;
   border-radius: 30px;
   border: none;
+
+  @media screen and (min-width: 768px) {
+    top: 443px;
+    min-width: 500px;
+    height: 481px;
+    padding: 44px 50px;
+  } ;
 `;
 
 export const Title = styled.h2`
@@ -25,6 +32,11 @@ export const Title = styled.h2`
   font-size: 24px;
   line-height: 1.17;
   letter-spacing: -0.02em;
+
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+    margin-bottom: 50px;
+  } ;
 `;
 
 export const InputContainer = styled.div`
@@ -39,16 +51,23 @@ export const InputContainer = styled.div`
     margin-bottom: 12px;
   }
   :first-of-type {
-    border: 1.5px solid ${(props) => props.namecolor};
+    border: 1.5px solid ${props => props.namecolor};
   }
   :nth-of-type(2) {
-    border: 1.5px solid ${(props) => props.emailcolor};
+    border: 1.5px solid ${props => props.emailcolor};
   }
   :last-of-type {
-    border: 1.5px solid ${(props) => props.passwordcolor};
+    border: 1.5px solid ${props => props.passwordcolor};
   }
   :active {
     border-width: 2px;
+  }
+
+  @media screen and (min-width: 768px) {
+    height: 59px;
+    :not(:last-of-type) {
+      margin-bottom: 24px;
+    }
   }
 `;
 
@@ -63,13 +82,18 @@ export const Input = styled.input`
   outline-width: 0rem;
   -webkit-box-shadow: inset 0 0 0 50px #2a2c36;
   -webkit-text-fill-color: #fafafabf;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    padding: 16px 50px;
+  } ;
 `;
 
-export const ErrorMessage = styled.div`
-  color: red;
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-`;
+// export const ErrorMessage = styled.div`
+//   color: red;
+//   font-size: 0.8rem;
+//   margin-top: 0.5rem;
+// `;
 
 export const PasswordVisibilityButton = styled.button`
   position: absolute;
@@ -88,6 +112,11 @@ export const PasswordVisibilityButton = styled.button`
   :active {
     color: #7c9931;
   }
+
+  @media screen and (min-width: 768px) {
+    right: 50px;
+    font-size: 18px;
+  } ;
 `;
 
 export const Button = styled.button`
@@ -106,6 +135,9 @@ export const Button = styled.button`
   :active {
     background: #7c9931;
   }
+  @media screen and (min-width: 768px) {
+    height: 59px;
+  } ;
 `;
 
 export const UserIcon = styled(FiUser)`
@@ -114,7 +146,14 @@ export const UserIcon = styled(FiUser)`
   left: 14px;
   width: 18px;
   height: 18px;
-  stroke: ${(props) => props.namecolor};
+  stroke: ${props => props.namecolor};
+
+  @media screen and (min-width: 768px) {
+    top: 17.5px;
+    left: 18px;
+    width: 24px;
+    height: 24px;
+  } ;
 `;
 
 export const MailIcon = styled(FiMail)`
@@ -123,7 +162,14 @@ export const MailIcon = styled(FiMail)`
   left: 14px;
   width: 18px;
   height: 18px;
-  stroke: ${(props) => props.emailcolor};
+  stroke: ${props => props.emailcolor};
+
+  @media screen and (min-width: 768px) {
+    top: 17.5px;
+    left: 18px;
+    width: 24px;
+    height: 24px;
+  } ;
 `;
 
 export const LockIcon = styled(FiLock)`
@@ -132,7 +178,14 @@ export const LockIcon = styled(FiLock)`
   left: 14px;
   width: 18px;
   height: 18px;
-  stroke: ${(props) => props.passwordcolor};
+  stroke: ${props => props.passwordcolor};
+
+  @media screen and (min-width: 768px) {
+    top: 17.5px;
+    left: 18px;
+    width: 24px;
+    height: 24px;
+  } ;
 `;
 
 export const CorrectIcon = styled(TbCircleCheckFilled)`
@@ -142,6 +195,13 @@ export const CorrectIcon = styled(TbCircleCheckFilled)`
   width: 18px;
   height: 18px;
   color: #3cbc81;
+
+  @media screen and (min-width: 768px) {
+    top: 17.5px;
+    right: 18px;
+    width: 24px;
+    height: 24px;
+  } ;
 `;
 
 export const WarningIcon = styled(MdError)`
@@ -151,6 +211,13 @@ export const WarningIcon = styled(MdError)`
   width: 18px;
   height: 18px;
   color: #f6c23e;
+
+  @media screen and (min-width: 768px) {
+    top: 17.5px;
+    right: 18px;
+    width: 24px;
+    height: 24px;
+  } ;
 `;
 
 export const ErrorIcon = styled(TbCircleXFilled)`
@@ -160,4 +227,11 @@ export const ErrorIcon = styled(TbCircleXFilled)`
   width: 18px;
   height: 18px;
   color: #e74a3b;
+
+  @media screen and (min-width: 768px) {
+    top: 17.5px;
+    right: 18px;
+    width: 24px;
+    height: 24px;
+  } ;
 `;
