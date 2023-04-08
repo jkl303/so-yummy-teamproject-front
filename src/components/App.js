@@ -51,7 +51,6 @@ export default function App() {
 
   return (
     <>
-      <GlobalStyle />
       <Toaster />
       <AppContext.Provider value={{ toggleTheme }}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
@@ -76,12 +75,12 @@ export default function App() {
               <Route
                 path="categories/:categoryName"
                 element={<CategoriesPage />}
-              //   <PrivateRoute
-              //     redirectTo="/login"
-              //     component={<CategoriesPage />}
-              //   />
-              // }
-            />
+                //   <PrivateRoute
+                //     redirectTo="/login"
+                //     component={<CategoriesPage />}
+                //   />
+                // }
+              />
               <Route
                 path="add"
                 element={
@@ -134,17 +133,17 @@ export default function App() {
                 // }
               />
               <Route
-              path="recipe/:recipeId"
-              element={<RecipePage />}
-              //   <PrivateRoute redirectTo="/login" component={<RecipePage />} />
-              // }
-            />
+                path="recipe/:recipeId"
+                element={<RecipePage />}
+                //   <PrivateRoute redirectTo="/login" component={<RecipePage />} />
+                // }
+              />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
+          <GlobalStyle />
         </ThemeProvider>
       </AppContext.Provider>
-
     </>
   );
 }

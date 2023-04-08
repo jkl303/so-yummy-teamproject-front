@@ -28,10 +28,10 @@ export const TitleWrap = styled.div`
   transform: translateX(-50%);
   width: 90%;
   padding: 16px;
-  background-color: #fff;
+  background-color: ${({ theme: { colors } }) => colors.bg};
   border-radius: 8px;
 
-  @media screen and (min-width: 1440px) {
+  ${({ theme: { media } }) => media.desktop} {
     bottom: 23px;
   }
 `;
