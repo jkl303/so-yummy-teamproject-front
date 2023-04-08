@@ -33,19 +33,20 @@ const shoppingListSlice = createSlice({
       state.error = action.payload;
     },
 
-    //     // addContact reducers
-    //     [addShoppingListItemThunkOperation.pending](state) {
-    //       state.isLoading = true;
-    //     },
-    //     [addShoppingListItemThunkOperation.fulfilled](state, action) {
-    //       state.isLoading = false;
-    //       state.error = null;
-    //       state.items.push(action.payload);
-    //     },
-    //     [addShoppingListItemThunkOperation.rejected](state, action) {
-    //       state.isLoading = false;
-    //       state.error = action.payload;
-    //     },
+    //     // add  reducers
+    [addShoppingListItemThunkOperation.pending](state) {
+      state.isLoading = true;
+    },
+    [addShoppingListItemThunkOperation.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      // console.log(action.payload.data.result.list[0]);
+      state.items.push(action.payload.data.result.list[0]);
+    },
+    [addShoppingListItemThunkOperation.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
 
     // deleteReducers
     [deleteShoppingListItemThunkOperation.pending](state) {

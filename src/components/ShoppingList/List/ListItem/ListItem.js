@@ -18,7 +18,9 @@ export const ListItem = ({ data }) => {
 
   const { _id, ingredientQuantity: number, ingredientId } = data;
   const { ttl: name, thb: img } = ingredientId;
-  console.log(_id, name, number, img);
+  // console.log(_id, name, number, img);
+
+  // 640c2dd963a319ea671e36ae
 
   const onDeleteClick = id => {
     dispatch(deleteShoppingListItemThunkOperation(id));
