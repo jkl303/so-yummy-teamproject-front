@@ -4,6 +4,8 @@ import { TbCircleCheckFilled, TbCircleXFilled } from "react-icons/tb";
 import { MdError } from "react-icons/md";
 
 export const FormContainer = styled.form`
+  position: absolute;
+  top: 305px;
   display: flex;
   flex-direction: column;
   max-width: 335px;
