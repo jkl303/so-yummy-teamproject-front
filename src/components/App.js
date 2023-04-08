@@ -56,37 +56,46 @@ export default function App() {
       <AppContext.Provider value={{ toggleTheme }}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
           <Routes>
-            <Route index component={<WelcomePage />} />
             <Route path="/" element={<SharedLayout />}>
               <Route
-                path="/register"
+                path="/welcome"
                 element={
                   <RestrictedRoute
-                    redirectTo="/login"
-                    component={<RegistrationPage />}
+                    redirectTo="/main"
+                    component={<WelcomePage />}
                   />
                 }
-              />
-              <Route
-                path="/login"
-                element={
-                  <RestrictedRoute redirectTo="/" component={<SigninPage />} />
-                }
-              />
+              >
+                <Route
+                  path="register"
+                  element={
+                    <RestrictedRoute
+                      redirectTo="/main"
+                      component={<RegistrationPage />}
+                    />
+                  }
+                />
+                <Route
+                  path="login"
+                  index
+                  element={
+                    <RestrictedRoute
+                      redirectTo="/main"
+                      component={<SigninPage />}
+                    />
+                  }
+                />
+              </Route>
+
               <Route
                 path="categories/:categoryName"
                 element={<CategoriesPage />}
-              //   <PrivateRoute
-              //     redirectTo="/login"
-              //     component={<CategoriesPage />}
-              //   />
-              // }
-            />
+              />
               <Route
                 path="add"
                 element={
                   <PrivateRoute
-                    redirectTo="/login"
+                    redirectTo="/welcome/login"
                     component={<AddRecipesPage />}
                   />
                 }
@@ -95,7 +104,7 @@ export default function App() {
                 path="my"
                 element={
                   <PrivateRoute
-                    redirectTo="/login"
+                    redirectTo="/welcome/login"
                     component={<MyRecipesPage />}
                   />
                 }
@@ -104,7 +113,7 @@ export default function App() {
                 path="favorite"
                 element={
                   <PrivateRoute
-                    redirectTo="/login"
+                    redirectTo="/welcome/login"
                     component={<FavoriteRecipesPage />}
                   />
                 }
@@ -113,7 +122,7 @@ export default function App() {
                 path="shopping-list"
                 element={
                   <PrivateRoute
-                    redirectTo="/login"
+                    redirectTo="/welcome/login"
                     component={<ShoppingListPage />}
                   />
                 }
@@ -122,29 +131,35 @@ export default function App() {
                 path="search"
                 element={
                   <PrivateRoute
-                    redirectTo="/login"
+                    redirectTo="/welcome/login"
                     component={<SearchPage />}
                   />
                 }
               />
               <Route
                 path="main"
-                element={<MainPage />}
-                //   <PrivateRoute redirectTo="/login" component={<MainPage />} />
-                // }
+                element={
+                  <PrivateRoute
+                    redirectTo="/welcome/login"
+                    component={<MainPage />}
+                  />
+                }
               />
+
               <Route
-              path="recipe/:recipeId"
-              element={<RecipePage />}
-              //   <PrivateRoute redirectTo="/login" component={<RecipePage />} />
-              // }
-            />
+                path="recipe/:recipeId"
+                element={
+                  <PrivateRoute
+                    redirectTo="/welcome/login"
+                    component={<RecipePage />}
+                  />
+                }
+              />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </ThemeProvider>
       </AppContext.Provider>
-
     </>
   );
 }
