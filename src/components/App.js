@@ -7,8 +7,9 @@ import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from '../style/GlobalStyle';
 import { SharedLayout } from './SharedLayout';
-import { RestrictedRoute } from './RestrictedRoute';
-import { PrivateRoute } from './PrivateRoute';
+// import { RestrictedRoute } from './RestrictedRoute';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 import { ThemeProvider } from 'styled-components';
 
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
@@ -56,32 +57,63 @@ export default function App() {
       <AppContext.Provider value={{ toggleTheme }}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
           <Routes>
-            <Route index component={<WelcomePage />} />
-            <Route path="/" element={<SharedLayout />}>
+            <Route
+              path="/"
+              element={
+                <PublicRoute
+                  component={<WelcomePage />}
+                  restricted
+                  redirectTo="/main"
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute
+                  component={<SigninPage />}
+                  restricted
+                  redirectTo="/main"
+                />
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PublicRoute
+                  component={<RegistrationPage />}
+                  restricted
+                  redirectTo="/main"
+                />
+              }
+            />
+
+            <Route
+              path="/"
+              element={
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<SharedLayout />}
+                />
+              }
+            >
               <Route
-                path="/register"
+                path="main"
                 element={
-                  <RestrictedRoute
+                  <PrivateRoute redirectTo="/login" component={<MainPage />} />
+                }
+              />
+
+              <Route
+                path="categories/:categoryName"
+                element={
+                  <PrivateRoute
                     redirectTo="/login"
-                    component={<RegistrationPage />}
+                    component={<CategoriesPage />}
                   />
                 }
               />
-              <Route
-                path="/login"
-                element={
-                  <RestrictedRoute redirectTo="/" component={<SigninPage />} />
-                }
-              />
-              <Route
-                path="categories/:categoryName"
-                element={<CategoriesPage />}
-              //   <PrivateRoute
-              //     redirectTo="/login"
-              //     component={<CategoriesPage />}
-              //   />
-              // }
-            />
+
               <Route
                 path="add"
                 element={
@@ -91,6 +123,7 @@ export default function App() {
                   />
                 }
               />
+
               <Route
                 path="my"
                 element={
@@ -100,6 +133,7 @@ export default function App() {
                   />
                 }
               />
+
               <Route
                 path="favorite"
                 element={
@@ -109,6 +143,7 @@ export default function App() {
                   />
                 }
               />
+
               <Route
                 path="shopping-list"
                 element={
@@ -118,6 +153,7 @@ export default function App() {
                   />
                 }
               />
+
               <Route
                 path="search"
                 element={
@@ -127,24 +163,21 @@ export default function App() {
                   />
                 }
               />
+
               <Route
-                path="main"
-                element={<MainPage />}
-                //   <PrivateRoute redirectTo="/login" component={<MainPage />} />
-                // }
+                path="recipe/:recipeId"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<RecipePage />}
+                  />
+                }
               />
-              <Route
-              path="recipe/:recipeId"
-              element={<RecipePage />}
-              //   <PrivateRoute redirectTo="/login" component={<RecipePage />} />
-              // }
-            />
-              <Route path="*" element={<NotFoundPage />} />
             </Route>
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </ThemeProvider>
       </AppContext.Provider>
-
     </>
   );
 }
