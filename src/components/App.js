@@ -79,12 +79,12 @@ export default function App() {
             />
             <Route
               path="categories/:categoryName"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<CategoriesPage />}
-                />
-              }
+              element={<CategoriesPage />}
+              //   <PrivateRoute
+              //     redirectTo="/login"
+              //     component={<CategoriesPage />}
+              //   />
+              // }
             />
             <Route
               path="add"

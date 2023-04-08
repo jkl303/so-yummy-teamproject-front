@@ -32,7 +32,7 @@ export const MainCategoryItem = ({ category }) => {
       </List>
       <ButtonWrap>
         <LinkStyled
-          to={`categories/${category[0].category}`}
+          to={`/categories/${category[0].category}`}
           state={{ from: location }}
         >
           See all
