@@ -75,13 +75,13 @@ export default function App() {
               />
               <Route
                 path="categories/:categoryName"
-                element={
-                  <PrivateRoute
-                    redirectTo="/login"
-                    component={<CategoriesPage />}
-                  />
-                }
-              />
+                element={<CategoriesPage />}
+              //   <PrivateRoute
+              //     redirectTo="/login"
+              //     component={<CategoriesPage />}
+              //   />
+              // }
+            />
               <Route
                 path="add"
                 element={
@@ -134,19 +134,17 @@ export default function App() {
                 // }
               />
               <Route
-                path="recipe/:recipeId"
-                element={
-                  <PrivateRoute
-                    redirectTo="/login"
-                    component={<RecipePage />}
-                  />
-                }
-              />
+              path="recipe/:recipeId"
+              element={<RecipePage />}
+              //   <PrivateRoute redirectTo="/login" component={<RecipePage />} />
+              // }
+            />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </ThemeProvider>
       </AppContext.Provider>
+
     </>
   );
 }
