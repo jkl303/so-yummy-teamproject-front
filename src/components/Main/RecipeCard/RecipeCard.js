@@ -6,7 +6,7 @@ export const RecipeCard = ({ recipe }) => {
 
   return (
     <ListItem key={recipe._id}>
-      <Link to={`recipe/${recipe._id}`} state={{ from: location }}>
+      <Link to={`/recipe/${recipe._id}`} state={{ from: location }}>
         <Image
           src={recipe.thumb}
           alt={recipe.title}

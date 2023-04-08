@@ -136,9 +136,9 @@ export default function App() {
             />
             <Route
               path="recipe/:recipeId"
-              element={
-                <PrivateRoute redirectTo="/login" component={<RecipePage />} />
-              }
+              element={<RecipePage />}
+              //   <PrivateRoute redirectTo="/login" component={<RecipePage />} />
+              // }
             />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
