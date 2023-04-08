@@ -20,7 +20,16 @@ export const FormContainer = styled.form`
     min-width: 500px;
     height: 419px;
     padding: 44px 50px;
-  } ;
+  }
+
+  @media screen and (min-width: 1440px) {
+    top: 155px;
+    right: 12.5%;
+  }
+
+  @media screen and (min-width: 1920px) {
+    right: 18%;
+  }
 `;
 
 export const Title = styled.h2`
