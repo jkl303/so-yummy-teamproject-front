@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 // import { useSelector } from 'react-redux';
 import { useEffect, createContext, useContext } from 'react';
 
-import { lazy, useState } from 'react';
+import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from '../style/GlobalStyle';
@@ -25,12 +25,9 @@ import { lightTheme } from 'style/lightTheme';
 import { darkTheme } from 'style/darkTheme';
 // import { selectAuth } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
-
-const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
-const RegistrationPage = lazy(() =>
-  import('../pages/RegistrationPage/RegistrationPage')
-);
-const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
+import WelcomePage from 'pages/WelcomePage/WelcomePage';
+import SigninPage from 'pages/SigninPage/SigninPage';
+import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 
 const AppContext = createContext(null);
 export const useToggleTheme = () => useContext(AppContext);
