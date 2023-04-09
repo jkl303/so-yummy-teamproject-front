@@ -1,11 +1,12 @@
 import { CustomBtn } from 'components/Buttons/templates/CustomBtn/CustomBtn.styled';
+import { useLocation } from 'react-router-dom';
 
 export const SearchBtn = () => {
-  /* const location = useLocation();
-  const inverted = location.pathname.includes('/search') */
-  const inverted = false;
+  const location = useLocation();
+  const inverted = location.pathname.includes('/search');
   return (
     <CustomBtn
+      as="button"
       type="submit"
       variant={inverted ? 'changeBgInvert' : 'changeBg'}
       sizes={{
