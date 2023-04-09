@@ -1,17 +1,17 @@
 import { CustomBtn } from 'components/Buttons/templates/CustomBtn/CustomBtn.styled';
 
-export const AddToFavoriteBtn = () => {
+export const LogOutMenuBtn = () => {
   return (
     <CustomBtn
       as="button"
       type="button"
-      variant="changeAll"
+      variant="changeBgInvert"
       sizes={{
-        m: { w: 150, h: 35, padH: 18, padV: 10, fz: 10 },
-        t: { w: 270, h: 59, padH: 44, padV: 18 },
+        m: { w: 125, h: 43, padH: 27, padV: 12 },
+        t: { w: 141, padH: 32, fz: 14 },
       }}
     >
-      Add to favorite recipes
+      Log Out
     </CustomBtn>
   );
 };
