@@ -3,14 +3,6 @@ import styled, { css } from 'styled-components';
 export const SearchFormStyled = styled.form`
   display: flex;
   justify-content: center;
-
-  &:not(:last-child) {
-    margin-bottom: 24px;
-
-    @media screen and (min-width: 768px) {
-      margin-bottom: 28px;
-    }
-  }
 `;
 
 export const SearchFormInput = styled.input`

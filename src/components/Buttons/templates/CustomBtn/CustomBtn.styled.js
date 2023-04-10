@@ -82,8 +82,7 @@ export const CustomBtn = styled.a`
       }
     `}
     ${({ variant, theme: { colors } }) => css`
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: ${variant === 'changeBg' || variant === 'changeAll'
         ? colors.btnHover
         : variant === 'changeBgInvert'

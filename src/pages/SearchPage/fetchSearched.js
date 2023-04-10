@@ -2,11 +2,12 @@ import { instance } from 'redux/auth/authOperations';
 
 export const fetchSearched = async ({ filter, query }) => {
   try {
-    const params = `filter=${filter}&query=${query.replace(/\s/g, '%20')}`;
-    console.log(params);
-    return await (
-      await instance.get(`/recipes/search?${params}`)
-    ).data;
+    if (filter.toLowerCase() === 'ingredients') {
+      return await instance.get(`/recipes/ingredients?query=${query}`);
+    }
+    if (filter.toLowerCase() === 'title') {
+      return await instance.get(`/recipes/search?query=${query}`);
+    }
   } catch (e) {
     console.log(e.message);
   }

@@ -6,24 +6,28 @@ import { CategoryList, Container } from 'pages/MainPage/MainPage.styled';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { searchRecipes } from 'redux/recipes/operations';
-import { selectSearched } from 'redux/recipes/selectors';
+import { fetchSearched } from './fetchSearched';
+import { MarginWrap } from 'components/search/PositionWrap/MarginWrap';
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const [query, setQuery] = useState(searchParams.get('query'));
-  const searchResults = useSelector(selectSearched);
-  const [recipes, setRecipes] = useState(searchResults);
+  const [recipes, setRecipes] = useState([]);
 
   const options = ['title', 'ingredients'];
   const [filter, setFilter] = useState(options[0]);
 
   useEffect(() => {
-    setRecipes(searchResults);
-  }, [searchResults]);
+    const fetchRecipes = async () => {
+      const result = await fetchSearched({ filter, query });
+      result ? setRecipes(result.data) : setRecipes([]);
+    };
+    query && fetchRecipes();
+  }, [filter, query, recipes]);
+
   useEffect(() => {
-    setSearchParams(filter);
+    setSearchParams({ filter });
   }, [filter, setSearchParams]);
 
   useEffect(() => {
@@ -43,7 +47,9 @@ export default function SearchPage() {
   return (
     <Container style={{ paddingTop: '100px' }}>
       <div>
-        <SearchForm handleSubmit={handleSearchSubmit} />
+        <MarginWrap mB={{ mob: '24', tab: '28' }}>
+          <SearchForm handleSubmit={handleSearchSubmit} />
+        </MarginWrap>
         <SearchFilter
           handleFilterSelect={option => {
             setFilter(option);
