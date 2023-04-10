@@ -7,16 +7,16 @@ import spinachTab from 'images/tablet/spinach-bottom-right768.png';
 import spinachDesk from 'images/desktop/spinach-bottom-right1440.png';
 
 export const FooterComponent = styled.footer`
-  margin-top: 0;
-  padding-top: 28px;
-  font-family: 'Poppins';
-  font-style: normal;
+  min-width: 375px;
+  margin: 0 auto;
   background: ${({ theme: { colors } }) => colors.bgFooter};
 
   ${mediaQueries('tablet')`
+  min-width: 768px;
      padding-top: 50px;`};
 
   ${mediaQueries('desktop')`
+  min-width: 1440px;
      padding-top: 64px;`};
 `;
 
