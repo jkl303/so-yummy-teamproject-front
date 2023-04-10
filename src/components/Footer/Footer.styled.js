@@ -12,11 +12,11 @@ export const FooterComponent = styled.footer`
   background: ${({ theme: { colors } }) => colors.bgFooter};
 
   ${mediaQueries('tablet')`
-  min-width: 768px;
+     min-width: 768px;
      padding-top: 50px;`};
 
   ${mediaQueries('desktop')`
-  min-width: 1440px;
+     min-width: 1440px;
      padding-top: 64px;`};
 `;
 
