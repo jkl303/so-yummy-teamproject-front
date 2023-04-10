@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-export const Section = styled.div`
+export const SectionNoFound = styled.section`
   position: relative;
   margin-left: auto;
   margin-right: auto;
   max-width: 375px;
   padding-top: 220px;
+  background-color: ${({ theme: { colors } }) => colors.bg};
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
@@ -16,7 +17,7 @@ export const Section = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const TitleNoFound = styled.p`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
@@ -25,7 +26,7 @@ export const Title = styled.h1`
   font-size: 18px;
   line-height: 20px;
   letter-spacing: -0.02em;
-  color: #000000;
+  color: ${({ theme: { colors } }) => colors.txt};
 
   margin-top: 14px;
   margin-bottom: 8px;
@@ -112,7 +113,7 @@ export const Third = styled.div`
   }
 `;
 
-export const Descr = styled.p`
+export const DescrNoFound = styled.p`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
@@ -122,7 +123,7 @@ export const Descr = styled.p`
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
   text-align: center;
-  color: #000000;
+  color: ${({ theme: { colors } }) => colors.txt};
   opacity: 0.5;
 
   @media screen and (min-width: 768px) {
@@ -131,7 +132,7 @@ export const Descr = styled.p`
   }
 `;
 
-export const Img = styled.img`
+export const ImgNoFound = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
