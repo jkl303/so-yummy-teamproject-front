@@ -7,6 +7,7 @@ import bgImg1440 from 'images/desktop/start-bg1440.jpg';
 
 export const WelcomWrapper = styled.div`
   width: 100%;
+  min-height: 360px;
   height: ${() => {
     const { height } = useWindowDimensions();
     return `${height}px`;
@@ -14,18 +15,16 @@ export const WelcomWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 274px;
+  justify-content: center;
   background-image: url(${bgImg375});
   background-size: cover;
   color: #fafafa;
 
   @media screen and (min-width: 768px) {
-    padding-top: 342px;
     background-image: url(${bgImg768});
   }
 
   @media screen and (min-width: 1440px) {
-    padding-top: 214px;
     background-image: url(${bgImg1440});
   }
 `;
