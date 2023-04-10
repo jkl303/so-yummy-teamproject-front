@@ -3,10 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect, createContext, useContext } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { setUser } from 'redux/auth/authSlice';
 import { GlobalStyle } from '../style/GlobalStyle';
 import { SharedLayout } from './SharedLayout';
-// import { RestrictedRoute } from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { ThemeProvider } from 'styled-components';
@@ -24,9 +22,9 @@ import WelcomePage from 'pages/WelcomePage/WelcomePage';
 import SigninPage from 'pages/SigninPage/SigninPage';
 import { lightTheme } from 'style/lightTheme';
 import { darkTheme } from 'style/darkTheme';
-// import { selectAuth } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+import { setUser } from 'redux/auth/authSlice';
 
 const AppContext = createContext(null);
 export const useToggleTheme = () => useContext(AppContext);
@@ -34,7 +32,6 @@ export const useToggleTheme = () => useContext(AppContext);
 export default function App() {
   const dispatch = useDispatch();
   const location = useLocation();
-  // const { isRefreshing } = useSelector(selectAuth);
 
   const [theme, setTheme] = useState('light');
   const isDarkTheme = theme === 'dark';
