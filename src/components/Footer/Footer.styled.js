@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as SvgLogo } from 'images/svg/logo.svg';
+import { mediaQueries } from 'style/mediaQueries';
+import { ReactComponent as LogoFooter } from 'images/svg/logo-footer.svg';
 import spinachMob from 'images/mobile/spinach-bottom-right375.png';
 import spinachTab from 'images/tablet/spinach-bottom-right768.png';
 import spinachDesk from 'images/desktop/spinach-bottom-right1440.png';
@@ -11,44 +12,40 @@ export const FooterComponent = styled.footer`
   font-family: 'Poppins';
   font-style: normal;
   background: ${({ theme: { colors } }) => colors.bgFooter};
-  @media screen and (min-width: 768px) {
-    padding-top: 50px;
-  }
-  @media screen and (min-width: 1440px) {
-    padding-top: 64px;
-  } ;
+
+  ${mediaQueries('tablet')`
+     padding-top: 50px;`};
+
+  ${mediaQueries('desktop')`
+     padding-top: 64px;`};
 `;
 
 export const FooterMainBlock = styled.div`
-  @media screen and (min-width: 1440px) {
+  ${mediaQueries('desktop')`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 175px;
-    margin-bottom: 40.5px;
-  } ;
+    gap: 235px;
+    margin-bottom: 40.5px;`};
 `;
 
 export const FooterMainBlockItem = styled.div`
-  @media screen and (min-width: 768px) {
+  ${mediaQueries('tablet')`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 175px;
-    margin-bottom: 72px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 0;
-  } ;
+    gap: 173px;
+    margin-bottom: 72px;`};
+
+  ${mediaQueries('desktop')`
+    gap: 159px;
+    margin-bottom: 0;`};
 `;
 
 export const DescroptionWrap = styled.div`
-  @media screen and (min-width: 768px) {
-   display: flex;
-   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
- 
+  ${mediaQueries('tablet')`
+  display: flex;
+  flex-direction: column;`};
 `;
 
 export const LogoWrap = styled.div`
@@ -57,22 +54,26 @@ export const LogoWrap = styled.div`
   align-items: center;
   gap: 8px;
   margin-bottom: 32px;
-  @media screen and (min-width: 768px) {
+
+  ${mediaQueries('tablet')`
     justify-content: flex-start;
     gap: 12px;
-    margin-bottom: 24px;
-    @media screen and (min-width: 768px) {
-    margin-bottom: 40px;
-  }
+    margin-bottom: 24px;`};
+
+  ${mediaQueries('desktop')`
+    margin-bottom: 40;`};
 `;
 
 export const LogoLink = styled(NavLink)`
   cursor: pointer;
 `;
 
-export const Logo = styled(SvgLogo)`
+export const Logo = styled(LogoFooter)`
   width: 32px;
   height: 32px;
+  ${mediaQueries('tablet')`
+  width: 44px;
+  height: 44px;`};
 `;
 
 export const Link = styled(NavLink)`
@@ -82,12 +83,14 @@ export const Link = styled(NavLink)`
   font-size: 18px;
   line-height: 1;
   letter-spacing: 0.015em;
-  color: #fafafa;
+  color: var(--txt-dark);
   cursor: pointer;
   &:focus,
   &:hover {
-    color: #8baa36;
+    color: ${({ theme: { colors } }) => colors.btnFoot};
   }
+  ${mediaQueries('tablet')`
+  font-size: 28px;`};
 `;
 
 export const Copyright = styled.div`
@@ -95,20 +98,23 @@ export const Copyright = styled.div`
   padding-bottom: 28px;
   font-family: 'Poppins';
   font-style: normal;
+  font-weight: 400;
   font-size: 10px;
   line-height: 1;
   letter-spacing: -0.01em;
-  color: ${({ theme: { colors } }) => colors.txt};
   text-align: center;
+  color: ${({ theme: { colors } }) => colors.txt};
+
   background: url(${spinachMob}) 100% no-repeat;
   background-color: ${({ theme: { colors } }) => colors.bg};
   background-position-y: bottom;
 
   span:first-child {
     margin-right: 14px;
+    font-weight: 500;
   }
 
-  @media screen and (min-width: 768px) {
+  ${mediaQueries('tablet')`
     padding-top: 32px;
     padding-bottom: 32px;
     font-size: 14px;
@@ -116,20 +122,18 @@ export const Copyright = styled.div`
 
     span:first-child {
       margin-right: 28px;
-    }
-  }
+    }`};
 
-  @media screen and (min-width: 1440px) {
+    span {
+    opacity: 0.5;
+  };
+
+  ${mediaQueries('desktop')`
     padding-top: 50px;
     padding-bottom: 50px;
     background-image: url(${spinachDesk});
 
     span:first-child {
       margin-right: 40px;
-    }
-  }
-
-  span {
-    opacity: 0.5;
-  }
+    };`};
 `;

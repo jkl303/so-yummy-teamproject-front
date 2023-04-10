@@ -1,23 +1,29 @@
 import styled from 'styled-components';
+import { mediaQueries } from 'style/mediaQueries';
 
 export const List = styled.ul`
-  margin: 0;
-
+  list-style-type: disc;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 10px;
+  color: var(--txt-dark);
 `;
 
 export const Item = styled.li`
+`;
+
+export const Text = styled.p`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.29x;
+  line-height: 1.29;
   letter-spacing: -0.02em;
-  color: #fafafa;
   margin-bottom: 10px;
-  &: (last-child) {
-    margin-bottom: 0;
-  }
-`;
-export const Text = styled.p`
- 
+
+  ${mediaQueries('desktop')`
+  font-size: 18px;
+  line-height: 1.33;`};
 `;

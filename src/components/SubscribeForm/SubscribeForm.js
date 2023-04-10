@@ -1,4 +1,4 @@
-import React, {useState,} from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 
@@ -30,7 +30,7 @@ export const SubscribeForm = () => {
     if (!emailRegexp.test(email)) {
       return toast('email is invalid');
     }
-  }
+  };
 
   return (
     <SubscribeFormWrap>
