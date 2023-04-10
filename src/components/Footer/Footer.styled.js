@@ -7,7 +7,7 @@ import spinachTab from 'images/tablet/spinach-bottom-right768.png';
 import spinachDesk from 'images/desktop/spinach-bottom-right1440.png';
 
 export const FooterComponent = styled.footer`
-  margin-top: auto;
+  margin-top: 0;
   padding-top: 28px;
   font-family: 'Poppins';
   font-style: normal;
@@ -112,9 +112,9 @@ export const Copyright = styled.div`
   span:first-child {
     margin-right: 14px;
     font-weight: 500;
-  }
+  };
 
-  ${mediaQueries('tablet')`
+  @media screen and (min-width: 768px) {
     padding-top: 32px;
     padding-bottom: 32px;
     font-size: 14px;
@@ -122,18 +122,19 @@ export const Copyright = styled.div`
 
     span:first-child {
       margin-right: 28px;
-    }`};
+    }
+  }
 
-    span {
-    opacity: 0.5;
-  };
-
-  ${mediaQueries('desktop')`
-    padding-top: 50px;
+  @media screen and (min-width: 1440px) {
+     padding-top: 50px;
     padding-bottom: 50px;
     background-image: url(${spinachDesk});
 
     span:first-child {
       margin-right: 40px;
-    };`};
+  };
+
+  span {
+    opacity: 0.5;
+  };
 `;

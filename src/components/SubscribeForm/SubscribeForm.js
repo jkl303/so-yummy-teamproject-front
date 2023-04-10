@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
@@ -18,8 +18,6 @@ import {
 export const SubscribeForm = () => {
   const { width } = useWindowDimensions();
 
-  const dispatch = useDispatch();
-  console.log(dispatch);
   const [email, setEmail] = useState('');
   console.log([email, setEmail]);
 
@@ -30,8 +28,8 @@ export const SubscribeForm = () => {
     if (!emailRegexp.test(email)) {
       return toast('email is invalid');
     }
-  };
-
+  }
+  
   return (
     <SubscribeFormWrap>
       {width > 1439 && (

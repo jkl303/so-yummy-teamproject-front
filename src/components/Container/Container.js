@@ -5,13 +5,12 @@ import {
 } from './Container.styled';
 
 const Container = () => {
-
   return (
-      <ContainerWrap>
-        <ContainerComponent>
-          <TitlePage>TitlePage</TitlePage>
-        </ContainerComponent>
-      </ContainerWrap>
+    <ContainerWrap>
+      <ContainerComponent>
+        <TitlePage>TitlePage</TitlePage>
+      </ContainerComponent>
+    </ContainerWrap>
   );
 };
 
