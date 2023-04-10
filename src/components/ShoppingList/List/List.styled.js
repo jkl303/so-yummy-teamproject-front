@@ -89,6 +89,22 @@ export const NumberPadding = styled.div`
 `;
 
 export const StyledImg = styled.img`
+  width: 48px;
+  height: 48px;
+  ${mediaQueries('tablet')`
+    width: 81px;
+    height: 81px;
+    border-radius: 8px;
+  `}
+`;
+
+export const StyledImgWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ebf3d4;
+  border-radius: 6px;
   width: 60px;
   height: 60px;
   ${mediaQueries('tablet')`

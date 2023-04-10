@@ -6,6 +6,7 @@ import {
   NumberWrapper,
   NumberPadding,
   StyledImg,
+  StyledImgWrapper,
 } from 'components/ShoppingList/List/List.styled';
 import { useDispatch } from 'react-redux';
 import { deleteShoppingListItemThunkOperation } from '../../../../redux/shoppingList/shoppingListOperations';
@@ -29,7 +30,9 @@ export const ListItem = ({ data }) => {
   return (
     <ListItemStyled key={_id}>
       <PicAndNameWrapper>
-        <StyledImg src={img} alt="pic"></StyledImg>
+        <StyledImgWrapper>
+          <StyledImg src={img} alt="pic"></StyledImg>
+        </StyledImgWrapper>
         <StyledName>{name}</StyledName>
       </PicAndNameWrapper>
       <NumberWrapper>
