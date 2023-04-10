@@ -5,7 +5,7 @@ import bgImg375 from 'images/mobile/start-bg375.jpg';
 import bgImg768 from 'images/tablet/start-bg768.jpg';
 import bgImg1440 from 'images/desktop/start-bg1440.jpg';
 
-export const WelcomWrapper = styled.div`
+export const WelcomWrapper = styled.section`
   width: 100%;
   min-height: 360px;
   height: ${() => {
@@ -40,7 +40,7 @@ export const Logo = styled(SvgLogo)`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.p`
   margin-bottom: 14px;
   font-size: 24px;
   font-weight: 600;
