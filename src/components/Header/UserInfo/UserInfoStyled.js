@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { ReactComponent as ArrowRight } from '../../../images/svg/arrow-right.svg';
+import { FiArrowRight } from 'react-icons/fi';
 
 const slideDown = keyframes`
   0% {
@@ -21,7 +21,6 @@ export const UserBox = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin-right: 28px;
   position: static;
 
   @media screen and (min-width: 768px) {
@@ -38,7 +37,7 @@ export const UserAvatar = styled.img`
   border-radius: 50%;
   width: 34px;
   height: 34px;
-  margin-right: 14px;
+  margin-right: 4px;
   object-fit: cover;
   @media screen and (min-width: 768px) {
     width: 44px;
@@ -104,6 +103,6 @@ export const ButtonLogout = styled.button`
   line-height: 21px;
 `;
 
-export const ArrowIcon = styled(ArrowRight)`
+export const ArrowIcon = styled(FiArrowRight)`
   margin-left: 6px;
 `;

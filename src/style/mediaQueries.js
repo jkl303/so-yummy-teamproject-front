@@ -5,5 +5,5 @@ const breakpionts = {
 };
 
 export const mediaQueries = key => {
-  return style => `@media (max-width): ${breakpionts[key]}px {${style}}`;
+  return style => `@media (min-width: ${breakpionts[key]}px) {${style}}`;
 };
