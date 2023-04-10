@@ -96,11 +96,11 @@ export const Input = styled.input`
   } ;
 `;
 
-// export const ErrorMessage = styled.div`
-//   color: red;
-//   font-size: 0.8rem;
-//   margin-top: 0.5rem;
-// `;
+export const ErrorMessage = styled.div`
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+`;
 
 export const PasswordVisibilityButton = styled.button`
   position: absolute;

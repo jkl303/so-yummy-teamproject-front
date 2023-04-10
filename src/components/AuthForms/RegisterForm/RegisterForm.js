@@ -6,7 +6,7 @@ import {
   Title,
   InputContainer,
   Input,
-  // ErrorMessage,
+  ErrorMessage,
   Button,
   PasswordVisibilityButton,
   UserIcon,
@@ -17,6 +17,7 @@ import {
   ErrorIcon,
 } from "./RegisterForm.styled";
 import { signUp } from "../../../redux/auth/authOperations";
+import { getEmailColor, getNameColor, getPasswordColor } from "./getInputColor";
 
 export default function RegisterForm () {
   const dispatch = useDispatch();
@@ -91,58 +92,10 @@ export default function RegisterForm () {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
-  const getNameColor = () => {
-    if (!name) {
-      return '#fafafa';
-    }
-    if (!isNameValid && name.length > 0) {
-      return '#e74a3b';
-    }
-    if (isNameValid && name.length > 0) {
-      return '#3cbc81';
-    }
-    if (name.length === 0) {
-      return '#fafafa';
-    }
-  };
-
-  const getEmailColor = () => {
-    if (!email) {
-      return '#fafafa';
-    }
-    if (!isEmailValid && email.length > 8) {
-      return '#e74a3b';
-    }
-    if (isEmailValid && email.length > 8) {
-      return '#3cbc81';
-    }
-    if (email.length <= 8) {
-      return '#fafafa';
-    }
-  };
-
-  const getPasswordColor = () => {
-    if (!password) {
-      return '#fafafa';
-    }
-    if (passwordValidationState === 'weak' && password.length > 2) {
-      return '#e74a3b';
-    }
-    if (passwordValidationState === 'medium' && password.length > 2) {
-      return '#f6c23e';
-    }
-    if (passwordValidationState === 'strong' && password.length > 2) {
-      return '#3cbc81';
-    }
-    if (password.length <= 2) {
-      return '#fafafa';
-    }
-  };
-
   return (
     <FormContainer onSubmit={handleSubmit}>
       <Title>Registration</Title>
-      <InputContainer namecolor={getNameColor()}>
+      <InputContainer namecolor={getNameColor(name, isNameValid)}>
         <Input
           type="text"
           value={name}
@@ -150,18 +103,18 @@ export default function RegisterForm () {
           placeholder="Name"
           onBlur={() => {
             !isNameValid &&
-              name.length > 2 &&
-              toast(
-                'Name must contain 3+ letters, may include apostrophe, no numbers/symbols'
-              );
+              name.length > 0 &&
+              toast('Name must contain 3+ letters');
           }}
         />
-        <UserIcon namecolor={getNameColor()} />
+        <UserIcon namecolor={getNameColor(name, isNameValid)} />
         {isNameValid && <CorrectIcon />}
-        {!isNameValid && name.length > 2 && <ErrorIcon />}
-        {/* {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>} */}
+        {!isNameValid && name.length > 0 && <ErrorIcon />}
+        {/* {!isNameValid && name.length > 0 && (
+          <ErrorMessage>the name must be at least 3 letters long</ErrorMessage>
+        )} */}
       </InputContainer>
-      <InputContainer emailcolor={getEmailColor()}>
+      <InputContainer emailcolor={getEmailColor(email, isEmailValid)}>
         <Input
           type="email"
           value={email}
@@ -171,12 +124,14 @@ export default function RegisterForm () {
             !isEmailValid && email.length > 0 && toast('Email is invalid');
           }}
         />
-        <MailIcon emailcolor={getEmailColor()} />
+        <MailIcon emailcolor={getEmailColor(email, isEmailValid)} />
         {isEmailValid && <CorrectIcon />}
         {!isEmailValid && email.length > 8 && <ErrorIcon />}
         {/* {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>} */}
       </InputContainer>
-      <InputContainer passwordcolor={getPasswordColor()}>
+      <InputContainer
+        passwordcolor={getPasswordColor(password, passwordValidationState)}
+      >
         <Input
           type={isPasswordVisible ? 'text' : 'password'}
           value={password}
@@ -190,7 +145,9 @@ export default function RegisterForm () {
               );
           }}
         />
-        <LockIcon passwordcolor={getPasswordColor()} />
+        <LockIcon
+          passwordcolor={getPasswordColor(password, passwordValidationState)}
+        />
         {passwordValidationState === 'strong' && <CorrectIcon />}
         {passwordValidationState === 'medium' && <WarningIcon />}
         {passwordValidationState === 'weak' && password.length > 5 && (

@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
 // import { useSelector } from 'react-redux';
 import { useState, useEffect, createContext, useContext } from 'react';
-import { Toaster } from 'react-hot-toast';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { setUser } from 'redux/auth/authSlice';
 import { GlobalStyle } from '../style/GlobalStyle';
 import { SharedLayout } from './SharedLayout';
 // import { RestrictedRoute } from './RestrictedRoute';
@@ -19,15 +20,13 @@ import ShoppingListPage from 'pages/ShoppingListPage/ShoppingListPage';
 import SearchPage from 'pages/SearchPage/SearchPage';
 import MainPage from 'pages/MainPage/MainPage';
 import RecipePage from 'pages/RecipePage/RecipePage';
+import WelcomePage from 'pages/WelcomePage/WelcomePage';
+import SigninPage from 'pages/SigninPage/SigninPage';
 import { lightTheme } from 'style/lightTheme';
 import { darkTheme } from 'style/darkTheme';
 // import { selectAuth } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
-
-import WelcomePage from 'pages/WelcomePage/WelcomePage';
-import SigninPage from 'pages/SigninPage/SigninPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
-import { setUser } from 'redux/auth/authSlice';
 
 const AppContext = createContext(null);
 export const useToggleTheme = () => useContext(AppContext);
@@ -49,17 +48,17 @@ export default function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search)
+    const queryParams = new URLSearchParams(location.search);
     const token = queryParams.get('token');
     const name = queryParams.get('name');
     const email = queryParams.get('email');
 
-    if (token) {
-      console.log(token);
-      dispatch(setUser({ token, name, email }))
-    };
+    console.log(token);
 
-  }, [dispatch, location])
+    if (token) {
+      dispatch(setUser({ token, name, email }));
+    }
+  }, [dispatch, location]);
 
   return (
     <>
@@ -184,6 +183,7 @@ export default function App() {
                   />
                 }
               />
+
               <Route path="404" element={<NotFoundPage />} />
               <Route path="*" element={<Navigate to="/404" replace />} />
             </Route>
