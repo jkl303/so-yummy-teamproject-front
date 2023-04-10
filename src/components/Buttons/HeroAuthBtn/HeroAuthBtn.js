@@ -28,11 +28,11 @@ export const HeroAuthBtn = ({ active, text }) => {
     t: { w: 141, h: 67, padH: 44, padV: 22 },
   };
   return active ? (
-    <AuthBtnBgInvert variant="changeBgInvert" sizes={sizes}>
+    <AuthBtnBgInvert as="button" variant="changeBgInvert" sizes={sizes}>
       {text}
     </AuthBtnBgInvert>
   ) : (
-    <AuthBtnOutline variant="changeOutline" sizes={sizes}>
+    <AuthBtnOutline as="button" variant="changeOutline" sizes={sizes}>
       {text}
     </AuthBtnOutline>
   );
