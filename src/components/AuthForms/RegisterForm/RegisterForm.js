@@ -84,7 +84,6 @@ export default function RegisterForm() {
       .catch(error => {
         toast.error(error);
       });
-
     event.target.reset();
   };
 

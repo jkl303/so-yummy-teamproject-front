@@ -8,7 +8,6 @@ import { SharedLayout } from './SharedLayout';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { ThemeProvider } from 'styled-components';
-
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import CategoriesPage from 'pages/CategoriesPage/CategoriesPage';
 import AddRecipesPage from 'pages/AddRecipesPage/AddRecipesPage';
@@ -49,8 +48,6 @@ export default function App() {
     const token = queryParams.get('token');
     const name = queryParams.get('name');
     const email = queryParams.get('email');
-
-    console.log(token);
 
     if (token) {
       dispatch(setUser({ token, name, email }));
