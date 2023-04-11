@@ -4,11 +4,11 @@ import {
   TitlePage,
 } from './Container.styled';
 
-const Container = () => {
+const Container = ({ children }) => {
   return (
     <ContainerWrap>
       <ContainerComponent>
-        <TitlePage>TitlePage</TitlePage>
+        <TitlePage>{children}</TitlePage>
       </ContainerComponent>
     </ContainerWrap>
   );
