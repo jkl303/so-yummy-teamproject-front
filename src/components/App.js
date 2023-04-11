@@ -52,6 +52,7 @@ export default function App() {
       <Toaster />
       <AppContext.Provider value={{ toggleTheme }}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+          <GlobalStyle />
           <Routes>
             <Route
               path="/"
@@ -173,7 +174,6 @@ export default function App() {
               <Route path="*" element={<Navigate to="/404" replace />} />
             </Route>
           </Routes>
-          <GlobalStyle />
         </ThemeProvider>
       </AppContext.Provider>
     </>
