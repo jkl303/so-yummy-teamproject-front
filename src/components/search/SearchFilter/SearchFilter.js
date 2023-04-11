@@ -43,7 +43,11 @@ export const SearchFilter = ({
   return (
     <SearchSelectWrap>
       <SelectLabel>Search by: </SelectLabel>
-      <SearchSelect>
+      <SearchSelect
+        onMouseLeave={() => {
+          setIsOpen(false);
+        }}
+      >
         <SelectHead>
           {filter}
           <SelectUnfoldBtn

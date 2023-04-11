@@ -12,7 +12,7 @@ export const SearchBtn = () => {
       variant={inverted ? 'changeBgInvert' : 'changeBg'}
       sizes={{
         m: { w: 113, h: 53, padH: 32, padV: 16 },
-        t: { w: 161, h: 58, padH: 52, padV: 16 },
+        t: { w: 161, h: 57, padH: 52, padV: 16 },
         d: { h: 70, padV: 23 },
       }}
     >

@@ -6,10 +6,23 @@ export const SearchSelectWrap = styled.div`
 
   justify-content: center;
   align-items: baseline;
+
+  font-size: 12px;
+  color: ${({ theme: { colors } }) => colors.title};
+
+  @media screen and (min-width: 768px) {
+    gap: 18px;
+
+    font-size: 14px;
+  }
 `;
 
 export const SearchSelect = styled.div`
   width: 146px;
+
+  @media screen and (min-width: 768px) {
+    width: 175px;
+  }
 `;
 
 export const SelectLabel = styled.span`
@@ -17,28 +30,42 @@ export const SelectLabel = styled.span`
 `;
 
 export const SelectHead = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
 
   height: 34px;
-  padding: 8px 0 0px 14px;
+  padding: 8px 14px;
 
   border-radius: 6px 6px 0 0;
   background-color: ${({ theme: { colors } }) => colors.bg};
 
   text-transform: capitalize;
+
+  @media screen and (min-width: 768px) {
+    height: 41px;
+  }
 `;
 
 export const SelectUnfoldBtn = styled.button`
-  margin-top: -10px;
-  background-color: transparent;
-  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  aspect-ratio: 1;
+  height: 34px;
 
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
   color: ${({ theme: { colors } }) => colors.accent};
 
   transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0)')};
 
   transition: transform 250ms ease-out;
+
+  @media screen and (min-width: 768px) {
+    height: 41px;
+  }
 `;
 
 export const SelectDropdown = styled.form`
@@ -62,6 +89,14 @@ export const SelectOptionStyled = styled.li`
     height: 34px;
     padding: 8px 14px;
     text-transform: capitalize;
+
+    &:hover {
+      background-color: ${({ theme: { colors } }) => colors.ingr};
+    }
+
+    @media screen and (min-width: 768px) {
+      height: 41px;
+    }
   }
 
   input {
@@ -70,7 +105,7 @@ export const SelectOptionStyled = styled.li`
   }
 
   input:checked + label {
-    background-color: ${({ theme: { colors } }) => colors.ingr};
+    font-weight: 700;
   }
 
   &:last-child {

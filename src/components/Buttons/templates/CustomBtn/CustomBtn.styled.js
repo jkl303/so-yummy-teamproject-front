@@ -10,7 +10,7 @@ export const CustomBtn = styled.a`
   align-items: center;
   min-width: ${({ sizes: { m } }) => m.w + 'px'};
   min-height: ${({ sizes: { m } }) => m.h + 'px'};
-  padding: ${({ sizes: { m } }) => `${m.padV}px ${m.padH} px`};
+  padding: ${({ sizes: { m } }) => `${m.padV}px ${m.padH}px`};
   border-radius: ${({
     sizes: {
       m: { h },
@@ -20,7 +20,7 @@ export const CustomBtn = styled.a`
   font-family: 'Poppins';
   font-size: ${({ sizes: { m } }) => (m.fz ? m.fz + 'px' : '14px')};
   text-align: center;
-  align-items: center;
+  cursor: pointer;
 
   color: ${({ variant, theme: { colors } }) =>
     variant === 'changeAll' ? colors.txtBtnSec : colors.txtBtn};
@@ -51,22 +51,23 @@ export const CustomBtn = styled.a`
       @media (min-width: 768px) {
         min-width: ${t.w && t.w + 'px'};
         min-height: ${t.h && t.h + 'px'};
-        padding-top: ${t.padV && t.padV + 'px'} ;
-        padding-right: ${t.padh && t.padh + 'px'} ;
-        padding-left: ${t.padh && t.padh + 'px'} ;
-        padding-bottom: ${t.padV && t.padV + 'px'} ;
+        padding-top: ${t.padV && t.padV + 'px'};
+        padding-right: ${t.padh && t.padh + 'px'};
+        padding-left: ${t.padh && t.padh + 'px'};
+        padding-bottom: ${t.padV && t.padV + 'px'};
         font-size: ${t.fz ? t.fz + 'px' : '16px'};
         border-radius: ${({
           sizes: {
             t: { h },
           },
         }) => `${h * 0.35}px ${h * 0.65}px`};
+      }
     `}
 
     ${({ sizes: { d } }) =>
     d &&
     css`
-      @media (min-width: 1200px) {
+      @media (min-width: 1440px) {
         min-width: ${d.w && d.w + 'px'};
         min-height: ${d.h && d.h + 'px'};
         padding-top: ${d.padV && d.padV + 'px'};

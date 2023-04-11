@@ -9,6 +9,6 @@ export const fetchSearched = async ({ filter, query }) => {
       return await instance.get(`/recipes/search?query=${query}`);
     }
   } catch (e) {
-    console.log(e.message);
+    throw Error(e.response.data.message);
   }
 };

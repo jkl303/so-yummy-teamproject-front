@@ -8,6 +8,5 @@ import { Margins } from './MarginWrap.styled';
    */
 
 export const MarginWrap = margins => {
-  console.log(margins);
   return <Margins {...margins} />;
 };

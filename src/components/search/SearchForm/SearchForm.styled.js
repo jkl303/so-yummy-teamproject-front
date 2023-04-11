@@ -1,8 +1,29 @@
 import styled, { css } from 'styled-components';
+import loader from 'images/loader/noodle-loader.png';
 
 export const SearchFormStyled = styled.form`
   display: flex;
+  width: fit-content;
+  margin: 0 auto;
   justify-content: center;
+  position: relative;
+
+  ${({ isLoading }) =>
+    isLoading &&
+    css`
+      &::after {
+        max-height: 100%;
+        content: 'searching...';
+        color: var(--accent);
+        position: absolute;
+        left: 100%;
+        height: 80px;
+        width: 80px;
+        background-image: url(${loader});
+        background-size: contain;
+        background-color: transparent;
+      }
+    `}
 `;
 
 export const SearchFormInput = styled.input`
@@ -25,7 +46,7 @@ export const SearchFormInput = styled.input`
 
     &:focus,
     &:hover {
-      outline-color: ${({ theme: { colors } }) => colors.accent};
+      outline-color: ${colors.accent};
     }
   `}
 
@@ -40,7 +61,7 @@ export const SearchFormInput = styled.input`
     font-size: 14px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1440px) {
     width: 510px;
     height: 70px;
     margin-right: -161px;
