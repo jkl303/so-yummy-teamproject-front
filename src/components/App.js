@@ -4,7 +4,7 @@ import { useEffect, createContext, useContext } from 'react';
 
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from '../style/GlobalStyle';
 import { SharedLayout } from './SharedLayout';
 // import { RestrictedRoute } from './RestrictedRoute';
@@ -170,8 +170,9 @@ export default function App() {
                   />
                 }
               />
+              <Route path="404" element={<NotFoundPage />} />
+              <Route path="*" element={<Navigate to="/404" replace />} />
             </Route>
-            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </ThemeProvider>
       </AppContext.Provider>
