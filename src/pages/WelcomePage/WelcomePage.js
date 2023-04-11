@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-import {} from './WelcomePage.styled';
-
-export default function Welcome() {
-  return (
-    <div>
-      Welcome <Link to="shopping-list">qqq</Link>
-    </div>
-=======
 import { NavLink } from 'react-router-dom';
 import { Logo, Title, Text, WelcomWrapper, Link } from './WelcomePage.styled';
 import { HeroAuthBtn } from 'components/Buttons/HeroAuthBtn/HeroAuthBtn';
@@ -33,6 +23,5 @@ export default function WelcomePage() {
         </NavLink>
       </div>
     </WelcomWrapper>
->>>>>>> main
   );
 }
