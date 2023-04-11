@@ -14,6 +14,14 @@ const authInitialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState: authInitialState,
+  reducers: {
+    setUser(state, { payload }) {
+      console.log("setUser");
+      console.log(payload);
+      state.user = { name: payload.name, email: payload.email };
+      state.token = payload.token;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(signUp.pending, state => {
@@ -77,4 +85,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { setUser } = authSlice.actions;
 export const authReducer = authSlice.reducer;

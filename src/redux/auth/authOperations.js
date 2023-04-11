@@ -2,9 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'http://localhost:3000/api',
-  // baseURL: process.env.REACT_APP_API_URL,
-  // 'https://soyummy-qk5m.onrender.com/api'
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 const token = {
@@ -35,7 +33,6 @@ export const logIn = createAsyncThunk(
     try {
       const { data } = await instance.post('/auth/login', credentials);
       token.set(data.token);
-      console.log(data.token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -67,13 +64,3 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
-
-// export const verifyEmail = createAsyncThunk("auth/verify", async (_, thunkAPI) => {
-//   try {
-//     const { data } = await instance.get("/auth/verify");
-//     token.set(data.token);
-//     return data;
-//   } catch (error) {
-//     return thunkAPI.rejectWithValue(error.message);
-//   }
-// });
