@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { mediaQueries } from 'style/mediaQueries';
 
-// import '@fontsource/poppins';
-
 export const StyledHeaderList = styled.ul`
   list-style: none;
   display: flex;
