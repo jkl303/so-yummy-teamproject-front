@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 import {
   FormContainer,
@@ -12,9 +12,9 @@ import {
   ButtonClose,
   IconClose,
   UserPhoto,
-} from "./UserProfileStyled";
+} from './UserProfileStyled';
 
-import UserAvatar from "../../../../images/svg/user.svg";
+import UserAvatar from 'images/svg/user.svg';
 
 const UserProfile = ({ name, toggleMenu }) => {
   const [profilePicture, setProfilePicture] = useState(null);
@@ -30,15 +30,14 @@ const UserProfile = ({ name, toggleMenu }) => {
     };
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
   };
 
   return (
     <FormContainer onSubmit={handleSubmit}>
-      <UserPhoto alt="User's avatar" src={UserAvatar} />
       {profilePicture ? (
-        <UserPhoto src={profilePicture} alt={"Profile Picture"} />
+        <UserPhoto src={profilePicture} alt={'Profile Picture'} />
       ) : (
         <UserPhoto alt="User's avatar" src={UserAvatar} />
       )}
