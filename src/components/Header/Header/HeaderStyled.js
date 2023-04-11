@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { ReactComponent as SvgLogo } from 'images/svg/logo.svg';
 
 export const HeaderBlock = styled.header`
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   z-index: 10;
 `;
