@@ -109,21 +109,7 @@ export default function App() {
                   />
                 }
               />
-              <Route
-                path="/login"
-                element={
-                  <RestrictedRoute redirectTo="/" component={<SigninPage />} />
-                }
-              />
-              <Route
-                path="categories/:categoryName"
-                element={<CategoriesPage />}
-                //   <PrivateRoute
-                //     redirectTo="/login"
-                //     component={<CategoriesPage />}
-                //   />
-                // }
-              />
+
               <Route
                 path="add"
                 element={
@@ -183,13 +169,6 @@ export default function App() {
                   />
                 }
               />
-              <Route
-                path="recipe/:recipeId"
-                element={<RecipePage />}
-                //   <PrivateRoute redirectTo="/login" component={<RecipePage />} />
-                // }
-              />
-              <Route path="*" element={<NotFoundPage />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

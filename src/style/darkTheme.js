@@ -3,7 +3,7 @@ export const darkTheme = {
     accent: 'var(--accent)',
     bg: 'var(--bg-dark)',
     bgSec: 'var(--bg-sec-dark)', //lists, cards etc
-    modal: 'var(--bg-sec-dark)',
+    bgModal: 'var(--bg-sec-dark)',
     input: 'var(--bg-dark)',
     select: 'var(--accent)',
     ingr: 'var(--bg-sec-dark)',

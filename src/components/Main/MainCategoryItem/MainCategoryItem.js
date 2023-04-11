@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { RecipeCard } from '../RecipeCard/RecipeCard';
 import useWindowDimensions from 'hooks/useWindowDimensions';
+// import { SeeAllBtn } from 'components/Buttons/SeeAllBtn/SeeAllBtn';
 
 import {
   CategoryTitle,
@@ -37,6 +38,7 @@ export const MainCategoryItem = ({ category }) => {
         >
           See all
         </LinkStyled>
+        {/* <SeeAllBtn/> */}
       </ButtonWrap>
     </div>
   );
