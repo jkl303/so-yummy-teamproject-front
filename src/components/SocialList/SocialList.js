@@ -9,16 +9,16 @@ import {
 export const SocialList = () => {
   return (
     <List>
-      <Link>
+      <Link to="https://www.facebook.com">
         <FacebookIcon />
       </Link>
-      <Link>
+      <Link to="https://www.youtube.com">
         <YoutubeIcon />
       </Link>
-      <Link>
+      <Link to="https://twitter.com">
         <TwitterIcon />
       </Link>
-      <Link>
+      <Link to="https://www.instagram.com">
         <InstagramIcon />
       </Link>
     </List>

@@ -23,11 +23,40 @@ export const ModalWrapper = styled.div`
   margin-top: 212px;
   border-radius: 30px;
   background-color: #fafafa;
+  animation: isAppearing 300ms ease-in-out;
+
+  @keyframes isAppearing {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 480px;
+    height: 215px;
+    padding: 50px 40px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 500px;
+    padding: 50px;
+  }
 `;
 
 export const Text = styled.p`
+  margin-top: 0;
   margin-bottom: 24px;
   font-size: 14px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+    font-size: 18px;
+  }
 `;
 
 export const CloseButton = styled.button`
@@ -42,6 +71,12 @@ export const CloseButton = styled.button`
   padding: 0;
   border: none;
   background-color: transparent;
+
+  @media screen and (min-width: 768px) {
+    top: 24px;
+    right: 24px;
+    transform: scale(1.2);
+  }
 `;
 
 export const Button = styled.button`
@@ -52,13 +87,30 @@ export const Button = styled.button`
   border: none;
   border-radius: 6px;
   font-size: 14px;
+
   :first-of-type {
     background-color: #8baa36;
     color: #fafafa;
     margin-right: 8px;
+    :hover {
+      background-color: #22252a;
+    }
   }
   :last-of-type {
     background-color: #d9d9d9;
     color: #23262a;
+    :hover {
+      background-color: transparent;
+      border: 1px solid #23262a;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 192px;
+    height: 59px;
+    font-size: 16px;
+    :first-of-type {
+      margin-right: 16px;
+    }
   }
 `;

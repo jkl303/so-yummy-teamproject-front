@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 /* props: 
 sizes:[m: {w, h, padH, padV, fz}, t, d] 
 variant [changeBg, changeBgInvert, changeOutline, changeAll (categories && add to favorite)], */
 
-export const CustomBtn = styled.a`
+export const CustomBtn = styled(Link)`
   display: inline-flex;
   justify-content: center;
   align-items: center;

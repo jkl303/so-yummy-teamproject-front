@@ -8,13 +8,15 @@ import {
   Button,
   ButtonLogout,
   ArrowIcon,
-} from './UserInfoStyled';
+} from "./UserInfoStyled";
 
+import LogOutModal from 'components/AuthForms/LogOutModal/LogOutModal';
 import { FiEdit2 } from 'react-icons/fi';
 import User from 'images/svg/user.svg';
 
 const UserInfo = () => {
   const [userOpenModal, setUserOpenModal] = useState(false);
+  const [isLogOutOpenModal, setIsLogOutOpenModal] = useState(false);
 
   const toggleOpenModal = () => {
     setUserOpenModal(!userOpenModal);
@@ -23,9 +25,15 @@ const UserInfo = () => {
     toggleOpenModal();
   };
 
-  const logOut = () => {
+  const logOutOpenModal = () => {
+    setIsLogOutOpenModal(true);
     toggleOpenModal();
   };
+
+  const logOutCloseModal = () => {
+    setIsLogOutOpenModal(false);
+  };
+
   return (
     <UserWrap>
       <UserBox onClick={toggleOpenModal}>
@@ -40,12 +48,14 @@ const UserInfo = () => {
             <FiEdit2 />
           </Button>
 
-          <ButtonLogout onClick={() => logOut()}>
+          <ButtonLogout onClick={() => logOutOpenModal()}>
             Log out
             <ArrowIcon />
           </ButtonLogout>
         </Wrap>
       )}
+
+      {isLogOutOpenModal && <LogOutModal handleClose={logOutCloseModal} />}
     </UserWrap>
   );
 };

@@ -1,8 +1,10 @@
 import { CustomBtn } from 'components/Buttons/templates/CustomBtn/CustomBtn.styled';
 
-export const OtherCategoriesBtn = () => {
+export const OtherCategoriesBtn = ({ to, location }) => {
   return (
     <CustomBtn
+      to={to}
+      location={location}
       variant="changeAll"
       sizes={{
         m: { w: 195, h: 46, padH: 32, padV: 14 },
