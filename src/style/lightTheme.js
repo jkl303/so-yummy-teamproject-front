@@ -3,6 +3,7 @@ export const lightTheme = {
     accent: 'var(--accent)',
     bg: 'var(--bg)', //main bg, light => dark #fafafa => #1e1f28
     bgSec: 'var(--bg-sec)', //cards, #fff => #2a2c36
+    bgFooter: 'var(--bg-btn)',
     bgModal: 'var(--bg)', //#fafafa => #2a2c36
     input: 'var(--bg-input)', //#d9d9d9 => #1e1f28
     select: 'var(--bg)', //dropdown #fafafa => accent

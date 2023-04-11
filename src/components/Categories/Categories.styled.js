@@ -6,7 +6,10 @@ export const CategoriesWrap = styled.div`
     padding-left: 32px;
   }
   @media screen and (min-width: 1440px) {
+
     padding-left: 0px;
+
+
   }
 `;
 
@@ -18,6 +21,7 @@ export const TabList = styled.ul`
 
 export const TabWrap = styled.div`
   width: 100%;
+
   height: 56px;
   margin-top: 50px;
   padding-left: 19px;
@@ -47,6 +51,7 @@ export const CategoriesTitle = styled.h1`
     margin-top: 100px;
   }
 `;
+
 
 export const Tab = styled.li`
   height: 56px;
@@ -91,6 +96,4 @@ export const UnderLine = styled.span`
   background-color: ${props => props.underlined};
 `;
 
-// export const RecipesWrap = styled.div`
-//   padding: 0 16px;
-// `;
+

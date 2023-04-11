@@ -25,10 +25,10 @@ const MobileMenu = ({ toggleMenu }) => {
         <IconClose />
       </Button>
 
-      <HeaderNavigation />
+      <HeaderNavigation toggleMenu={toggleMenu} />
 
       <SwitchWrap>
-        <Switch/>
+        <Switch />
       </SwitchWrap>
     </Wrap>
   );

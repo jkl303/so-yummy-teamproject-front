@@ -3,12 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { ReactComponent as SvgLogo } from 'images/svg/logo.svg';
 
 export const HeaderBlock = styled.header`
+
   /* position: absolute; */
+
   width: 100%;
   z-index: 10;
 `;
 
-export const Container = styled.div`
+export const HeaderWrapper = styled.div`
   max-width: 375px;
   padding-left: 16px;
   padding-right: 16px;

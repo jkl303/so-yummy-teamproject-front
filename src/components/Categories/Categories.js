@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
@@ -9,6 +10,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import toast from 'react-hot-toast';
+
 import {
   TabList,
   TabWrap,
@@ -30,13 +32,16 @@ export const Categories = ({ title }) => {
   useEffect(() => {
     async function getCategories() {
       try {
+
         setIsLoading(true);
+
         const categories = await fetchCategories();
 
         if (categories.length > 0) {
           setCategories(categories.map(category => category));
         }
       } catch (error) {
+
         toast('Something went wrong...');
       } finally {
         setIsLoading(false);
@@ -62,12 +67,16 @@ export const Categories = ({ title }) => {
     return 'rgba(189, 189, 189, 1);';
   };
 
+    getCategories();
+  }, []);
+
   const settings = {
     className: 'slider variable-width',
     variableWidth: true,
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 5,
+
     initialSlide: 0,
     // autoplay: true,
     speed: 500,
@@ -104,5 +113,6 @@ export const Categories = ({ title }) => {
 
       <RecipesbyCategoryName />
     </>
+
   );
 };
