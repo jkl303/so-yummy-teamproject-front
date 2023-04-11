@@ -24,23 +24,20 @@ const shoppingListSlice = createSlice({
     [fetchShoppingListThunkOperation.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      console.log(action.payload);
       state.items = action.payload.data.data.result[0].list;
-      console.log(state.items);
     },
     [fetchShoppingListThunkOperation.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },
 
-    //     // add  reducers
+    // add  reducers
     [addShoppingListItemThunkOperation.pending](state) {
       state.isLoading = true;
     },
     [addShoppingListItemThunkOperation.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      // console.log(action.payload.data.result.list[0]);
       state.items.push(action.payload.data.result.list[0]);
     },
     [addShoppingListItemThunkOperation.rejected](state, action) {
