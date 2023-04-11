@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { ReactComponent as SearchIconMob } from "../../../images/svg/search.svg";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { FiSearch } from 'react-icons/fi';
+import { NavLink } from 'react-router-dom';
 
 export const Navigation = styled.nav`
   display: flex;
@@ -8,11 +8,10 @@ export const Navigation = styled.nav`
   align-items: center;
   justify-content: center;
   padding-top: 182px;
-  gap: 32px;
+  gap: 8px;
 
   @media screen and (min-width: 768px) {
     padding-top: 186px;
-    gap: 40px;
   }
   @media screen and (min-width: 1440px) {
     display: flex;
@@ -21,7 +20,6 @@ export const Navigation = styled.nav`
     justify-content: center;
     padding-top: 0;
     height: 44px;
-    gap: 30px;
   }
 `;
 export const Link = styled(NavLink)`
@@ -32,21 +30,24 @@ export const Link = styled(NavLink)`
   font-weight: 500;
   font-size: 18px;
   line-height: 1;
+  padding: 12px 20px;
 
   &.active {
     color: #8baa36;
   }
 
   @media screen and (min-width: 768px) {
+    padding: 16px 30px;
     font-size: 24px;
   }
   @media screen and (min-width: 1440px) {
+    padding: 11px 24px;
     font-size: 14px;
     line-height: 22px;
   }
 `;
 
-export const Icon = styled(SearchIconMob)`
+export const Icon = styled(FiSearch)`
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
@@ -68,4 +69,3 @@ export const IconWrap = styled.div`
     left: 3px;
   }
 `;
-

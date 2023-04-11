@@ -2,15 +2,15 @@ import { CgSpinner } from 'react-icons/cg';
 import { keyframes } from 'styled-components';
 import styled from 'styled-components';
 
-export const Spinner = () => {
+export default function Spinner() {
   return (
     <>
       <Icon size="25px" className="Spinner" />
     </>
   );
-};
+}
 
-const Spin = keyframes`
+const spin = keyframes`
  0% {
   transform: rotate(0deg);
 }
@@ -19,8 +19,8 @@ const Spin = keyframes`
 }`;
 
 const Icon = styled(CgSpinner)`
-  color: #fafafa;
-  animation-name: ${Spin};
+  color: var(--accent);
+  animation-name: ${spin};
   animation-duration: 1000ms;
   animation-timing-function: linear;
   animation-iteration-count: infinite;

@@ -1,14 +1,15 @@
 import { useDispatch } from 'react-redux';
 // import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, createContext, useContext } from 'react';
 
-import { lazy, useState } from 'react';
+import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from '../style/GlobalStyle';
 import { SharedLayout } from './SharedLayout';
-import { RestrictedRoute } from './RestrictedRoute';
-import { PrivateRoute } from './PrivateRoute';
+// import { RestrictedRoute } from './RestrictedRoute';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 import { ThemeProvider } from 'styled-components';
 
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
@@ -24,12 +25,12 @@ import { lightTheme } from 'style/lightTheme';
 import { darkTheme } from 'style/darkTheme';
 // import { selectAuth } from 'redux/auth/authSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
+import WelcomePage from 'pages/WelcomePage/WelcomePage';
+import SigninPage from 'pages/SigninPage/SigninPage';
+import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 
-const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
-const RegistrationPage = lazy(() =>
-  import('../pages/RegistrationPage/RegistrationPage')
-);
-const SigninPage = lazy(() => import('../pages/SigninPage/SigninPage'));
+const AppContext = createContext(null);
+export const useToggleTheme = () => useContext(AppContext);
 
 export default function App() {
   const dispatch = useDispatch();
@@ -50,111 +51,131 @@ export default function App() {
     <>
       <GlobalStyle />
       <Toaster />
-      <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <SharedLayout
-                toggleTheme={toggleTheme}
-                isDarkTheme={isDarkTheme}
-              />
-            }
-          >
-            <Route index element={<WelcomePage />} />
-            {/* <Route index component={<WelcomePage />} />
-          <Route
-            path="/"
-            element={
-              <SharedLayout
-                toggleTheme={toggleTheme}
-                isDarkTheme={isDarkTheme}
-              />
-            }
-          > */}
+      <AppContext.Provider value={{ toggleTheme }}>
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+          <Routes>
             <Route
-              path="/register"
+              path="/"
               element={
-                <RestrictedRoute
-                  redirectTo="/login"
-                  component={<RegistrationPage />}
+                <PublicRoute
+                  component={<WelcomePage />}
+                  restricted
+                  redirectTo="/main"
                 />
               }
             />
             <Route
               path="/login"
               element={
-                <RestrictedRoute redirectTo="/" component={<SigninPage />} />
-              }
-            />
-            <Route
-              path="categories/:categoryName"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<CategoriesPage />}
+                <PublicRoute
+                  component={<SigninPage />}
+                  restricted
+                  redirectTo="/main"
                 />
               }
             />
             <Route
-              path="add"
+              path="/register"
               element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<AddRecipesPage />}
-                />
-              }
-            />
-            <Route
-              path="my"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<MyRecipesPage />}
-                />
-              }
-            />
-            <Route
-              path="favorite"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<FavoriteRecipesPage />}
-                />
-              }
-            />
-            <Route
-              path="/shopping-list"
-              element={
-                <PrivateRoute
-                  component={<ShoppingListPage />}
-                  redirectTo="/login"
+                <PublicRoute
+                  component={<RegistrationPage />}
+                  restricted
+                  redirectTo="/main"
                 />
               }
             />
 
             <Route
-              path="search"
+              path="/"
               element={
-                <PrivateRoute redirectTo="/login" component={<SearchPage />} />
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<SharedLayout />}
+                />
               }
-            />
-            <Route
-              path="main"
-              element={<MainPage />}
-              //   <PrivateRoute redirectTo="/login" component={<MainPage />} />
-              // }
-            />
-            <Route
-              path="recipe/:recipeId"
-              element={
-                <PrivateRoute component={<RecipePage />} redirectTo="/login" />
-              }
-            />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </ThemeProvider>
+            >
+              <Route
+                path="main"
+                element={
+                  <PrivateRoute redirectTo="/login" component={<MainPage />} />
+                }
+              />
+
+              <Route
+                path="categories/:categoryName"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<CategoriesPage />}
+                  />
+                }
+              />
+
+              <Route
+                path="add"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<AddRecipesPage />}
+                  />
+                }
+              />
+
+              <Route
+                path="my"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<MyRecipesPage />}
+                  />
+                }
+              />
+
+              <Route
+                path="favorite"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<FavoriteRecipesPage />}
+                  />
+                }
+              />
+
+              <Route
+                path="shopping-list"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<ShoppingListPage />}
+                  />
+                }
+              />
+
+              <Route
+                path="search"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<SearchPage />}
+                  />
+                }
+              />
+
+              <Route
+                path="recipe/:recipeId"
+                element={
+                  <PrivateRoute
+                    redirectTo="/login"
+                    component={<RecipePage />}
+                  />
+                }
+              />
+              <Route path="404" element={<NotFoundPage />} />
+              <Route path="*" element={<Navigate to="/404" replace />} />
+            </Route>
+          </Routes>
+        </ThemeProvider>
+      </AppContext.Provider>
     </>
   );
 }

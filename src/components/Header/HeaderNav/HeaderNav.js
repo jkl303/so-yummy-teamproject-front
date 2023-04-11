@@ -1,16 +1,34 @@
-import { Navigation, Link, IconWrap, Icon } from "./HeaderNavStyled";
-import useWindowDimensions from "../../../hooks/useWindowDimensions";
-const HeaderNavigation = () => {
+import { Navigation, Link, IconWrap, Icon } from './HeaderNavStyled';
+import useWindowDimensions from 'hooks/useWindowDimensions';
+
+const HeaderNavigation = ({ toggleMenu }) => {
   const { width } = useWindowDimensions();
+
+  const linkClose = () => {
+    if (width <= 1439) {
+      return toggleMenu();
+    }
+    return null;
+  };
 
   return (
     <Navigation>
-      <Link to="/categories/:categoryName">Categories</Link>
-      <Link to="/add">Add recipes</Link>
-      <Link to="/my">My recipes</Link>
-      <Link to="/favorite">Favorites</Link>
-      <Link to="/shopping-list">Shopping list</Link>
-      <Link to="/search?query">
+      <Link to="/categories/:categoryName" onClick={() => linkClose()}>
+        Categories
+      </Link>
+      <Link to="/add" onClick={() => linkClose()}>
+        Add recipes
+      </Link>
+      <Link to="/my" onClick={() => linkClose()}>
+        My recipes
+      </Link>
+      <Link to="/favorite" onClick={() => linkClose()}>
+        Favorites
+      </Link>
+      <Link to="/shopping-list" onClick={() => linkClose()}>
+        Shopping list
+      </Link>
+      <Link to="/search?query" onClick={() => linkClose()}>
         <IconWrap>
           <Icon />
         </IconWrap>

@@ -1,8 +1,8 @@
-import styled, { keyframes } from "styled-components";
-import { NavLink } from "react-router-dom";
-import img from "../../../images/mobile/spinach-menu375.png";
-import imgTab from "../../../images/tablet/spinach-menu768.png";
-import { ReactComponent as CloseMenu } from "../../../images/svg/iconClose.svg";
+import styled, { keyframes } from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import img from 'images/mobile/spinach-menu375.png';
+import imgTab from 'images/tablet/spinach-menu768.png';
+import { CgClose } from 'react-icons/cg';
 
 const slideDown = keyframes`
   0% {
@@ -50,11 +50,12 @@ export const Button = styled.button`
   position: absolute;
   z-index: 10;
   top: 31.33px;
-  right: 25.33px;
+  top: 15px;
+  right: 25px;
 
   @media screen and (min-width: 768px) {
-    top: 33.33px;
-    right: 41.33px;
+    top: 23.33px;
+    right: 31.33px;
   }
 
   border: none;
@@ -62,8 +63,17 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
-export const IconClose = styled(CloseMenu)`
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+export const IconClose = styled(CgClose)`
+  color: #22252a;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+`;
+
+export const SwitchWrap = styled.div`
+  position: absolute;
+  bottom: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

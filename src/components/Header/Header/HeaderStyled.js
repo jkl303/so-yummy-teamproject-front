@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import { ReactComponent as SvgLogo } from "../../../images/svg/logo.svg";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import { ReactComponent as SvgLogo } from 'images/svg/logo.svg';
 
 export const HeaderBlock = styled.header`
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   z-index: 10;
 `;
@@ -32,13 +32,13 @@ export const HeaderElement = styled.div`
   justify-content: space-between;
   align-items: center;
   height: auto;
-  padding-top: 18px;
+  padding-top: 21px;
 
   @media screen and (min-width: 768px) {
     padding-top: 19px;
   }
   @media screen and (min-width: 1440px) {
-    padding-top: 18px;
+    padding-top: 14px;
     justify-content: start;
   }
 `;
