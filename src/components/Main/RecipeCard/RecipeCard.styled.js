@@ -1,17 +1,14 @@
 import styled from 'styled-components';
+import { mediaQueries } from 'style/mediaQueries';
 
 export const ListItem = styled.li`
   position: relative;
   max-width: 100%;
   width: 343px;
 
-  @media screen and (min-width: 768px) {
-    width: calc((100% - 32px) / 2);
-  }
+  ${mediaQueries('tablet')`width: calc((100% - 32px) / 2)`}
 
-  @media screen and (min-width: 1440px) {
-    width: calc((100% - 42px) / 4);
-  }
+  ${mediaQueries('desktop')`width: calc((100% - 42px) / 4)`}
 `;
 
 export const Image = styled.img`
@@ -28,10 +25,14 @@ export const TitleWrap = styled.div`
   transform: translateX(-50%);
   width: 90%;
   padding: 16px;
-  background-color: #fff;
+  background-color: ${({ theme: { colors } }) => colors.bgModal};
+  color: ${({ theme: { colors } }) => colors.subtitle};
   border-radius: 8px;
 
-  @media screen and (min-width: 1440px) {
-    bottom: 23px;
-  }
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.24px;
+
+  ${mediaQueries('desktop')`bottom: 23px;`}
 `;
