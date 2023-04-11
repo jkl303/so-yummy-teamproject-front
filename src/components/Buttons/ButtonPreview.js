@@ -1,50 +1,42 @@
 import { SearchBtn } from './SearchBtn/SearchBth';
 import { OtherCategoriesBtn } from './OtherCategoriesBtn/OtherCategoriesBtn';
-import { SubscribeBtn } from './AddToFavoriteBtn/SubcribeBtn/SubcribeBtn';
-import { LogOutBtn } from './LogOutBtn/LogOutBtn';
-import { CancelBtn } from './CancelBtn/CancelBtn';
-import { SeeAllBtn } from './AddToFavoriteBtn/SeeAllBtn/SeeAllBtn';
-import { SeeRecipeBtn } from './AddToFavoriteBtn/SeeRecipeBtn/SeeRecipeBtn';
+import { SubscribeBtn } from './SubcribeBtn/SubcribeBtn';
+import { LogOutMenuBtn } from './LogOutMenuBtn/LogOutMenuBtn';
+import { LogOutModalBtn } from './LogOutModalBtn/LogOutModalBtn';
+import { SeeAllBtn } from './SeeAllBtn/SeeAllBtn';
+import { SeeRecipeBtn } from './SeeRecipeBtn/SeeRecipeBtn';
 import { AddToFavoriteBtn } from './AddToFavoriteBtn/AddToFavoriteBtn';
 import { HeroAuthBtn } from './HeroAuthBtn/HeroAuthBtn';
+import { AddRecipeBtn } from './AddRecipeBtn/AddRecipeBtn';
 
-
-export default function ButtonPreview () {
+export default function ButtonPreview() {
   return (
-    <>      
-        <div
-          style={{
-            backgroundColor: '#666',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '10px',
+    <>
+      <div
+        style={{
+          backgroundColor: '#666',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
 
-            alignItems: 'flex-start',
-          }}
-        >
-          <SearchBtn invertBg />
-          <br />
-          <OtherCategoriesBtn />
-          <br />
-          <SubscribeBtn />
-          <br />
-          <div style={{ display: 'flex' }}>
-            <LogOutBtn />
-            <br />
-            <CancelBtn />
-          </div>
-          <br />
-          <SeeAllBtn />
-          <br />
-          <SeeRecipeBtn />
-          <br />
-          <AddToFavoriteBtn />
-          <br />
-          <HeroAuthBtn active>Active</HeroAuthBtn>
-          <br />
-          <HeroAuthBtn>Button</HeroAuthBtn>
+          alignItems: 'flex-start',
+        }}
+      >
+        <SearchBtn />
+        <OtherCategoriesBtn />
+        <SubscribeBtn />
+        <LogOutMenuBtn />
+        <div style={{ display: 'flex' }}>
+          <LogOutModalBtn text="Logout" />
+          <LogOutModalBtn secondary text="Cancel" />
         </div>
-      
+        <SeeAllBtn />
+        <SeeRecipeBtn />
+        <AddToFavoriteBtn />
+        <AddRecipeBtn />
+        <HeroAuthBtn active text="Sign In" />
+        <HeroAuthBtn text="Register" />
+      </div>
     </>
   );
-};
+}
