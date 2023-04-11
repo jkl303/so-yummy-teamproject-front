@@ -97,7 +97,7 @@ export const Input = styled.input`
 `;
 
 export const ErrorMessage = styled.div`
-  color: red;
+  color: ${props => props.color};
   font-size: 0.8rem;
   margin-top: 0.2rem;
 `;

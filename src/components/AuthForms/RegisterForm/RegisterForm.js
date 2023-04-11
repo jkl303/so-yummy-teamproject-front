@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import toast from "react-hot-toast";
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 import {
   FormContainer,
   Title,
@@ -15,11 +15,11 @@ import {
   CorrectIcon,
   WarningIcon,
   ErrorIcon,
-} from "./RegisterForm.styled";
-import { signUp } from "../../../redux/auth/authOperations";
-import { getEmailColor, getNameColor, getPasswordColor } from "./getInputColor";
+} from './RegisterForm.styled';
+import { signUp } from '../../../redux/auth/authOperations';
+import { getEmailColor, getNameColor, getPasswordColor } from './getInputColor';
 
-export default function RegisterForm () {
+export default function RegisterForm() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -29,7 +29,7 @@ export default function RegisterForm () {
   const [passwordValidationState, setPasswordValidationState] =
     useState('weak');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  // const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     // const nameRegexp = /^[\p{L}\s'`’]{3,}$/u;
@@ -84,12 +84,104 @@ export default function RegisterForm () {
       .catch(error => {
         toast.error(error);
       });
-    
+
     event.target.reset();
   };
 
   const handlePasswordVisibilityToggle = () => {
     setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  const onNameChange = e => {
+    setName(e.target.value);
+    if (isNameValid || name.length === 0) {
+      setErrors(prevState => ({ ...prevState, name: false }));
+    }
+  };
+
+  const onNameBlur = () => {
+    if (!isNameValid && name.length > 0) {
+      toast('Name must contain 3+ letters');
+      setErrors(prevState => ({
+        ...prevState,
+        name: 'the name must be at least 3 letters long',
+      }));
+    } else {
+      setErrors(prevState => ({ ...prevState, name: false }));
+    }
+  };
+
+  const onEmailChange = e => {
+    setEmail(e.target.value);
+    if (isEmailValid || email.length === 0) {
+      setErrors(prevState => ({ ...prevState, email: false }));
+    }
+  };
+
+  const onEmailBlur = () => {
+    if (!isEmailValid && email.length > 0) {
+      toast('Email is invalid');
+      setErrors(prevState => ({
+        ...prevState,
+        email: 'email is invalid',
+      }));
+    } else {
+      setErrors(prevState => ({ ...prevState, email: false }));
+    }
+  };
+
+  const onPasswordChange = e => {
+    setPassword(e.target.value);
+    if (password.length === 0) {
+      setErrors(prevState => ({ ...prevState, password: false }));
+    }
+    if (passwordValidationState === 'weak' && password.length > 0) {
+      setErrors(prevState => ({
+        ...prevState,
+        password: 'Enter a valid Password',
+      }));
+    }
+    if (passwordValidationState === 'medium' && password.length > 0) {
+      setErrors(prevState => ({
+        ...prevState,
+        password: 'Your password is little secure',
+      }));
+    }
+    if (passwordValidationState === 'strong' && password.length > 0) {
+      setErrors(prevState => ({
+        ...prevState,
+        password: 'Password is secure',
+      }));
+    }
+  };
+
+  const onPasswordBlur = () => {
+    if (!(passwordValidationState === 'strong') && password.length > 0) {
+      toast(
+        'Password must contain 6+ chars, upper/lowercase letters, numbers, special chars.'
+      );
+    }
+    if (password.length === 0) {
+      setErrors(prevState => ({ ...prevState, password: false }));
+    }
+    if (passwordValidationState === 'weak' && password.length > 0) {
+      setErrors(prevState => ({
+        ...prevState,
+        password: 'Enter a valid Password',
+      }));
+    }
+    if (passwordValidationState === 'medium' && password.length > 0) {
+      setErrors(prevState => ({
+        ...prevState,
+        password: 'Your password is little secure',
+      }));
+    }
+    if (passwordValidationState === 'strong' && password.length > 0) {
+      setErrors(prevState => ({
+        ...prevState,
+        password: 'Password is secure',
+      }));
+    }
   };
 
   return (
@@ -99,35 +191,35 @@ export default function RegisterForm () {
         <Input
           type="text"
           value={name}
-          onChange={event => setName(event.target.value)}
+          onChange={onNameChange}
           placeholder="Name"
-          onBlur={() => {
-            !isNameValid &&
-              name.length > 0 &&
-              toast('Name must contain 3+ letters');
-          }}
+          onBlur={onNameBlur}
         />
         <UserIcon namecolor={getNameColor(name, isNameValid)} />
         {isNameValid && <CorrectIcon />}
         {!isNameValid && name.length > 0 && <ErrorIcon />}
-        {/* {!isNameValid && name.length > 0 && (
-          <ErrorMessage>the name must be at least 3 letters long</ErrorMessage>
-        )} */}
+        {errors.name && (
+          <ErrorMessage color={getNameColor(name, isNameValid)}>
+            {errors.name}
+          </ErrorMessage>
+        )}
       </InputContainer>
       <InputContainer emailcolor={getEmailColor(email, isEmailValid)}>
         <Input
           type="email"
           value={email}
-          onChange={event => setEmail(event.target.value)}
+          onChange={onEmailChange}
           placeholder="Email"
-          onBlur={() => {
-            !isEmailValid && email.length > 0 && toast('Email is invalid');
-          }}
+          onBlur={onEmailBlur}
         />
         <MailIcon emailcolor={getEmailColor(email, isEmailValid)} />
         {isEmailValid && <CorrectIcon />}
         {!isEmailValid && email.length > 8 && <ErrorIcon />}
-        {/* {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>} */}
+        {errors.email && (
+          <ErrorMessage color={getNameColor(email, isEmailValid)}>
+            {errors.email}
+          </ErrorMessage>
+        )}
       </InputContainer>
       <InputContainer
         passwordcolor={getPasswordColor(password, passwordValidationState)}
@@ -135,25 +227,25 @@ export default function RegisterForm () {
         <Input
           type={isPasswordVisible ? 'text' : 'password'}
           value={password}
-          onChange={event => setPassword(event.target.value)}
+          onChange={onPasswordChange}
           placeholder="Password"
-          onBlur={() => {
-            !(passwordValidationState === 'strong') &&
-              password.length > 0 &&
-              toast(
-                'Password must contain 6+ chars, upper/lowercase letters, numbers, special chars.'
-              );
-          }}
+          onBlur={onPasswordBlur}
         />
         <LockIcon
           passwordcolor={getPasswordColor(password, passwordValidationState)}
         />
         {passwordValidationState === 'strong' && <CorrectIcon />}
         {passwordValidationState === 'medium' && <WarningIcon />}
-        {passwordValidationState === 'weak' && password.length > 5 && (
+        {passwordValidationState === 'weak' && password.length > 0 && (
           <ErrorIcon />
         )}
-        {/* {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>} */}
+        {errors.password && (
+          <ErrorMessage
+            color={getPasswordColor(password, passwordValidationState)}
+          >
+            {errors.password}
+          </ErrorMessage>
+        )}
         <PasswordVisibilityButton
           type="button"
           className="password-visibility-toggle"
@@ -165,4 +257,4 @@ export default function RegisterForm () {
       <Button type="submit">Sign up</Button>
     </FormContainer>
   );
-};
+}
