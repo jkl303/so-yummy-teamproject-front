@@ -56,10 +56,10 @@ export default function App() {
 
   return (
     <>
-      <GlobalStyle />
       <Toaster />
       <AppContext.Provider value={{ toggleTheme }}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+          <GlobalStyle />
           <Routes>
             <Route
               path="/"
