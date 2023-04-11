@@ -12,16 +12,16 @@ export const ListBody = styled.ul`
   margin-right: 8px;
   margin-top: 0;
   padding: 0px;
+  min-height: 100px;
   ${mediaQueries('tablet')`
  margin-left: 0px;
     margin-right: 0px;
     gap: 44px;
-  `}
-  ${mediaQueries('desktop')`
+  `} ${mediaQueries('desktop')`
  margin-left: 40px;
     margin-right: 40px;
     gap: 44px;
-  `}
+  `};
 `;
 
 export const ListItemStyled = styled.li`
