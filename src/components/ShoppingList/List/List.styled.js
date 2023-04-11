@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { variables } from 'style/variables';
 import { mediaQueries } from 'style/mediaQueries';
 
 export const ListBody = styled.ul`
@@ -12,7 +13,7 @@ export const ListBody = styled.ul`
   margin-right: 8px;
   margin-top: 0;
   padding: 0px;
-  min-height: 100px;
+
   ${mediaQueries('tablet')`
  margin-left: 0px;
     margin-right: 0px;

@@ -10,7 +10,9 @@ export const ListBodyReusable = () => {
   return (
     <>
       {ListIsEmpty ? (
-        <div>Your shooping list is empty. Nothing to worry about!</div>
+        <div style={{ minHeight: '100px' }}>
+          Your shooping list is empty. Nothing to worry about!
+        </div>
       ) : (
         <ListBody>
           {data.map(item => (
