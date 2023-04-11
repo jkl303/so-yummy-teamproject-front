@@ -9,7 +9,7 @@ export const SharedLayout = () => {
   return (
     <>
       <Header />
-      <Container style={{ flex: '1 1 auto' }}>
+      <Container>
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>

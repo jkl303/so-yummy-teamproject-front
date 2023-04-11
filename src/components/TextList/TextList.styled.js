@@ -6,13 +6,13 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-left: 20px;
   padding: 0px;
   gap: 10px;
   color: var(--txt-dark);
 `;
 
-export const Item = styled.li`
-`;
+export const Item = styled.li``;
 
 export const Text = styled.p`
   font-family: 'Poppins';
@@ -21,7 +21,6 @@ export const Text = styled.p`
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -0.02em;
-  margin-bottom: 10px;
 
   ${mediaQueries('desktop')`
   font-size: 18px;

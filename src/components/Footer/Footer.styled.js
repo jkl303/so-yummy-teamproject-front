@@ -12,20 +12,24 @@ export const FooterComponent = styled.footer`
   background: ${({ theme: { colors } }) => colors.bgFooter};
 
   ${mediaQueries('tablet')`
-     min-width: 768px;
-     padding-top: 50px;`};
+     min-width: 768px;`};
 
   ${mediaQueries('desktop')`
      min-width: 1440px;
-     padding-top: 64px;`};
+     `};
 `;
 
 export const FooterMainBlock = styled.div`
+  padding-top: 28px;
+
+  ${mediaQueries('tablet')`
+    padding: 50px 94px 0 32px;`};
+
   ${mediaQueries('desktop')`
+    padding: 64px 100px 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 235px;
+    justify-content: space-between;
     margin-bottom: 40.5px;`};
 `;
 
@@ -33,8 +37,7 @@ export const FooterMainBlockItem = styled.div`
   ${mediaQueries('tablet')`
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 173px;
+    justify-content: space-between;
     margin-bottom: 72px;`};
 
   ${mediaQueries('desktop')`
