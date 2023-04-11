@@ -17,15 +17,18 @@ import User from 'images/svg/user.svg';
 const UserInfo = () => {
   const [userOpenModal, setUserOpenModal] = useState(false);
   const [userEditModal, setUserEditModal] = useState(false);
+  const [isLogOutOpenModal, setIsLogOutOpenModal] = useState(false);
 
   const toggleOpenModal = () => {
     setUserOpenModal(!userOpenModal);
   };
+
   const editProfile = () => {
     setUserEditModal(!userEditModal);
   };
 
-  const logOut = () => {
+  const logOutOpenModal = () => {
+    setIsLogOutOpenModal(true);
     toggleOpenModal();
   };
 
@@ -50,7 +53,7 @@ const UserInfo = () => {
             <FiEdit2 />
           </Button>
 
-          <ButtonLogout onClick={() => logOut()}>
+          <ButtonLogout onClick={() => logOutOpenModal()}>
             Log out
             <ArrowIcon />
           </ButtonLogout>
