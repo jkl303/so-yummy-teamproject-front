@@ -44,7 +44,7 @@ export default function RegisterForm() {
       const hasLowercase = /[a-z]/.test(password);
       const hasUppercase = /[A-Z]/.test(password);
       const hasNumber = /[0-9]/.test(password);
-      const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+      // const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
       const isValidLength = password.length >= 6;
 
       if (!isValidLength) {
@@ -54,7 +54,7 @@ export default function RegisterForm() {
         hasLowercase &&
         hasUppercase &&
         hasNumber &&
-        hasSpecialChar &&
+        // hasSpecialChar &&
         isValidLength
       ) {
         return setPasswordValidationState('strong');
