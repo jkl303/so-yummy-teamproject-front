@@ -17,7 +17,6 @@ const token = {
 export const signUp = createAsyncThunk(
   'auth/signup',
   async (credentials, thunkAPI) => {
-    console.log(process.env.REACT_APP_API_URL);
     try {
       const { data } = await instance.post('/auth/register', credentials);
       token.set(data.token);
@@ -31,7 +30,6 @@ export const signUp = createAsyncThunk(
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
-    console.log(process.env.REACT_APP_API_URL);
     try {
       const { data } = await instance.post('/auth/login', credentials);
       token.set(data.token);

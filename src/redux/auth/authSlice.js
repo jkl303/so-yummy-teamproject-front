@@ -1,6 +1,6 @@
-import { signUp, logIn, logOut, refreshUser } from "./authOperations";
+import { signUp, logIn, logOut, refreshUser } from './authOperations';
 
-const { createSlice } = require("@reduxjs/toolkit");
+const { createSlice } = require('@reduxjs/toolkit');
 
 const authInitialState = {
   user: { name: null, email: null },

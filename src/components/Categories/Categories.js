@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
@@ -32,7 +31,6 @@ export const Categories = ({ title }) => {
   useEffect(() => {
     async function getCategories() {
       try {
-
         setIsLoading(true);
 
         const categories = await fetchCategories();
@@ -41,7 +39,6 @@ export const Categories = ({ title }) => {
           setCategories(categories.map(category => category));
         }
       } catch (error) {
-
         toast('Something went wrong...');
       } finally {
         setIsLoading(false);
@@ -55,20 +52,19 @@ export const Categories = ({ title }) => {
     navigate(`/categories/${e.target.value}`);
     setValue(newCategory);
   };
+
   const setUnderLine = () => {
     if (isActive) {
       return 'rgba(139, 170, 54, 1);';
     }
   };
+
   const btnFontColorChange = () => {
     if (isActive) {
       return 'rgba(139, 170, 54, 1);';
     }
     return 'rgba(189, 189, 189, 1);';
   };
-
-    getCategories();
-  }, []);
 
   const settings = {
     className: 'slider variable-width',
@@ -78,7 +74,7 @@ export const Categories = ({ title }) => {
     slidesToScroll: 5,
 
     initialSlide: 0,
-    // autoplay: true,
+    autoplay: true,
     speed: 500,
     autoplaySpeed: 3000,
     cssEase: 'linear',
@@ -113,6 +109,5 @@ export const Categories = ({ title }) => {
 
       <RecipesbyCategoryName />
     </>
-
   );
 };
