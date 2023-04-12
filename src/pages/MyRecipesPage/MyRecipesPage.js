@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import MainPageTitle from '../../components/MainPageTitle/MainPageTitle';
+// import MainPageTitle from '../../components/MainPageTitle/MainPageTitle';
 import MyRecipesList from '../../components/MyRecipeList/MyRecipeList';
 import { instance } from 'redux/auth/authOperations';
 import Loader from 'components/Loader/Loader';
@@ -41,7 +41,7 @@ const MyRecipesPage = () => {
 
   return (
     <>
-      <MainPageTitle text={'My recipes'}></MainPageTitle>
+      {/* <MainPageTitle text={'My recipes'}></MainPageTitle> */}
       {isLoading ? (
         <Loader />
       ) : (
