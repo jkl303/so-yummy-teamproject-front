@@ -4,7 +4,6 @@ import Loader from 'components/Loader/Loader';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-
 export default function CategoriesPage() {
   return (
     <CategoryPageWrap>
@@ -15,3 +14,4 @@ export default function CategoriesPage() {
       </Suspense>
     </CategoryPageWrap>
   );
+}
