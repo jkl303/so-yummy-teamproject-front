@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import { Logo, Title, Text, WelcomWrapper} from './WelcomePage.styled';
 import { Logo, Title, Text, WelcomWrapper } from './WelcomePage.styled';
 import { HeroAuthBtn } from 'components/Buttons/HeroAuthBtn/HeroAuthBtn';
 import HiddenSectionTitle from 'components/HiddenSectionTitle/HiddenSectionTitle';
