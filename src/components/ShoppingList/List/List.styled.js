@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { mediaQueries } from 'style/mediaQueries';
 
 export const ListBody = styled.ul`
@@ -12,16 +12,16 @@ export const ListBody = styled.ul`
   margin-right: 8px;
   margin-top: 0;
   padding: 0px;
+
   ${mediaQueries('tablet')`
  margin-left: 0px;
     margin-right: 0px;
     gap: 44px;
-  `}
-  ${mediaQueries('desktop')`
+  `} ${mediaQueries('desktop')`
  margin-left: 40px;
     margin-right: 40px;
     gap: 44px;
-  `}
+  `};
 `;
 
 export const ListItemStyled = styled.li`
@@ -50,7 +50,7 @@ export const StyledName = styled.span`
   font-weight: 500;
   font-size: 10px;
   line-height: 12px;
-  color: #3e4462;
+  color: ${({ theme: { colors } }) => colors.subtitle};
   ${mediaQueries('tablet')`
 margin-left: 16px;
 font-size: 16px;
@@ -78,7 +78,7 @@ export const NumberPadding = styled.div`
   text-align: center;
   height: 23px;
   width: 37px;
-  background-color: var(--accent);
+  background-color: ${({ theme: { colors } }) => colors.accent};
   margin-left: auto;
   margin-right: auto;
   border-radius: 4px;
