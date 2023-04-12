@@ -1,34 +1,21 @@
-import MyRecipesList from 'components/MyRecipeList/MyRecipeList';
+import { useState } from 'react';
 import { PaginatorWrapper } from 'components/Paginator/Paginator.styled';
-import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
-const Paginator = ({ data }) => {
-  const [recipes, setRecipes] = useState(data);
+const Paginator = ({ data, itemsPerPage, children }) => {
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 4;
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = recipes.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(recipes.length / itemsPerPage);
-
-  const onDeleteRecipe = id => {
-    const newData = recipes.filter(recipe => recipe._id !== id);
-    setRecipes(newData);
-    setItemOffset(0);
-  };
+  const currentItems = data.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(data.length / itemsPerPage);
 
   const handlePageClick = event => {
-    const newOffset = (event.selected * itemsPerPage) % recipes.length;
-    console.log(newOffset);
+    const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
   };
-  console.log(currentItems);
+
   return (
     <>
-      <MyRecipesList
-        currentItems={currentItems}
-        onChangeProps={onDeleteRecipe}
-      />
+      {children(currentItems)}
       <PaginatorWrapper>
         <ReactPaginate
           breakLabel="..."

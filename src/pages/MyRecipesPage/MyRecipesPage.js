@@ -23,10 +23,37 @@ const MyRecipesPage = () => {
     fetchData();
   }, []);
 
+  const handleDelete = id => {
+    async function deleteData(data) {
+      try {
+        await instance.delete('/users/ownRecipes', {
+          data: {
+            _id: data,
+          },
+        });
+        const newData = recipes.filter(recipe => recipe._id !== id);
+        setRecipes(newData);
+      } catch (er) {}
+    }
+
+    deleteData(id);
+  };
+
   return (
     <>
       <MainPageTitle text={'My recipes'}></MainPageTitle>
-      {isLoading ? <Loader /> : <Paginator data={recipes} />}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Paginator data={recipes} itemsPerPage={4}>
+          {currentItems => (
+            <MyRecipesList
+              currentItems={currentItems}
+              onDeleteRecipe={handleDelete}
+            />
+          )}
+        </Paginator>
+      )}
     </>
   );
 };

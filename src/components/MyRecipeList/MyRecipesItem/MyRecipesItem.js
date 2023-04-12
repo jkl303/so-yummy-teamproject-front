@@ -13,7 +13,7 @@ import { SeeRecipeBtn } from 'components/Buttons/SeeRecipeBtn/SeeRecipeBtn';
 import { useLocation } from 'react-router-dom';
 
 const MyRecipesItem = ({ recipe, handleDelete }) => {
-  const { title, description, time, thumb, category, _id } = recipe;
+  const { title, description, time, thumb, _id } = recipe;
   const location = useLocation();
 
   return (
