@@ -31,7 +31,6 @@ export const Categories = ({ title }) => {
       try {
         setIsLoading(true);
         const categories = await fetchCategories();
-
         if (categories.length > 0) {
           setCategories(categories.map(category => category));
         }
@@ -60,8 +59,10 @@ export const Categories = ({ title }) => {
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 5,
+
     initialSlide: 0,
     // autoplay: true,
+
     speed: 500,
     autoplaySpeed: 3000,
     cssEase: 'linear',
@@ -81,6 +82,7 @@ export const Categories = ({ title }) => {
                   <CategoryBtn
                     type="button"
                     onClick={onClick}
+
                     clicked={
                       category === categoryName
                         ? 'rgba(139, 170, 54, 1);'
@@ -94,6 +96,7 @@ export const Categories = ({ title }) => {
                     ) : (
                       <></>
                     )}
+
                   </CategoryBtn>
                 </Tab>
               ))}

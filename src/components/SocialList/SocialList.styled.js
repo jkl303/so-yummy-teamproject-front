@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { BsFacebook, BsYoutube, BsTwitter, BsInstagram } from 'react-icons/bs';
+import { mediaQueries } from 'style/mediaQueries';
 
 export const List = styled.ul`
   display: flex;
@@ -8,23 +9,22 @@ export const List = styled.ul`
   align-items: center;
   gap: 13px;
   padding: 0;
-  margin-top: 0;
-  margin-bottom: 19.5px;
-  @media screen and (min-width: 768px) {
+  margin-bottom: 18px;
+
+  ${mediaQueries('tablet')`
     gap: 18px;
-    margin-bottom: 23.5px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 49.5px;
-  }
+    margin-bottom: 24px;`};
+
+  ${mediaQueries('desktop')`
+    margin-bottom: 50px;`};
 `;
 
 export const Link = styled(NavLink)`
   cursor: pointer;
-  color: #8baa36;
+  color: var(--bg);
   &:focus,
   &:hover {
-    color: #fafafa;
+    color: ${({ theme: { colors } }) => colors.btnFoot};
   }
 `;
 
@@ -46,8 +46,8 @@ export const TwitterIcon = styled(BsTwitter)`
 export const InstagramIcon = styled(BsInstagram)`
   width: 17px;
   height: 17px;
-  @media screen and (min-width: 768px) {
-    width: 20px;
-    height: 20px;
-  }
+
+  ${mediaQueries('tablet')`
+  width: 20px;
+  height: 20px;`};
 `;

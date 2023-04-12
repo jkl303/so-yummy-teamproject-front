@@ -1,37 +1,39 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { mediaQueries } from 'style/mediaQueries';
 
 export const CategoryTitle = styled.h2`
   font-size: 28px;
   line-height: 28px;
+  font-weight: 600;
   letter-spacing: -0.02em;
   margin-bottom: 32px;
+  color: ${({ theme: { colors } }) => colors.title};
 
-  @media screen and (min-width: 768px) {
-    font-size: 44px;
+  ${mediaQueries('tablet')` 
+  font-size: 44px;
     line-height: 44px;
-    margin-bottom: 40px;
-  }
+    margin-bottom: 40px;`}
 
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 50px;
-  }
+  ${mediaQueries('desktop')`margin-bottom: 50px;`}
 `;
 
 export const List = styled.ul`
-  @media screen and (min-width: 768px) {
+  ${mediaQueries('tablet')` 
     display: flex;
-    gap: 32px;
-  }
+    gap: 32px;`}
 
-  @media screen and (min-width: 1440px) {
-    gap: 14px;
-  } ;
+  ${mediaQueries('desktop')` gap: 14px;`}
 `;
 
 export const ButtonWrap = styled.div`
   display: flex;
   flex-direction: row-reverse;
+  margin-top: 24px;
+
+  ${mediaQueries('tablet')`margin-top: 40px;`}
+
+  ${mediaQueries('desktop')`margin-top: 50px;`}
 `;
 
 export const LinkStyled = styled(Link)`
@@ -42,16 +44,13 @@ export const LinkStyled = styled(Link)`
   width: 94px;
   height: 38px;
   border: transparent;
-  background: #8aa936;
+  background-color: var(--accent);
   border-radius: 6px;
-  color: #fafafa;
-  margin-top: 24px;
+  color: var(--txt-dark);
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
 
-  @media screen and (min-width: 768px) {
-    margin-top: 40px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    margin-top: 50px;
+  &:hover,
+  &:focus {
+    background-color: ${({ theme: { colors } }) => colors.btn};
   }
 `;

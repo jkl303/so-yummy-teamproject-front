@@ -6,7 +6,9 @@ export const CategoriesWrap = styled.div`
     padding-left: 32px;
   }
   @media screen and (min-width: 1440px) {
+
     padding-left: 0px;
+
   }
 `;
 
@@ -29,7 +31,6 @@ export const TabWrap = styled.div`
 
 export const CategoriesTitle = styled.h1`
   margin-bottom: 50px;
-
   padding: 0px;
   font-weight: 600;
   font-size: 28px;
@@ -86,3 +87,4 @@ export const UnderLine = styled.span`
   min-height: 2px;
   background-color: ${props => props.underlined};
 `;
+
