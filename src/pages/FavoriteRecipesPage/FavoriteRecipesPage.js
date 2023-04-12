@@ -22,7 +22,7 @@ export default function FavoriteRecipesPage() {
   const [deleteId, setDeleteId] = useState('');
 
   const token = useSelector(state => state.auth.token);
-
+  console.log(token);
   const favoriteInstance = axios.create({
     baseURL: 'https://soyummy-qk5m.onrender.com/api',
   });
@@ -33,10 +33,10 @@ export default function FavoriteRecipesPage() {
     return data;
   };
 
-  const deleteFavoriteRecipe = async id => {
-    const data = await favoriteInstance.delete(`/recipes/favorite/${id}`);
-    return data;
-  };
+  // const deleteFavoriteRecipe = async id => {
+  //   const data = await favoriteInstance.delete(`/recipes/favorite/${id}`);
+  //   return data;
+  // };
 
   useEffect(() => {
     const getFavorite = async () => {
@@ -48,32 +48,36 @@ export default function FavoriteRecipesPage() {
       }
     };
     getFavorite();
-  }, [favoriteRecipes]);
+  }, []);
 
-  // const deleteFavoriteRecipe = async id => {
-  //   await favoriteInstance.delete(`/recipes/favorite/${id}`);
-  //   setFavoriteRecipes(
-  //     favoriteRecipes.filter(post => {
-  //       return post._id !== id;
-  //     })
-  //   );
-  // };
-  useEffect(() => {
-    if (deleteId === '') {
-      return;
-    }
-    const deleteFavorite = async () => {
+  const deleteFavoriteRecipe = id => {
+    async function deleteRecipe() {
       try {
-        await deleteFavoriteRecipe(deleteId);
-        setFavoriteRecipes(
-          favoriteRecipes.filter(item => item._id !== deleteId)
-        );
-      } catch ({ response }) {
-        console.log(response.data.message);
+        await favoriteInstance.delete(`/recipes/favorite/${id}`);
+        const newData = favoriteRecipes.filter(recipe => recipe._id !== id);
+        setFavoriteRecipes(newData);
+      } catch (error) {
+        console.log(error.message);
       }
-    };
-    deleteFavorite();
-  }, [deleteId]);
+    }
+    deleteRecipe();
+  };
+  // useEffect(() => {
+  //   if (deleteId === '') {
+  //     return;
+  //   }
+  //   const deleteFavorite = async () => {
+  //     try {
+  //       await deleteFavoriteRecipe(deleteId);
+  //       setFavoriteRecipes(
+  //         favoriteRecipes.filter(item => item._id !== deleteId)
+  //       );
+  //     } catch ({ response }) {
+  //       console.log(response.data.message);
+  //     }
+  //   };
+  //   deleteFavorite();
+  // }, [deleteId]);
 
   return (
     <>
@@ -94,7 +98,7 @@ export default function FavoriteRecipesPage() {
                   key={item._id}
                   item={item}
                   setDeleteId={setDeleteId}
-                  // handleDelete={deleteFavoriteRecipe}
+                  handleDelete={deleteFavoriteRecipe}
                 />
               ))}
             </CardWrapper>

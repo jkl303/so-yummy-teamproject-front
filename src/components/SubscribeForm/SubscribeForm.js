@@ -19,7 +19,7 @@ export const SubscribeForm = () => {
   const { width } = useWindowDimensions();
 
   const [email, setEmail] = useState('');
-  console.log([email, setEmail]);
+  // console.log([email, setEmail]);
 
   const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
 
@@ -28,8 +28,8 @@ export const SubscribeForm = () => {
     if (!emailRegexp.test(email)) {
       return toast('email is invalid');
     }
-  }
-  
+  };
+
   return (
     <SubscribeFormWrap>
       {width > 1439 && (

@@ -19,6 +19,7 @@ import seeRecipe from '../image/see-recipe.svg';
 export default function CardFavorite({ item, setDeleteId, handleDelete }) {
   const { title, time, instructions, thumb, _id } = item;
   const location = useLocation();
+  console.log(_id);
 
   return (
     <Card>
@@ -40,7 +41,7 @@ export default function CardFavorite({ item, setDeleteId, handleDelete }) {
               <img src={seeRecipe} alt="see-recipe-btn" />
             </Link>
           </WrapperImgBtnRecipe>
-          <WrapperImgTrashLogo onClick={() => setDeleteId(_id)}>
+          <WrapperImgTrashLogo onClick={() => handleDelete(_id)}>
             <TrashLogoSvg />
           </WrapperImgTrashLogo>
         </WrapperTimeBtn>
