@@ -6,6 +6,7 @@ export const darkTheme = {
     bgFooter: 'var(--accent)',
     bgModal: 'var(--bg-sec-dark)',
     input: 'var(--bg-dark)',
+    searchDropdown: 'var(--accent)',
     select: 'var(--accent)',
     ingr: 'var(--bg-sec-dark)',
     form: 'var(--bg-sec-dark)', //login, signup
@@ -25,6 +26,10 @@ export const darkTheme = {
     txtRecipeInner: 'var(--txt-dark)',
     txtBtn: 'var(--txt-dark)', //btn white txt+footer
     txtInputInactive: 'var(--txt-content-dark)',
+    /////////////////////////approved by Daria
+    shopBorder: 'var(--bdr-dark)',
+    shopItemBgr: 'var(--shop-item-bgr-dark)',
+    shopCloseIc: 'var(--shop-close-dark)',
     txtCopyright: 'var(--txt-copyright-dark)',
   },
 };

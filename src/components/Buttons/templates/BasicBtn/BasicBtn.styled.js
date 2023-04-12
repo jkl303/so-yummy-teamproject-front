@@ -13,6 +13,8 @@ export const BasicBtn = styled.button`
   font-size: 14px;
   line-height: 1.1;
 
+  cursor: pointer;
+
   color: ${({ origin, theme: { colors } }) =>
     origin === 'secondary' ? colors.txt : colors.txtBtn};
   background-color: ${({ origin, theme: { colors } }) =>

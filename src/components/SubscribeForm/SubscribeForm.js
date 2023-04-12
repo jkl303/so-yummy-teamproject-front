@@ -70,8 +70,11 @@ export const SubscribeForm = () => {
             type="email"
             name="email"
             placeholder="Enter your email address"
-            //value={user.email}
+            autoFocus
+            defaultValue={user.email}
+            value={email}
             onChange={event => setEmail(event.target.value)}
+            pattern="^[A-Za-z0-9_.-]+@[A-Za-z0-9_.-]+\.[A-Za-z]{2,4}$"
           />
           <EmailIcon />
         </Field>

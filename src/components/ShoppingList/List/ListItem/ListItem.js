@@ -37,11 +37,11 @@ export const ListItem = ({ data }) => {
       </PicAndNameWrapper>
       <NumberWrapper>
         <NumberPadding>
-          <StyledSpan color={'white'}>{number}</StyledSpan>
+          <StyledSpan style={{ color: 'white' }}>{number}</StyledSpan>
         </NumberPadding>
       </NumberWrapper>
       <RemoveWrapper>
-        <StyledSpan color={'black'}>
+        <StyledSpan>
           <TfiClose onClick={() => onDeleteClick(_id)} />
         </StyledSpan>
       </RemoveWrapper>

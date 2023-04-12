@@ -9,7 +9,6 @@ export const CategoriesWrap = styled.div`
 
     padding-left: 0px;
 
-
   }
 `;
 
@@ -21,9 +20,6 @@ export const TabList = styled.ul`
 
 export const TabWrap = styled.div`
   width: 100%;
-
-  height: 56px;
-  margin-top: 50px;
   padding-left: 19px;
   border-bottom: 1px solid #e0e0e0;
 
@@ -35,7 +31,6 @@ export const TabWrap = styled.div`
 
 export const CategoriesTitle = styled.h1`
   margin-bottom: 50px;
-  margin-top: 50px;
   padding: 0px;
   font-weight: 600;
   font-size: 28px;
@@ -43,15 +38,12 @@ export const CategoriesTitle = styled.h1`
   letter-spacing: -0.02em;
   @media screen and (min-width: 768px) {
     font-size: 32px;
-    margin-top: 72px;
   }
   @media screen and (min-width: 1440px) {
     font-size: 48px;
     margin-bottom: 100px;
-    margin-top: 100px;
   }
 `;
-
 
 export const Tab = styled.li`
   height: 56px;
@@ -95,5 +87,4 @@ export const UnderLine = styled.span`
   min-height: 2px;
   background-color: ${props => props.underlined};
 `;
-
 

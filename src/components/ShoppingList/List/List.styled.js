@@ -26,7 +26,7 @@ export const ListBody = styled.ul`
 
 export const ListItemStyled = styled.li`
   display: flex;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid ${({ theme: { colors } }) => colors.shopBorder};
   align-items: flex-start;
   height: 70px;
   ${mediaQueries('tablet')`
@@ -103,7 +103,7 @@ export const StyledImgWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: #ebf3d4;
+  background-color: ${({ theme: { colors } }) => colors.shopItemBgr};
   border-radius: 6px;
   width: 60px;
   height: 60px;
