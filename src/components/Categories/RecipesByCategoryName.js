@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { fetchRecipesByCategory } from '../../services/api/httpRequests';
 import { RecipeCard } from '../../components/Main/RecipeCard/RecipeCard';
+
+import toast from 'react-hot-toast';
+
 import Loader from '../Loader/Loader';
 
 import { List } from './RecipesByCategoryName.styled.js';
@@ -20,7 +23,9 @@ export const RecipesbyCategoryName = () => {
 
         setRecipes(recipes);
       } catch (error) {
-        setError({ error });
+
+        setError(toast('Something went wrong...'));
+
       } finally {
         setIsLoading(false);
       }
