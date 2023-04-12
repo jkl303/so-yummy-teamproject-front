@@ -4,7 +4,7 @@ export const darkTheme = {
     bg: 'var(--bg-dark)',
     bgSec: 'var(--bg-sec-dark)', //lists, cards etc
     bgFooter: 'var(--accent)',
-    modal: 'var(--bg-sec-dark)',
+    bgModal: 'var(--bg-sec-dark)',
     input: 'var(--bg-dark)',
     select: 'var(--accent)',
     ingr: 'var(--bg-sec-dark)',

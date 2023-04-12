@@ -22,9 +22,11 @@ body {
   height: 100%;
  
   margin: 0;
-   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+   font-family: 'Poppins', sans-serif;
+   font-weight: 400;
+    letter-spacing: -0.02em;
+    color: ${({ theme: { colors } }) => colors.txt};
+    background-color: ${({ theme: { colors } }) => colors.bg};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -40,7 +42,7 @@ ul, ol {
 img {
     display: block;
     max-width: 100%;
-    height: auto;    
+    height: auto;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -51,7 +53,7 @@ h1, h2, h3, h4, h5, h6, p {
 a {
   text-decoration: none;
   color: currentColor;
-}  
+}
 `;
 
 //пример использования внутри styled-components
