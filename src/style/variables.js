@@ -9,7 +9,7 @@ export const variables = css`
     --bg-btn: #22252a;
     --bg-btn-hover-dark: #8baa36cc;
     --bg-dark: #1e1f28;
-    --bg-input: #d9d9d9;
+    --bg-input: #f5f5f5;
     --bg-sec: #ffffff;
     --bg-sec-dark: #2a2c36;
 
@@ -29,5 +29,7 @@ export const variables = css`
     --shop-item-bgr-dark: #2a2c36;
     --shop-close: #333333;
     --shop-close-dark: #fafafa;
+    --txt-copyright: #22252a;
+    --txt-copyright-dark: #fafafa;
   }
 `;

@@ -7,8 +7,8 @@ import spinachTab from 'images/tablet/spinach-bottom-right768.png';
 import spinachDesk from 'images/desktop/spinach-bottom-right1440.png';
 
 export const FooterComponent = styled.footer`
-  min-width: 375px;
   margin: 0 auto;
+  min-width: 375px;
   background: ${({ theme: { colors } }) => colors.bgFooter};
 
   ${mediaQueries('tablet')`
@@ -16,6 +16,7 @@ export const FooterComponent = styled.footer`
 
   ${mediaQueries('desktop')`
      min-width: 1440px;
+     
      `};
 `;
 
@@ -23,12 +24,15 @@ export const FooterMainBlock = styled.div`
   padding-top: 28px;
 
   ${mediaQueries('tablet')`
-    padding: 50px 94px 0 32px;`};
+ padding-top: 50px;
+   `};
 
   ${mediaQueries('desktop')`
-    padding: 64px 100px 0;
+    padding-top: 64px;
+    padding-left: 100px;
+    padding-right: 100px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 40.5px;`};
 `;
@@ -38,10 +42,14 @@ export const FooterMainBlockItem = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-left: 32px;
+    padding-right: 94px;
     margin-bottom: 72px;`};
 
   ${mediaQueries('desktop')`
-    gap: 159px;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 145px;
     margin-bottom: 0;`};
 `;
 
@@ -106,8 +114,7 @@ export const Copyright = styled.div`
   line-height: 1;
   letter-spacing: -0.01em;
   text-align: center;
-  color: ${({ theme: { colors } }) => colors.txt};
-
+color: ${({ theme: { colors } }) => colors.txtCopyright};
   background: url(${spinachMob}) 100% no-repeat;
   background-color: ${({ theme: { colors } }) => colors.bg};
   background-position-y: bottom;
@@ -137,7 +144,14 @@ export const Copyright = styled.div`
       margin-right: 40px;
   };
 
-  span {
+     span {
     opacity: 0.5;
   };
+  
+
 `;
+
+// color: ${ ({ theme: { colors } }) => colors.txt };
+//    span {
+//     opacity: 0.5;
+//   };

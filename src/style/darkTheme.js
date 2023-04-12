@@ -6,6 +6,7 @@ export const darkTheme = {
     bgFooter: 'var(--accent)',
     bgModal: 'var(--bg-sec-dark)',
     input: 'var(--bg-dark)',
+    searchDropdown: 'var(--accent)',
     select: 'var(--accent)',
     ingr: 'var(--bg-sec-dark)',
     form: 'var(--bg-sec-dark)', //login, signup
@@ -29,5 +30,6 @@ export const darkTheme = {
     shopBorder: 'var(--bdr-dark)',
     shopItemBgr: 'var(--shop-item-bgr-dark)',
     shopCloseIc: 'var(--shop-close-dark)',
+    txtCopyright: 'var(--txt-copyright-dark)',
   },
 };
