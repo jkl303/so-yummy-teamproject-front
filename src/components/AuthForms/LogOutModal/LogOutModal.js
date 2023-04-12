@@ -7,6 +7,7 @@ import {
   Backdrop,
   Button,
   CloseButton,
+  CloseButtonIcon,
   ModalWrapper,
   Text,
 } from './LogOutModal.styled';
@@ -33,7 +34,7 @@ export default function LogOutModal({ handleClose }) {
     <Backdrop>
       <ModalWrapper>
         <CloseButton type="button" onClick={handleClose}>
-          <RxCross2 size={22} />
+          <CloseButtonIcon size={22} />
         </CloseButton>
         <Text>Are you sure you want to log out?</Text>
         <div>

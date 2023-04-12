@@ -13,6 +13,7 @@ import {
 
 import { FiEdit2 } from 'react-icons/fi';
 import User from 'images/svg/user.svg';
+import LogOutModal from 'components/AuthForms/LogOutModal/LogOutModal';
 
 const UserInfo = () => {
   const [userOpenModal, setUserOpenModal] = useState(false);
@@ -30,6 +31,10 @@ const UserInfo = () => {
   const logOutOpenModal = () => {
     setIsLogOutOpenModal(true);
     toggleOpenModal();
+  };
+
+  const logOutCloseModal = () => {
+    setIsLogOutOpenModal(false);
   };
 
   const name = 'User name';
@@ -60,6 +65,7 @@ const UserInfo = () => {
         </Wrap>
       )}
       {userEditModal && <UserProfile toggleMenu={editProfile} name={name} />}
+      {isLogOutOpenModal && <LogOutModal handleClose={logOutCloseModal} />}
     </UserWrap>
   );
 };
