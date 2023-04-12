@@ -19,10 +19,9 @@ import { NotSearch } from './NotSearch/NotSearch';
 export default function FavoriteRecipesPage() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [error, setError] = useState('');
-  const [deleteId, setDeleteId] = useState('');
 
   const token = useSelector(state => state.auth.token);
-  console.log(token);
+
   const favoriteInstance = axios.create({
     baseURL: 'https://soyummy-qk5m.onrender.com/api',
   });
@@ -32,11 +31,6 @@ export default function FavoriteRecipesPage() {
     const { data } = await favoriteInstance.get('/users/favorite');
     return data;
   };
-
-  // const deleteFavoriteRecipe = async id => {
-  //   const data = await favoriteInstance.delete(`/recipes/favorite/${id}`);
-  //   return data;
-  // };
 
   useEffect(() => {
     const getFavorite = async () => {
@@ -62,22 +56,6 @@ export default function FavoriteRecipesPage() {
     }
     deleteRecipe();
   };
-  // useEffect(() => {
-  //   if (deleteId === '') {
-  //     return;
-  //   }
-  //   const deleteFavorite = async () => {
-  //     try {
-  //       await deleteFavoriteRecipe(deleteId);
-  //       setFavoriteRecipes(
-  //         favoriteRecipes.filter(item => item._id !== deleteId)
-  //       );
-  //     } catch ({ response }) {
-  //       console.log(response.data.message);
-  //     }
-  //   };
-  //   deleteFavorite();
-  // }, [deleteId]);
 
   return (
     <>
@@ -97,7 +75,6 @@ export default function FavoriteRecipesPage() {
                 <CardFavorite
                   key={item._id}
                   item={item}
-                  setDeleteId={setDeleteId}
                   handleDelete={deleteFavoriteRecipe}
                 />
               ))}

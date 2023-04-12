@@ -16,10 +16,9 @@ import {
 } from './CardFavorite.styled.js';
 import seeRecipe from '../image/see-recipe.svg';
 
-export default function CardFavorite({ item, setDeleteId, handleDelete }) {
+export default function CardFavorite({ item, handleDelete }) {
   const { title, time, instructions, thumb, _id } = item;
   const location = useLocation();
-  console.log(_id);
 
   return (
     <Card>
