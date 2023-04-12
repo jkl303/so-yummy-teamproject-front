@@ -46,11 +46,13 @@ export default function App() {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const token = queryParams.get('token');
+    const id = queryParams.get('id');
     const name = queryParams.get('name');
     const email = queryParams.get('email');
+    const avatarURL = queryParams.get('avatarURL');
 
     if (token) {
-      dispatch(setUser({ token, name, email }));
+      dispatch(setUser({ token, id, name, email, avatarURL }));
     }
   }, [dispatch, location]);
 

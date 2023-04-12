@@ -3,11 +3,18 @@ import { RxEnvelopeClosed } from 'react-icons/rx';
 import { mediaQueries } from 'style/mediaQueries';
 
 export const SubscribeFormWrap = styled.div`
+ margin: 0 auto;
+  max-width: 204px;
+
+  ${mediaQueries('tablet')`
+   max-width: 442px;
+    `};
+
   ${mediaQueries('desktop')`
-    display: flex;
-    width: 339px;
+    max-width: 339px;
     flex-direction: column;
-    justify-content: flex-start;`};
+    justify-content: flex-start;
+     margin: 0;`};
 `;
 
 export const TextBeforeSubscribe = styled.div`
@@ -47,7 +54,8 @@ export const Form = styled.form.attrs({ autocomplete: 'off' })`
     flex-direction: row;
     justify-content: center;
     gap: 12px;
-    margin-bottom: 38px;`};
+    margin-bottom: 38px;
+    `};
 
   ${mediaQueries('desktop')`
     flex-direction: column;
@@ -70,8 +78,9 @@ export const Input = styled.input`
   font-size: 10px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  background-color: ${({ theme: { colors } }) => colors.bgFooter};
   color: var(--txt-dark);
+  background-color: ${({ theme: { colors } }) => colors.bgFooter};
+
   outline: none;
   &:focus,
   &:hover {
