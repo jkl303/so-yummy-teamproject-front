@@ -1,7 +1,6 @@
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
-import { RxCross2 } from 'react-icons/rx';
 import { logOut } from 'redux/auth/authOperations';
 import {
   Backdrop,
