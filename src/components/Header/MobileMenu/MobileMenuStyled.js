@@ -73,4 +73,7 @@ export const IconClose = styled(CgClose)`
 export const SwitchWrap = styled.div`
   position: absolute;
   bottom: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
