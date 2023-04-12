@@ -11,8 +11,8 @@ import {
   TabWrap,
   CategoriesTitle,
   CategoriesWrap,
-  Tab,
-  CategoryBtn,
+  // Tab,
+  // CategoryBtn,
 } from './Categories.styled';
 
 axios.defaults.baseURL = 'https://soyummy-qk5m.onrender.com/api';

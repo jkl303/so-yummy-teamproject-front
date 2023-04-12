@@ -25,5 +25,6 @@ export const darkTheme = {
     txtRecipeInner: 'var(--txt-dark)',
     txtBtn: 'var(--txt-dark)', //btn white txt+footer
     txtInputInactive: 'var(--txt-content-dark)',
+    txtCopyright: 'var(--txt-copyright-dark)',
   },
 };
