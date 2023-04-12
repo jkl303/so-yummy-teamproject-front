@@ -43,7 +43,7 @@ const MyRecipesPage = () => {
     <>
       {/* <MainPageTitle text={'My recipes'}></MainPageTitle> */}
       {isLoading ? (
-        <Loader />
+        'Is loading.......'
       ) : (
         <Paginator data={recipes} itemsPerPage={4}>
           {currentItems => (
