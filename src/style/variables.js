@@ -22,6 +22,13 @@ export const variables = css`
     --txt-sec-dark: #fafafa80;
     --txt-subtitle: #3e4462;
     --txt-title: #001833;
+    //////////////////////////////////approved by Daria
+    --bdr: #e0e0e0;
+    --bdr-dark: #fafafa4d;
+    --shop-item-bgr: #ebf3d4;
+    --shop-item-bgr-dark: #2a2c36;
+    --shop-close: #333333;
+    --shop-close-dark: #fafafa;
     --txt-copyright: #22252a;
     --txt-copyright-dark: #fafafa;
   }
