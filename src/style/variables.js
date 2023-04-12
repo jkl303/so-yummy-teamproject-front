@@ -22,5 +22,7 @@ export const variables = css`
     --txt-sec-dark: #fafafa80;
     --txt-subtitle: #3e4462;
     --txt-title: #001833;
+    --txt-copyright: #22252a;
+    --txt-copyright-dark: #fafafa;
   }
 `;
