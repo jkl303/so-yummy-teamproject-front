@@ -1,9 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const instance = axios.create({
-  baseURL: 'https://soyummy-qk5m.onrender.com/api',
-});
+import { instance } from '../../auth/authOperations';
 
 export const fetchIngredients = createAsyncThunk(
   'ingredients/fetchAll',
