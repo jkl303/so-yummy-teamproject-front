@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { ListBody } from 'components/ShoppingList/List/List.styled';
 import { ListItem } from 'components/ShoppingList/List/ListItem/ListItem';

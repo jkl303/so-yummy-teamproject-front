@@ -9,7 +9,7 @@ import {
   StyledImgWrapper,
 } from 'components/ShoppingList/List/List.styled';
 import { useDispatch } from 'react-redux';
-import { deleteShoppingListItemThunkOperation } from '../../../../redux/shoppingList/shoppingListOperations';
+import { deleteShoppingListItemThunkOperation } from 'redux/shoppingList/shoppingListOperations';
 import { StyledSpan } from './ListItem.styled';
 
 import { TfiClose } from 'react-icons/tfi';

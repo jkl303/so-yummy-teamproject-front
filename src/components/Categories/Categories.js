@@ -11,15 +11,7 @@ import {
   TabWrap,
   CategoriesTitle,
   CategoriesWrap,
-  Tab,
-  CategoryBtn,
 } from './Categories.styled';
-
-axios.defaults.baseURL = 'https://soyummy-qk5m.onrender.com/api';
-// const instance = axios.create({
-//   baseURL: 'https://soyummy-qk5m.onrender.com/api',
-//   // baseURL: process.env.REACT_APP_API_URL,
-// });
 
 export const fetchCategories = async () => {
   try {
