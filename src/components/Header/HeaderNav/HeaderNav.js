@@ -6,7 +6,7 @@ const HeaderNavigation = () => {
 
   return (
     <Navigation>
-      <Link to="/categories/:categoryName">Categories</Link>
+      <Link to="/categories/Beef">Categories</Link>
       <Link to="/add">Add recipes</Link>
       <Link to="/my">My recipes</Link>
       <Link to="/favorite">Favorites</Link>
