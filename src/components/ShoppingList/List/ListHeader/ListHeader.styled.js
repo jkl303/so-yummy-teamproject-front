@@ -9,7 +9,7 @@ export const StyledHeaderList = styled.ul`
   margin: 0;
   padding: 10px 10px;
   margin-bottom: 32px;
-  background-color: #8baa36;
+  background-color: ${({ theme: { colors } }) => colors.accent};
   border-radius: 8px;
   ${mediaQueries('tablet')`
   padding: 20px 20px;
