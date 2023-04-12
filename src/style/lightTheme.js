@@ -6,6 +6,7 @@ export const lightTheme = {
     bgFooter: 'var(--bg-btn)',
     bgModal: 'var(--bg)', //#fafafa => #2a2c36
     input: 'var(--bg-input)', //#d9d9d9 => #1e1f28
+    searchDropdown: 'var(--bg)',
     select: 'var(--bg)', //dropdown #fafafa => accent
     ingr: 'var(--bg-accent)', //light green => #2a2c36
     form: 'var(--bg-sec-dark)', //login, signup, same in dark scheme

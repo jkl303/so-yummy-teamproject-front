@@ -37,11 +37,12 @@ export const SelectHead = styled.div`
   height: 34px;
   padding: 8px 14px;
 
-  border-radius: 6px 6px 0 0;
-  background-color: ${({ theme: { colors } }) => colors.bg};
+  border-radius: ${({ isOpen }) => (isOpen ? '6px 6px 0 0' : '6px')};
+  background-color: ${({ theme: { colors } }) => colors.input};
 
   text-transform: capitalize;
 
+  transition: border-radius 250ms ease-in-out;
   @media screen and (min-width: 768px) {
     height: 41px;
   }
@@ -74,8 +75,11 @@ export const SelectDropdown = styled.form`
 
 export const SelectOptionsList = styled.ul`
   position: relative;
+  background-color: ${({ theme: { colors } }) => colors.searchDropdown};
+  border: 1px solid #75757510;
+  border-radius: 0 0 6px 6px;
   transform: translateY(${props => (props.isOpen ? '0' : '-100%')});
-  transition: transform 0.3s ease-out;
+
   transition: transform 250ms ease-out;
 `;
 
@@ -105,7 +109,7 @@ export const SelectOptionStyled = styled.li`
   }
 
   input:checked + label {
-    font-weight: 700;
+    font-weight: 600;
   }
 
   &:last-child {

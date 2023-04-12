@@ -1,7 +1,9 @@
 import { SearchBtn } from 'components/Buttons/SearchBtn/SearchBth';
 import { SearchFormInput, SearchFormStyled } from './SearchForm.styled';
+import { useState } from 'react';
 
-export const SearchForm = ({ handleSubmit, isLoading }) => {
+export const SearchForm = ({ handleSubmit, isLoading, initialValue }) => {
+  const [isEmpty, setIsEmpty] = useState(true);
   return (
     <SearchFormStyled onSubmit={handleSubmit} isLoading={isLoading}>
       <SearchFormInput
@@ -9,9 +11,12 @@ export const SearchForm = ({ handleSubmit, isLoading }) => {
         name="search"
         autoFocus
         placeholder="Beef"
-        disabled={isLoading}
+        defaultValue={initialValue}
+        onChange={e => {
+          e.target.value.trim() && setIsEmpty(false);
+        }}
       />
-      <SearchBtn />
+      <SearchBtn disabled={isLoading || isEmpty} />
     </SearchFormStyled>
   );
 };

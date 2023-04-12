@@ -31,9 +31,7 @@ export const TitlePage = styled.h1`
   font-feature-settings: 'liga' off;
   color: ${({ theme: { colors } }) => colors.title};
   ${mediaQueries('tablet')`
-    padding-top: 72px;
     font-size: 32px;`};
   ${mediaQueries('desktop')`
-    padding-top: 104px;
     font-size: 44px;`};
 `;

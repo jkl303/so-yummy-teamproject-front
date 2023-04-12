@@ -48,7 +48,7 @@ export const SearchFilter = ({
           setIsOpen(false);
         }}
       >
-        <SelectHead>
+        <SelectHead isOpen={isOpen}>
           {filter}
           <SelectUnfoldBtn
             type="button"
