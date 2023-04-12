@@ -25,5 +25,10 @@ export const lightTheme = {
     txtRecipeInner: 'var(--txt-instructions-light)', //preparation, #000000cc (50%) => #fafafa
     txtBtn: 'var(--txt-dark)', //btn white txt+footer txt, unchanged
     txtInputInactive: 'var(--txt-sec)', //#00000080(50%) => #ffffff99(60%)
+
+    /////////////////////////approved by Daria
+    shopBorder: 'var(--bdr)',
+    shopItemBgr: 'var(--shop-item-bgr)',
+    shopCloseIc: 'var(--shop-close)',
   },
 };
