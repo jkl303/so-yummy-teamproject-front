@@ -3,6 +3,8 @@ import { FiMail, FiLock } from 'react-icons/fi';
 import { TbCircleXFilled } from 'react-icons/tb';
 
 export const FormContainer = styled.form`
+  position: absolute;
+  top: 305px;
   display: flex;
   flex-direction: column;
   max-width: 335px;
@@ -12,6 +14,22 @@ export const FormContainer = styled.form`
   background: #2a2c36;
   border-radius: 30px;
   border: none;
+
+  @media screen and (min-width: 768px) {
+    top: 443px;
+    min-width: 500px;
+    height: 419px;
+    padding: 44px 50px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    top: 155px;
+    right: 12.5%;
+  }
+
+  @media screen and (min-width: 1920px) {
+    right: 18%;
+  }
 `;
 
 export const Title = styled.h2`
@@ -22,12 +40,15 @@ export const Title = styled.h2`
   font-size: 24px;
   line-height: 1.17;
   letter-spacing: -0.02em;
+
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+    margin-bottom: 50px;
+  } ;
 `;
 
 export const InputContainer = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
   width: 100%;
   height: 45px;
   border-radius: 6px;
@@ -44,6 +65,13 @@ export const InputContainer = styled.div`
   :active {
     border-width: 2px;
   }
+
+  @media screen and (min-width: 768px) {
+    height: 59px;
+    :not(:last-of-type) {
+      margin-bottom: 24px;
+    }
+  }
 `;
 
 export const Input = styled.input`
@@ -57,13 +85,18 @@ export const Input = styled.input`
   outline-width: 0rem;
   -webkit-box-shadow: inset 0 0 0 50px #2a2c36;
   -webkit-text-fill-color: #fafafabf;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    padding: 16px 50px;
+  } ;
 `;
 
-export const ErrorMessage = styled.div`
-  color: red;
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-`;
+// export const ErrorMessage = styled.div`
+//   color: red;
+//   font-size: 0.8rem;
+//   margin-top: 0.5rem;
+// `;
 
 export const PasswordVisibilityButton = styled.button`
   position: absolute;
@@ -82,6 +115,11 @@ export const PasswordVisibilityButton = styled.button`
   :active {
     color: #7c9931;
   }
+
+  @media screen and (min-width: 768px) {
+    right: 50px;
+    font-size: 18px;
+  } ;
 `;
 
 export const Button = styled.button`
@@ -100,6 +138,10 @@ export const Button = styled.button`
   :active {
     background: #7c9931;
   }
+
+  @media screen and (min-width: 768px) {
+    height: 59px;
+  } ;
 `;
 
 export const MailIcon = styled(FiMail)`
@@ -109,6 +151,13 @@ export const MailIcon = styled(FiMail)`
   width: 18px;
   height: 18px;
   stroke: ${props => props.emailcolor};
+
+  @media screen and (min-width: 768px) {
+    top: 17.5px;
+    left: 18px;
+    width: 24px;
+    height: 24px;
+  } ;
 `;
 
 export const LockIcon = styled(FiLock)`
@@ -118,25 +167,14 @@ export const LockIcon = styled(FiLock)`
   width: 18px;
   height: 18px;
   stroke: ${props => props.passwordcolor};
+
+  @media screen and (min-width: 768px) {
+    top: 17.5px;
+    left: 18px;
+    width: 24px;
+    height: 24px;
+  } ;
 `;
-
-// export const CorrectIcon = styled(TbCircleCheckFilled)`
-//   position: absolute;
-//   top: 12px;
-//   right: 14px;
-//   width: 18px;
-//   height: 18px;
-//   color: #3cbc81;
-// `;
-
-// export const WarningIcon = styled(MdError)`
-//   position: absolute;
-//   top: 12px;
-//   right: 14px;
-//   width: 18px;
-//   height: 18px;
-//   color: #f6c23e;
-// `;
 
 export const ErrorIcon = styled(TbCircleXFilled)`
   position: absolute;
@@ -145,4 +183,11 @@ export const ErrorIcon = styled(TbCircleXFilled)`
   width: 18px;
   height: 18px;
   color: #e74a3b;
+
+  @media screen and (min-width: 768px) {
+    top: 17.5px;
+    right: 18px;
+    width: 24px;
+    height: 24px;
+  } ;
 `;

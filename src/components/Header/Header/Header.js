@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import {
   HeaderBlock,
-  Container,
+  HeaderWrapper,
   HeaderElement,
   LogoWrap,
   LogoLink,
@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <HeaderBlock>
-      <Container>
+      <HeaderWrapper>
         <HeaderElement>
           <LogoWrap>
             <LogoLink to="/main">
@@ -45,7 +45,7 @@ const Header = () => {
           )}
           {width >= 1440 && <Switch />}
         </HeaderElement>
-      </Container>
+      </HeaderWrapper>
     </HeaderBlock>
   );
 };

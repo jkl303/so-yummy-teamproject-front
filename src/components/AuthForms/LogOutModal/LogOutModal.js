@@ -13,7 +13,7 @@ import {
 
 const modalRoot = document.querySelector('#modal-root');
 
-const LogOutModal = handClose => {
+export default function LogOutModal({ handleClose }) {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
@@ -26,16 +26,13 @@ const LogOutModal = handClose => {
         );
       });
 
-    // handClose(); // handClose - пропс функція компонента "UserAvatar" в Header. UserAvatar рендерить LogOutModal, має стейт "isModalLogOutOpen" та функції ModalLogOutOpen, ModalLogOutClose. ModalLogOutClose передаєтся пропсом через ще один компонет, що містить кнопку відкриття LogOutModal в саму LogOutModal як пропс handClose
+    handleClose();
   };
 
   return createPortal(
     <Backdrop>
       <ModalWrapper>
-        <CloseButton
-          type="button"
-          //   onClick={handClose}
-        >
+        <CloseButton type="button" onClick={handleClose}>
           <RxCross2 size={22} />
         </CloseButton>
         <Text>Are you sure you want to log out?</Text>
@@ -43,10 +40,7 @@ const LogOutModal = handClose => {
           <Button type="button" onClick={handleLogOut}>
             Log out
           </Button>
-          <Button
-            type="button"
-            // onClick={handClose}
-          >
+          <Button type="button" onClick={handleClose}>
             Cancel
           </Button>
         </div>
@@ -54,6 +48,4 @@ const LogOutModal = handClose => {
     </Backdrop>,
     modalRoot
   );
-};
-
-export default LogOutModal;
+}
