@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
-
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-import { selectUser } from '../../redux/auth/authSelectors';
-
-import axios from 'axios';
+import { instance } from 'redux/auth/authOperations';
 
 import {
   SubscribeFormWrap,
@@ -22,28 +18,27 @@ import {
 export const SubscribeForm = () => {
   const { width } = useWindowDimensions();
 
-  const user = useSelector(selectUser);
-  console.log(user);
-  console.log(user.email);
+  // const user = useSelector(selectUser);
+  // console.log(user);
+  // console.log(user.email);
 
   const [email, setEmail] = useState('');
-  console.log([email, setEmail]);
+  // console.log([email, setEmail]);
 
   const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
-  
-  const subscribeUser = async body => {
-  const { data } = await axios.post('/subscribe', body);
-  return data;
-};
 
-  const handleSubmit = async value => {
-    //event.preventDefault();
+  // const subscribeUser = async body => {
+  //   const { data } = await axios.post('/subscribe', body);
+  //   return data;
+  // };
+
+  const handleSubmit = async event => {
+    event.preventDefault();
     if (!emailRegexp.test(email)) {
       return toast('email is invalid');
     }
-
-        try {
-      await subscribeUser({ email: value.email });
+    try {
+      await instance.post('auth/subscribe', { email });
       toast.success('You have successfully subscribed');
     } catch (error) {
       if (error.response.status === 409) {
@@ -66,15 +61,13 @@ export const SubscribeForm = () => {
         </TextBeforeSubscribe>
       )}
       <Form
-        onSubmit={(value, actions) => {
-          handleSubmit(value);
-          actions.setSubmitting(false);
-          actions.resetForm();
-        }}
+        onSubmit={handleSubmit}
+        // actions.setSubmitting(false);
+        // actions.resetForm();
       >
         <Field>
           <Input
-            type="text"
+            type="email"
             name="email"
             placeholder="Enter your email address"
             //value={user.email}
