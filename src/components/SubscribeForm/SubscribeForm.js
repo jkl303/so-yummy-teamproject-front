@@ -23,26 +23,22 @@ export const SubscribeForm = () => {
   const { width } = useWindowDimensions();
 
   const user = useSelector(selectUser);
-  console.log(user);
-  console.log(user.email);
 
   const [email, setEmail] = useState('');
-  console.log([email, setEmail]);
 
   const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
-  
+
   const subscribeUser = async body => {
-  const { data } = await axios.post('/subscribe', body);
-  return data;
-};
+    const { data } = await axios.post('/subscribe', body);
+    return data;
+  };
 
   const handleSubmit = async value => {
     //event.preventDefault();
     if (!emailRegexp.test(email)) {
       return toast('email is invalid');
     }
-
-        try {
+    try {
       await subscribeUser({ email: value.email });
       toast.success('You have successfully subscribed');
     } catch (error) {
