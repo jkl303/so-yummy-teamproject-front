@@ -2,12 +2,9 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-import CardFavorite from './CardFavorite/CardFavorite';
-
 import {
   TitleH1,
   SectionFavorite,
-  CardWrapper,
   ContainerFavorite,
   First,
   Second,
@@ -15,6 +12,8 @@ import {
   WrapperSectionTitle,
 } from './FavoriteRecipesPage.styled';
 import { NotSearch } from './NotSearch/NotSearch';
+import Paginator from 'components/Paginator/Paginator';
+import FavoriteRecipesList from './FavoriteRecipeList/FavoriteRecipeList';
 
 export default function FavoriteRecipesPage() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
@@ -57,30 +56,41 @@ export default function FavoriteRecipesPage() {
     deleteRecipe();
   };
 
+  const itemsPerPage = 4;
   return (
     <>
       <SectionFavorite>
-        {favoriteRecipes.length === 0 ? (
-          <NotSearch />
-        ) : (
-          <ContainerFavorite>
-            <WrapperSectionTitle>
-              <TitleH1>Favorite</TitleH1>
-              <First></First>
-              <Second></Second>
-              <Third></Third>
-            </WrapperSectionTitle>
-            <CardWrapper>
-              {favoriteRecipes.map(item => (
-                <CardFavorite
-                  key={item._id}
-                  item={item}
-                  handleDelete={deleteFavoriteRecipe}
-                />
-              ))}
-            </CardWrapper>
-          </ContainerFavorite>
-        )}
+        <ContainerFavorite>
+          <WrapperSectionTitle>
+            <TitleH1>Favorite</TitleH1>
+            <First></First>
+            <Second></Second>
+            <Third></Third>
+          </WrapperSectionTitle>
+          {favoriteRecipes.length === 0 ? (
+            <NotSearch />
+          ) : favoriteRecipes.length > itemsPerPage ? (
+            <Paginator
+              data={favoriteRecipes}
+              itemsPerPage={itemsPerPage}
+              noMargin
+            >
+              {currentItems => {
+                return (
+                  <FavoriteRecipesList
+                    recipe={currentItems}
+                    onDeleteRecipe={deleteFavoriteRecipe}
+                  />
+                );
+              }}
+            </Paginator>
+          ) : (
+            <FavoriteRecipesList
+              recipe={favoriteRecipes}
+              onDeleteRecipe={deleteFavoriteRecipe}
+            />
+          )}
+        </ContainerFavorite>
       </SectionFavorite>
     </>
   );
