@@ -19,7 +19,7 @@ export const Wrap = styled.div`
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: #ececec;
+  background-color: ${({ theme: { colors } }) => colors.shopItemBgr};
   background-image: url(${img});
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -64,7 +64,7 @@ export const Button = styled.button`
 `;
 
 export const IconClose = styled(CgClose)`
-  color: #22252a;
+  color: ${({ theme: { colors } }) => colors.txt};
   width: 50px;
   height: 50px;
   padding: 10px;

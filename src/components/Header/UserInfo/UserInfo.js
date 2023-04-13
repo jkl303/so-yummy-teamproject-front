@@ -1,23 +1,32 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/authSelectors';
+
 import UserProfile from './UserProfile/UserProfile';
 import {
   UserWrap,
   UserAvatar,
   UserName,
+  UserNameBlack,
   UserBox,
   Wrap,
   Button,
   ButtonLogout,
   ArrowIcon,
+  UserBtnText,
+  EditBtn,
 } from './UserInfoStyled';
-
-import { FiEdit2 } from 'react-icons/fi';
-import User from 'images/svg/user.svg';
 
 const UserInfo = () => {
   const [userOpenModal, setUserOpenModal] = useState(false);
   const [userEditModal, setUserEditModal] = useState(false);
   const [isLogOutOpenModal, setIsLogOutOpenModal] = useState(false);
+
+  const user = useSelector(selectUser);
+
+  const { name, avatarURL } = user;
+
+  const isMainPage = window.location.pathname.includes('main');
 
   const toggleOpenModal = () => {
     setUserOpenModal(!userOpenModal);
@@ -32,13 +41,15 @@ const UserInfo = () => {
     toggleOpenModal();
   };
 
-  const name = 'User name';
-
   return (
     <UserWrap>
       <UserBox onClick={toggleOpenModal}>
-        <UserAvatar alt="User's avatar" src={User}></UserAvatar>
-        <UserName>{name}</UserName>
+        <UserAvatar alt="User's avatar" src={avatarURL}></UserAvatar>
+        {isMainPage ? (
+          <UserNameBlack>{name}</UserNameBlack>
+        ) : (
+          <UserName>{name}</UserName>
+        )}
       </UserBox>
 
       {userOpenModal && (
@@ -49,8 +60,8 @@ const UserInfo = () => {
               toggleOpenModal();
             }}
           >
-            <p>Edit profile</p>
-            <FiEdit2 />
+            <UserBtnText>Edit profile</UserBtnText>
+            <EditBtn />
           </Button>
 
           <ButtonLogout onClick={() => logOutOpenModal()}>
@@ -59,7 +70,9 @@ const UserInfo = () => {
           </ButtonLogout>
         </Wrap>
       )}
-      {userEditModal && <UserProfile toggleMenu={editProfile} name={name} />}
+      {userEditModal && (
+        <UserProfile toggleMenu={editProfile} name={name} avatar={avatarURL} />
+      )}
     </UserWrap>
   );
 };

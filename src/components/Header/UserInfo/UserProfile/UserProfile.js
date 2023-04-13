@@ -14,9 +14,9 @@ import {
   UserPhoto,
 } from './UserProfileStyled';
 
-import UserAvatar from 'images/svg/user.svg';
+// import UserAvatar from 'images/svg/user.svg';
 
-const UserProfile = ({ name, toggleMenu }) => {
+const UserProfile = ({ name, toggleMenu, avatar }) => {
   const [profilePicture, setProfilePicture] = useState(null);
 
   function handleFileUpload(event) {
@@ -39,7 +39,7 @@ const UserProfile = ({ name, toggleMenu }) => {
       {profilePicture ? (
         <UserPhoto src={profilePicture} alt={'Profile Picture'} />
       ) : (
-        <UserPhoto alt="User's avatar" src={UserAvatar} />
+        <UserPhoto alt="User's avatar" src={avatar} />
       )}
 
       <InputFileWrap>
