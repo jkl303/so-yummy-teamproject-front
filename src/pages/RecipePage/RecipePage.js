@@ -65,7 +65,7 @@ export default function RecipePage() {
     return <div>Loading...</div>;
   }
   
-  const { title, description, time, ingredients, instructions, thumb, favorites, measure} = recipe.data.recipe;
+  const { title, description, time, ingredients, instructions, thumb, favorites, measure, owner} = recipe.data.recipe;
   return (
   
     <>
@@ -81,9 +81,12 @@ export default function RecipePage() {
         <RecipeHeroBlock>
       <RecipeTitle>{title}</RecipeTitle>
       <RecipeDescription>{description}</RecipeDescription>
-      <RecipeAddToFavotite onClick={handleFavoriteClick}>
-  {favorites.includes(userId) ? 'Delete from favorites' : 'Add to favorites'}
-</RecipeAddToFavotite>
+      {owner?.toString() !== userId && recipe && (
+  <RecipeAddToFavotite onClick={handleFavoriteClick}>
+    {favorites.includes(userId) ? 'Delete from favorites' : 'Add to favorites'}
+  </RecipeAddToFavotite>
+)}
+
       <RecipeTime key={recipeId}> <AiOutlineClockCircle style={{ marginRight: '8px' }} />{time} min</RecipeTime>
       </RecipeHeroBlock>А
       </RecipeHeroWrap>

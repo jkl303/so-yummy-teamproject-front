@@ -54,6 +54,7 @@ export const RecipeTitle = styled.h2`
   color: ${({ theme: { colors } }) => colors.accent};
   margin-bottom: 18px;
   font-size: 24px;
+  font-weight: 600;
   ${mediaQueries('tablet')`
     font-size: 44px;
     margin-bottom: 24px;
