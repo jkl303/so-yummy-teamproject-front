@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { mediaQueries } from 'style/mediaQueries';
+import { FiTrash2 } from 'react-icons/fi';
 
 export const Card = styled.div`
   width: 343px;
   height: 152px;
-  background: ${({ theme: { colors } }) => colors.bg};
+  background: ${({ theme: { colors } }) => colors.bgSec};
   border-radius: 8px;
   display: flex;
   padding: 14px;
@@ -24,9 +25,10 @@ export const Card = styled.div`
   `}
 `;
 export const WrapperContent = styled.div`
+  ${mediaQueries('mobile')`
   width: 100%;
   padding-left: 14px;
-
+`}
   ${mediaQueries('tablet')`
     padding-left: 24px;
     position: relative;
@@ -70,7 +72,7 @@ export const TitleNameRecipe = styled.h3`
   line-height: 14px;
   letter-spacing: -0.24px;
   color: ${({ theme: { colors } }) => colors.subtitle};
-  margin-bottom: 14px;
+  height: 28px;
 
   ${mediaQueries('tablet')`
     font-size: 24px;
@@ -83,7 +85,7 @@ export const TitleNameRecipe = styled.h3`
 `;
 export const WrapperTextRecipe = styled.div`
   height: 42px;
-  margin-bottom: 15px;
+  margin-bottom: 28px;
 
   ${mediaQueries('tablet')`
     height: 73px;
@@ -127,7 +129,7 @@ export const TextRecipe = styled.p`
 export const WrapperImgTrashLogo = styled.div`
   width: 24px;
   height: 24px;
-  background: ${({ theme: { colors } }) => colors.ingr};
+  background: ${({ theme: { colors } }) => colors.btnDelBg};
   border-radius: 4px;
   padding: 5px;
 
@@ -148,15 +150,20 @@ export const WrapperImgTrashLogo = styled.div`
     padding: 10px;
   `}
 `;
-export const TrashLogo = styled.div`
-  /* @media (min-width: 375px) {
-    width: 14px;
-    height: 14px;
-  }
-  @media (min-width: 768px) {
+
+export const TrashLogo = styled(FiTrash2)`
+  width: 14px;
+  height: 14px;
+  stroke: 22252A;
+
+  ${mediaQueries('tablet')`
     width: 22px;
     height: 22px;
-  } */
+  `}
+  ${mediaQueries('desktop')`
+    width: 22px;
+    height: 22px;
+  `}
 `;
 
 export const WrapperTimeBtn = styled.div`
@@ -192,11 +199,4 @@ export const WrapperImgBtnRecipe = styled.div`
     width: 160px;
     height: 54px;
   `}
-`;
-
-export const BtnRecipe = styled.div`
-  /* @media (min-width: 1440px) {
-    width: 100%;
-    height: 100%;
-  } */
 `;

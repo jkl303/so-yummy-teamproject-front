@@ -18,7 +18,7 @@ import { NotSearch } from './NotSearch/NotSearch';
 
 export default function FavoriteRecipesPage() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
 
   const token = useSelector(state => state.auth.token);
 
@@ -38,7 +38,7 @@ export default function FavoriteRecipesPage() {
         const result = await fetchFavorite();
         setFavoriteRecipes(result);
       } catch ({ response }) {
-        setError(response.data.message);
+        console.log(response.data.message);
       }
     };
     getFavorite();
@@ -60,7 +60,7 @@ export default function FavoriteRecipesPage() {
   return (
     <>
       <SectionFavorite>
-        {error ? (
+        {favoriteRecipes.length === 0 ? (
           <NotSearch />
         ) : (
           <ContainerFavorite>

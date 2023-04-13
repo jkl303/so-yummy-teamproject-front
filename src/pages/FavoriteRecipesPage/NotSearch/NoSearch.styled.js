@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContainerFavorite = styled.div`
   margin: 0 auto;
@@ -29,6 +29,7 @@ export const ImgNotSearch = styled.img`
   }
   @media (min-width: 1440px) {
     width: 600px;
+    display: inline-block;
   }
 `;
 export const NotSearchText = styled.p`
@@ -36,7 +37,7 @@ export const NotSearchText = styled.p`
   font-size: 24px;
   line-height: 24px;
   letter-spacing: -0.02em;
-  font-feature-settings: "liga" off;
+  font-feature-settings: 'liga' off;
   color: #000000;
   opacity: 0.5;
   margin-top: 30px;
