@@ -1,11 +1,13 @@
 import { CustomBtn } from 'components/Buttons/templates/CustomBtn/CustomBtn.styled';
 import { useLocation } from 'react-router-dom';
 
-export const SeeRecipeBtn = () => {
+export const SeeRecipeBtn = ({ to, state }) => {
   const location = useLocation();
   const inverted = location.pathname.includes('/my');
   return (
     <CustomBtn
+      to={to}
+      state={state}
       variant={inverted ? 'changeBgInvert' : 'changeBg'}
       sizes={{
         m: { w: 80, h: 27, padH: 14, padV: 6, fz: 10 },

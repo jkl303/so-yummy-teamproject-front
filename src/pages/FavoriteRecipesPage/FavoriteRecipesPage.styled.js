@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { mediaQueries } from 'style/mediaQueries';
 
 export const SectionFavorite = styled.section`
-  background: #ececec;
   padding: 114px 0 40px 0;
   ${mediaQueries('tablet')`
     padding: 136px 0px 50px;
