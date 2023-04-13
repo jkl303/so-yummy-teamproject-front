@@ -21,12 +21,14 @@ export function IngredientsList({ ingredients, measure, onIngredientToggle }) {
 
   const handleCheckboxClick = (id, measure, isChecked) => {
     const newItem = { ingredientId: id, ingredientQuantity: measure };
-  
+
     if (isChecked) {
       dispatch(addShoppingListItemThunkOperation(newItem));
     } else {
       dispatch(deleteShoppingListItemThunkOperation(id));
     }
+
+    onIngredientToggle(id, measure, isChecked);
   };
 
   return (

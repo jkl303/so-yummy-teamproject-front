@@ -1,9 +1,7 @@
 import {} from './RecipePage.styled';
-import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import {addShoppingListItemThunkOperation, deleteShoppingListItemThunkOperation} from '../../redux/shoppingList/shoppingListOperations'
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import recipeMob from '../../images/mobile/recipe-bg375.jpg';
 import recipeMob2x from '../../images/mobile/recipe-bg375-2x.jpg'
@@ -22,7 +20,6 @@ export default function RecipePage() {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
   const { width } = useWindowDimensions();
-  const dispatch = useDispatch();
   
   useEffect(() => {
     instance
@@ -61,16 +58,9 @@ export default function RecipePage() {
         console.log(error);
       });
   };
-  const handleCheckboxClick = (id, measure, isChecked) => {
-    const newItem = { ingredientId: id, ingredientQuantity: measure };
-  
-    if (isChecked) {
-      dispatch(addShoppingListItemThunkOperation(newItem));
-    } else {
-      dispatch(deleteShoppingListItemThunkOperation(id));
-    }
+  const handleIngredientToggle = (id, measure, isChecked) => {
+    console.log(id, measure, isChecked)
   };
-  
   if (!recipe) {
     return <div>Loading...</div>;
   }
@@ -97,11 +87,11 @@ export default function RecipePage() {
       <p key={recipeId}> <AiOutlineClockCircle/> {time} min</p>
       </RecipeHeroBlock>А
       </RecipeHeroWrap>
-<IngredientsList
-ingredients={ingredients}
-measure={measure}
-onIngredientToggle={handleCheckboxClick}
-/>
+      <IngredientsList
+        ingredients={ingredients}
+        measure={measure}
+        onIngredientToggle={handleIngredientToggle}
+      />
       <RecipePreparation instructions={instructions} thumb={thumb} title={title} />
       </RecipeWrap>
     </>
