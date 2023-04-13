@@ -10,7 +10,7 @@ export const FormContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fafafa;
+  background-color: ${({ theme: { colors } }) => colors.bgModal};
   border-radius: 24px;
   padding: 32px 24px;
 
@@ -53,8 +53,9 @@ export const Input = styled.input`
   justify-content: center;
   width: 282px;
   max-height: 48px;
-  border: 1px solid #23262a;
-  background: #fafafa;
+  border: 1px solid;
+  border-color: ${({ theme: { colors } }) => colors.txt};
+  background-color: ${({ theme: { colors } }) => colors.bgModal};
   border-radius: 6px;
   outline-width: 0rem;
   padding: 13px 40px;
@@ -64,7 +65,7 @@ export const Input = styled.input`
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.02em;
-  color: #23262a;
+  color: ${({ theme: { colors } }) => colors.txt};
 
   opacity: 0.8;
 
@@ -113,14 +114,14 @@ export const Edit = styled(FiEdit2)`
   position: absolute;
   bottom: 16px;
   right: 15px;
-  color: #23262a;
+  color: ${({ theme: { colors } }) => colors.txt};
 `;
 
 export const User = styled(FiUser)`
   position: absolute;
   bottom: 16px;
   left: 15px;
-  color: #23262a;
+  color: ${({ theme: { colors } }) => colors.txt};
 `;
 
 export const Plus = styled(FiPlus)`
@@ -152,6 +153,7 @@ export const ButtonClose = styled.button`
 export const IconClose = styled(CgClose)`
   width: 20px;
   height: 20px;
+  color: ${({ theme: { colors } }) => colors.txt};
 `;
 
 export const UserPhoto = styled.img`

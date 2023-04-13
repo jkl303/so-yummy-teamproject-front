@@ -16,7 +16,9 @@ export const darkTheme = {
     btnSec: 'var(--bg-input)', //cancel
     btnFoot: 'var(--bg-dark)',
     btnInverted: 'var(--accent)',
-    btnHoverInverted: 'var(--bg-btn)',
+    btnHoverInverted: 'var(--bg-btn-hover-dark)',
+    btnDelBg: 'var(--bg-dark)',
+    bgActivePage: 'var(--accent)',
 
     txt: 'var(--txt-dark)',
     title: 'var(--txt-dark)',

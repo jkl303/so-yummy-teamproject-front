@@ -10,7 +10,7 @@ import PublicRoute from './PublicRoute';
 import { ThemeProvider } from 'styled-components';
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import CategoriesPage from 'pages/CategoriesPage/CategoriesPage';
-import AddRecipesPage from 'pages/AddRecipesPage/AddRecipesPage';
+import AddRecipePage from 'pages/AddRecipePage/AddRecipePage';
 import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
 import FavoriteRecipesPage from 'pages/FavoriteRecipesPage/FavoriteRecipesPage';
 import ShoppingListPage from 'pages/ShoppingListPage/ShoppingListPage';
@@ -53,6 +53,7 @@ export default function App() {
 
     if (token) {
       dispatch(setUser({ token, id, name, email, avatarURL }));
+      dispatch(refreshUser());
     }
   }, [dispatch, location]);
 
@@ -125,7 +126,7 @@ export default function App() {
                 element={
                   <PrivateRoute
                     redirectTo="/login"
-                    component={<AddRecipesPage />}
+                    component={<AddRecipePage />}
                   />
                 }
               />

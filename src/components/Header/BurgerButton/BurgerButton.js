@@ -1,13 +1,15 @@
-import { IconOpen, Button } from "./BurgerButtonStyled";
+import { IconOpen, IconOpenWhite, Button } from './BurgerButtonStyled';
 
 const BurgerButton = ({ toggleMenu }) => {
+  const isMainPage = window.location.pathname.includes('main');
+
   return (
     <Button
       onClick={() => {
         toggleMenu();
       }}
     >
-      <IconOpen />
+      {isMainPage ? <IconOpenWhite /> : <IconOpen />}
     </Button>
   );
 };

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ReactComponent as TrashLogoSvg } from '../image/trash-01.svg';
+import { SeeRecipeBtn } from 'components/Buttons/SeeRecipeBtn/SeeRecipeBtn';
 
 import {
   Card,
@@ -13,8 +13,8 @@ import {
   TimeP,
   WrapperImgBtnRecipe,
   WrapperTextRecipe,
+  TrashLogo,
 } from './CardFavorite.styled.js';
-import seeRecipe from '../image/see-recipe.svg';
 
 export default function CardFavorite({ item, handleDelete }) {
   const { title, time, instructions, thumb, _id } = item;
@@ -36,12 +36,10 @@ export default function CardFavorite({ item, handleDelete }) {
         <WrapperTimeBtn>
           <TimeP>{time} min</TimeP>
           <WrapperImgBtnRecipe>
-            <Link to={`/recipe/${_id}`} state={{ from: location }}>
-              <img src={seeRecipe} alt="see-recipe-btn" />
-            </Link>
+            <SeeRecipeBtn to={`/recipe/${_id}`} state={{ from: location }} />
           </WrapperImgBtnRecipe>
           <WrapperImgTrashLogo onClick={() => handleDelete(_id)}>
-            <TrashLogoSvg />
+            <TrashLogo />
           </WrapperImgTrashLogo>
         </WrapperTimeBtn>
       </WrapperContent>
