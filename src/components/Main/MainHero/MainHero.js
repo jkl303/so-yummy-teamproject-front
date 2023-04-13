@@ -26,7 +26,7 @@ import plateTablet2x from 'images/tablet/main-page-plate768-2x.png';
 import plateDesk from 'images/desktop/main-page-plate1440.png';
 import plateDesk2x from 'images/desktop/main-page-plate1440-2x.png';
 
-export const MainHero = ({ data, children }) => {
+export const MainHero = ({ data }) => {
   const location = useLocation();
   const { width } = useWindowDimensions();
 
