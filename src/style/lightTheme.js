@@ -5,6 +5,7 @@ export const lightTheme = {
     bgSec: 'var(--bg-sec)', //cards, #fff => #2a2c36
     bgFooter: 'var(--bg-btn)',
     bgModal: 'var(--bg)', //#fafafa => #2a2c36
+    bgRecipe:'var( --bg-recipe-ing)', //#ebf3d4 => #2A2C36
     input: 'var(--bg-input)', //#d9d9d9 => #1e1f28
     searchDropdown: 'var(--bg)',
     select: 'var(--bg)', //dropdown #fafafa => accent
@@ -16,7 +17,7 @@ export const lightTheme = {
     btnFoot: 'var(--accent)', //accent => #1e1f28
     btnInverted: 'var(--accent)', //green => 22252a
     btnHoverInverted: 'var(--bg-btn)', //22252a => green
-
+    
     txt: 'var(--txt)', //#23262a => #fafafa
     title: 'var(--txt-title)', //#001833 => #fafafa
     subtitle: 'var(--txt-subtitle)', //#3e4462 => #fafafa
@@ -26,5 +27,11 @@ export const lightTheme = {
     txtRecipeInner: 'var(--txt-instructions-light)', //preparation, #000000cc (50%) => #fafafa
     txtBtn: 'var(--txt-dark)', //btn white txt+footer txt, unchanged
     txtInputInactive: 'var(--txt-sec)', //#00000080(50%) => #ffffff99(60%)
+
+    /////////////////////////approved by Daria
+    shopBorder: 'var(--bdr)',
+    shopItemBgr: 'var(--shop-item-bgr)',
+    shopCloseIc: 'var(--shop-close)',
+    txtCopyright: 'var(--txt-copyright)',
   },
 };

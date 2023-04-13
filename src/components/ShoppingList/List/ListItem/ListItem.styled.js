@@ -7,7 +7,7 @@ export const StyledSpan = styled.span`
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
-  color: ${props => props.color};
+  color: ${({ theme: { colors } }) => colors.shopCloseIc};
   ${mediaQueries('tablet')`
 font-size: 18px;
 line-height: 27px;

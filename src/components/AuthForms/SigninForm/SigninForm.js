@@ -1,5 +1,4 @@
 import React, {
-  // useEffect,
   useState,
 } from 'react';
 import { useDispatch } from 'react-redux';
@@ -10,7 +9,6 @@ import {
   Title,
   InputContainer,
   Input,
-  // ErrorMessage,
   Button,
   PasswordVisibilityButton,
   MailIcon,
@@ -22,33 +20,31 @@ export default function SigninForm() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [isEmailValid, setIsEmailValid] = useState(false);
-  // const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  // const [errors, setErrors] = useState({});
 
   const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
   const passRegexp = /^.{6,}$/; // має бути >= 6 символів
 
-  // useEffect(() => {
-  //   setIsEmailValid(/^\w+([\w-]\w+)@\w+(?:[.-]\w+)*(.\w{2,3})+$/.test(email));
-  //   setIsPasswordValid(password.length > 5);
-  // }, [ email, password]);
-
   const handleSubmit = event => {
     event.preventDefault();
-    // if (!isEmailValid || !isPasswordValid) {
-    //   return;
-    // }
+
     if (!emailRegexp.test(email) || !passRegexp.test(password)) {
-      return toast('email and/or password is invalid');
+      return toast.error('email and/or password is invalid', {
+        duration: 12000,
+      });
     }
 
     dispatch(logIn({ email, password }))
       .unwrap()
-      .then(({ user }) => toast.success(`Welcome, ${user.name}!`))
+      .then(({ user }) =>
+        toast.success(`Welcome, ${user.name}!`, {
+          duration: 12000,
+        })
+      )
       .catch(error => {
-        toast.error(error);
+        toast.error(error, {
+          duration: 12000,
+        });
       });
     event.target.reset();
   };
@@ -83,7 +79,6 @@ export default function SigninForm() {
         />
         <MailIcon emailcolor={getEmailColor()} />
         {!emailRegexp.test(email) && email.length > 0 && <ErrorIcon />}
-        {/* {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>} */}
       </InputContainer>
       <InputContainer passwordcolor={getPasswordColor()}>
         <Input
@@ -94,7 +89,6 @@ export default function SigninForm() {
         />
         <LockIcon passwordcolor={getPasswordColor()} />
         {!passRegexp.test(password) && password.length > 0 && <ErrorIcon />}
-        {/* {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>} */}
         <PasswordVisibilityButton
           type="button"
           className="password-visibility-toggle"
