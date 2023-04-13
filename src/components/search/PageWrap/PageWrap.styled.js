@@ -2,21 +2,20 @@ import { mediaQueries } from 'style/mediaQueries';
 import styled, { css } from 'styled-components';
 
 export const Page = styled.div`
-  ${({ padT = {}, padB = {} }) =>
-    css`
-      padding-top: ${padT.mob + 'px' ?? 0};
-      padding-bottom: ${padB.mob + 'px' ?? 0};
+  ${({ padT = {}, padB = {} }) => css`
+    padding-top: ${padT.mob ? padT.mob + 'px' : 0};
+    padding-bottom: ${padB.mob ? padB.mob + 'px' : 0};
 
-      ${mediaQueries('tablet')} {
-        padding-top: ${padT.tab + 'px' ?? 0};
-        padding-bottom: ${padB.tab + 'px' ?? 0};
-      }
+    @media screen and (min-width: 768px) {
+      padding-top: ${padT.tab ? padT.tab + 'px' : null};
+      padding-bottom: ${padB.tab ? padB.tab + 'px' : null};
+    }
 
-      ${mediaQueries('desktop')} {
-        padding-top: ${padT.desk + 'px' ?? 0};
-        padding-bottom: ${padB.desk + 'px' ?? 0};
-      }
-    `}
+    @media screen and (min-width: 1440px) {
+      padding-top: ${padT.desk ? padT.desk + 'px' : null};
+      padding-bottom: ${padB.desk ? padB.desk + 'px' : null};
+    }
+  `}
 `;
 
 //remove after push

@@ -71,8 +71,8 @@ export const BasicBtn = styled.button`
     `}
 
   ${({ variant, origin, theme: { colors } }) => css`
-    &:hover,
-    &:focus {
+    &:hover:not([disabled]),
+    &:focus:not([disabled]) {
       background-color: ${variant === 'changeBg' && origin === 'secondary'
         ? colors.txtBtn
         : variant === 'changeBg'
