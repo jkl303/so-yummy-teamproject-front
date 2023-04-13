@@ -21,7 +21,6 @@ export default function RecipePage() {
   const userId = useSelector(state => state.auth.user.id);
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
-  // const [isFavorite, setIsFavorite] = useState(false);
   const { width } = useWindowDimensions();
   const dispatch = useDispatch();
   
@@ -62,16 +61,8 @@ export default function RecipePage() {
         console.log(error);
       });
   };
-  
-  if (!recipe) {
-    return <div>Loading...</div>;
-
-  }
-
-  const handleCheckboxClick = (id, isChecked) => {
-    console.log(id);
-    console.log(isChecked);
-    const newItem = { ingredientId: id, isChecked: isChecked ? 1 : 0 };
+  const handleCheckboxClick = (id, measure, isChecked) => {
+    const newItem = { ingredientId: id, ingredientQuantity: measure };
   
     if (isChecked) {
       dispatch(addShoppingListItemThunkOperation(newItem));
@@ -80,8 +71,11 @@ export default function RecipePage() {
     }
   };
   
-  const { title, description, time, ingredients, instructions, thumb, favorites} = recipe.data.recipe;
-
+  if (!recipe) {
+    return <div>Loading...</div>;
+  }
+  
+  const { title, description, time, ingredients, instructions, thumb, favorites, measure} = recipe.data.recipe;
   return (
   
     <>
@@ -103,9 +97,10 @@ export default function RecipePage() {
       <p key={recipeId}> <AiOutlineClockCircle/> {time} min</p>
       </RecipeHeroBlock>А
       </RecipeHeroWrap>
-      <IngredientsList 
-  ingredients={ingredients} 
-  onIngredientToggle ={(id, isChecked) => handleCheckboxClick(id, isChecked)}
+<IngredientsList
+ingredients={ingredients}
+measure={measure}
+onIngredientToggle={handleCheckboxClick}
 />
       <RecipePreparation instructions={instructions} thumb={thumb} title={title} />
       </RecipeWrap>

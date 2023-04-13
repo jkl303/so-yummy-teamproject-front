@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   IngridientsWrap,
   TableHeader,
@@ -10,17 +10,22 @@ import {
   IngridientQuantity,
   IngridientCheck,
 } from './IngredientsList.style';
+import { useDispatch } from 'react-redux';
+import {
+  addShoppingListItemThunkOperation,
+  deleteShoppingListItemThunkOperation,
+} from '../../redux/shoppingList/shoppingListOperations';
 
-export function IngredientsList({ ingredients, onIngredientToggle }) {
-  const [checkedItems, setCheckedItems] = useState([]);
+export function IngredientsList({ ingredients, measure, onIngredientToggle }) {
+  const dispatch = useDispatch();
 
-  const handleIngredientToggle = (id, isChecked) => {
-    onIngredientToggle(id, isChecked);
-
+  const handleCheckboxClick = (id, measure, isChecked) => {
+    const newItem = { ingredientId: id, ingredientQuantity: measure };
+  
     if (isChecked) {
-      setCheckedItems((prevItems) => [...prevItems, id]);
+      dispatch(addShoppingListItemThunkOperation(newItem));
     } else {
-      setCheckedItems((prevItems) => prevItems.filter((item) => item !== id));
+      dispatch(deleteShoppingListItemThunkOperation(id));
     }
   };
 
@@ -43,8 +48,9 @@ export function IngredientsList({ ingredients, onIngredientToggle }) {
                   <input
                     type="checkbox"
                     id={_id}
-                    checked={checkedItems.includes(_id)}
-                    onChange={(e) => handleIngredientToggle(_id, e.target.checked)}
+                    onChange={e =>
+                      handleCheckboxClick(_id, measure, e.target.checked)
+                    }
                   />
                   <label htmlFor={_id}></label>
                 </IngridientCheck>
