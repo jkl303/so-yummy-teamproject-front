@@ -47,6 +47,7 @@ export const SearchFormInput = styled.input`
   ${({ theme: { colors } }) => css`
     border: 1px solid ${colors.txtInputInactive};
     color: ${colors.subtitle};
+    background-color: ${colors.bg};
 
     &:focus,
     &:hover {
