@@ -53,6 +53,7 @@ export default function App() {
 
     if (token) {
       dispatch(setUser({ token, id, name, email, avatarURL }));
+      dispatch(refreshUser());
     }
   }, [dispatch, location]);
 

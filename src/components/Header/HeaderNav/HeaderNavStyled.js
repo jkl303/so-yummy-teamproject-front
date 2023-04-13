@@ -24,8 +24,8 @@ export const Navigation = styled.nav`
 `;
 export const Link = styled(NavLink)`
   display: block;
-  cursor: "pointer";
-  color: #22252a;
+  cursor: 'pointer';
+  color: ${({ theme: { colors } }) => colors.title};
   text-decoration: none;
   font-weight: 500;
   font-size: 18px;
@@ -41,7 +41,7 @@ export const Link = styled(NavLink)`
     font-size: 24px;
   }
   @media screen and (min-width: 1440px) {
-    padding: 11px 24px;
+    padding: 11px 11px;
     font-size: 14px;
     line-height: 22px;
   }

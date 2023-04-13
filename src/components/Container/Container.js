@@ -1,14 +1,15 @@
 import {
   ContainerWrap,
   ContainerComponent,
-  TitlePage,
+  // TitlePage,
 } from './Container.styled';
 
 const Container = ({ children }) => {
   return (
     <ContainerWrap>
       <ContainerComponent>
-        <TitlePage>{children}</TitlePage>
+        {children}
+        {/* <TitlePage>{children}</TitlePage> */}
       </ContainerComponent>
     </ContainerWrap>
   );

@@ -21,8 +21,8 @@ export const SearchNotFound = () => {
           srcSet={`${mobImg} 1x, ${mobImgRet} 2x`}
           src={`${mobImg}`}
           alt="No results for user request"
-          width="450"
-          height="294"
+          width="208"
+          height="133"
         />
       </picture>
       <span>Try looking for something else...</span>
