@@ -90,7 +90,11 @@ export const CustomBtn = styled(Link)`
         : variant === 'changeBgInvert'
         ? colors.btnHoverInverted
         : null};
-      color: ${variant === 'changeOutline' ? colors.accent : colors.textBtn};
+      color: ${variant === 'changeOutline'
+        ? colors.accent
+        : variant === 'changeAll'
+        ? colors.txtBtn
+        : colors.textBtn};
       border-color: ${variant === 'changeOutline' && colors.accent};
     }
   `}

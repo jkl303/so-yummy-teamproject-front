@@ -86,8 +86,8 @@ export default function SearchPage() {
           />
           {recipes.length > 0 ? (
             <RecipeList style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {recipes.map(recipe => (
-                <RecipeCard key={recipe._id} recipe={recipe} />
+              {recipes.map(({ _id, thumb, title }) => (
+                <RecipeCard key={_id} id={_id} img={thumb} title={title} />
               ))}
             </RecipeList>
           ) : query ? (
