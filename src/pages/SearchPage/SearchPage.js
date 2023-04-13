@@ -38,14 +38,14 @@ export default function SearchPage() {
     const fetchRecipes = async () => {
       const result = await fetchSearched({
         query: queryOuter,
-        filter: filterRef,
+        filter: filterRef.current,
       });
-
       (await result?.data.length) && setRecipes(result.data ?? []);
     };
 
     try {
       setIsLoading(true);
+      queryOuter && setQuery(queryOuter);
       queryOuter && fetchRecipes();
       setIsLoading(false);
     } catch (e) {
