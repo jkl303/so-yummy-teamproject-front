@@ -1,16 +1,5 @@
 import styled from 'styled-components';
 
-export const CategoriesWrap = styled.div`
-  padding-left: 16px;
-  @media screen and (min-width: 768px) {
-    padding-left: 32px;
-  }
-  @media screen and (min-width: 1440px) {
-
-    padding-left: 0px;
-
-  }
-`;
 
 export const TabWrap = styled.div`
   width: 100%;
@@ -33,6 +22,7 @@ export const TabList = styled.ul`
 
 export const CategoriesTitle = styled.h1`
   margin-bottom: 50px;
+
   padding: 0px;
   font-weight: 600;
   font-size: 28px;
@@ -90,4 +80,3 @@ export const UnderLine = styled.span`
     margin-top: 28px;
   }
 `;
-

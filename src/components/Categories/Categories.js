@@ -13,7 +13,6 @@ import {
   TabList,
   TabWrap,
   CategoriesTitle,
-  CategoriesWrap,
   Tab,
   CategoryBtn,
   UnderLine,
@@ -31,6 +30,7 @@ export const Categories = ({ title }) => {
       try {
         setIsLoading(true);
         const categories = await fetchCategories();
+
         if (categories.length > 0) {
           setCategories(categories.map(category => category));
         }
@@ -59,51 +59,46 @@ export const Categories = ({ title }) => {
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 5,
-
     initialSlide: 0,
     // autoplay: true,
-
     speed: 500,
     autoplaySpeed: 3000,
     cssEase: 'linear',
+    arrows: false,
   };
 
   return (
     <>
-      <CategoriesWrap>
-        <CategoriesTitle>Categories</CategoriesTitle>
+      <CategoriesTitle>Categories</CategoriesTitle>
 
-        <TabWrap>
-          <TabList>
-            <Slider {...settings}>
-              {isLoading && <Loader />}
-              {categories?.map(category => (
-                <Tab key={nanoid()}>
-                  <CategoryBtn
-                    type="button"
-                    onClick={onClick}
-
-                    clicked={
-                      category === categoryName
-                        ? 'rgba(139, 170, 54, 1);'
-                        : 'rgba(189, 189, 189, 1);'
-                    }
-                    value={category}
-                  >
-                    {category}
-                    {category === categoryName ? (
-                      <UnderLine underlined={setUnderLine()}> </UnderLine>
-                    ) : (
-                      <></>
-                    )}
-
-                  </CategoryBtn>
-                </Tab>
-              ))}
-            </Slider>
-          </TabList>
-        </TabWrap>
-      </CategoriesWrap>
+      <TabWrap>
+        <TabList>
+          <Slider {...settings}>
+            {isLoading && <Loader />}
+            {categories?.map(category => (
+              <Tab key={nanoid()}>
+                <CategoryBtn
+                  type="button"
+                  onClick={onClick}
+                  clicked={
+                    category === categoryName
+                      ? 'rgba(139, 170, 54, 1);'
+                      : 'rgba(189, 189, 189, 1);'
+                  }
+                  value={category}
+                >
+                  {category}
+                  {category === categoryName ? (
+                    <UnderLine underlined={setUnderLine()}> </UnderLine>
+                  ) : (
+                    <></>
+                  )}
+                </CategoryBtn>
+              </Tab>
+            ))}
+          </Slider>
+        </TabList>
+      </TabWrap>
 
       <RecipesbyCategoryName />
     </>
