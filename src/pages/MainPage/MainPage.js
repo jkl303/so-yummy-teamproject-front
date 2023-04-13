@@ -51,10 +51,7 @@ export default function MainPage() {
               ))}
             </CategoryList>
             <BtnWrap>
-              <OtherCategoriesBtn
-                to={`/categories/${recipesByCategory[0].category}`}
-                location={location}
-              />
+              <OtherCategoriesBtn to={`/categories/Beef`} location={location} />
             </BtnWrap>
           </Container>
         </>
