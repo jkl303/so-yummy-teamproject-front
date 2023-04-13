@@ -1,8 +1,10 @@
 import {} from './RecipePage.styled';
 // import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import {addShoppingListItemThunkOperation, deleteShoppingListItemThunkOperation} from '../../redux/shoppingList/shoppingListOperations'
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import recipeMob from '../../images/mobile/recipe-bg375.jpg';
 import recipeMob2x from '../../images/mobile/recipe-bg375-2x.jpg'
@@ -10,7 +12,6 @@ import recipeTab from '../../images/tablet/recipe-bg768.jpg';
 import recipeTab2x from '../../images/tablet/recipe-bg768-2x.jpg'
 import recipeDesk from '../../images/desktop/recipe-bg1440.jpg';
 import recipeDesk2x from '../../images/desktop/recipe-bg1440-2x.jpg';
-// import {AddToFavoriteBtn} from '../../components/Buttons/AddToFavoriteBtn/AddToFavoriteBtn';
 import {AiOutlineClockCircle} from 'react-icons/ai';
 import {RecipePreparation} from '../../components/Recipe/RecipePreparation';
 import {IngredientsList} from '../../components/Recipe/IngredientsList'
@@ -23,7 +24,7 @@ export default function RecipePage() {
   const [recipe, setRecipe] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const { width } = useWindowDimensions();
-
+  const dispatch = useDispatch();
   
   useEffect(() => {
     instance
@@ -64,7 +65,15 @@ export default function RecipePage() {
 
   }
 
-  const { title, description, time, ingredients, instructions, thumb, owner, favorites } = recipe.data.recipe;
+  const handleCheckboxClick = (ingredientId, isChecked) => {
+    if (isChecked) {
+      dispatch(addShoppingListItemThunkOperation({  ingredientId}));
+    } else {
+      dispatch(deleteShoppingListItemThunkOperation({ ingredientId }));
+    }
+  };
+
+  const { title, description, time, ingredients, instructions, thumb, owner, favorites} = recipe.data.recipe;
 
   return (
   
@@ -89,7 +98,10 @@ export default function RecipePage() {
       <p key={recipeId}> <AiOutlineClockCircle/> {time} min</p>
       </RecipeHeroBlock>
       </RecipeHeroWrap>
-      <IngredientsList ingredients={ingredients}/>
+     <IngredientsList 
+  ingredients={ingredients} 
+  onIngredientToggle ={handleCheckboxClick}
+/>
       <RecipePreparation instructions={instructions} thumb={thumb} title={title} />
       </RecipeWrap>
     </>
