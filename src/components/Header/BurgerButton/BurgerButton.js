@@ -1,5 +1,4 @@
 import { IconOpen, IconOpenWhite, Button } from './BurgerButtonStyled';
-import useWindowDimensions from 'hooks/useWindowDimensions';
 
 const BurgerButton = ({ toggleMenu }) => {
   const isMainPage = window.location.pathname.includes('main');
