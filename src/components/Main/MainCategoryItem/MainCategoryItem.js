@@ -22,14 +22,20 @@ export const MainCategoryItem = ({ category }) => {
         {width > 1439
           ? category
               .slice(0, 4)
-              .map(recipe => <RecipeCard key={recipe._id} recipe={recipe} />)
+              .map(({ _id, thumb, title }) => (
+                <RecipeCard key={_id} id={_id} img={thumb} title={title} />
+              ))
           : width > 767
           ? category
               .slice(0, 2)
-              .map(recipe => <RecipeCard key={recipe._id} recipe={recipe} />)
+              .map(({ _id, thumb, title }) => (
+                <RecipeCard key={_id} id={_id} img={thumb} title={title} />
+              ))
           : category
               .slice(0, 1)
-              .map(recipe => <RecipeCard key={recipe._id} recipe={recipe} />)}
+              .map(({ _id, thumb, title }) => (
+                <RecipeCard key={_id} id={_id} img={thumb} title={title} />
+              ))}
       </List>
       <ButtonWrap>
         <LinkStyled
