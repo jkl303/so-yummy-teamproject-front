@@ -12,6 +12,7 @@ export const variables = css`
     --bg-input: #f5f5f5;
     --bg-sec: #ffffff;
     --bg-sec-dark: #2a2c36;
+    --bg-recipe-ing: #ebf3d4;
 
     --txt: #23262a;
     --txt-aside-list: #7e7e7e;
