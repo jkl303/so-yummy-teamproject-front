@@ -13,7 +13,8 @@ const HeaderNavigation = ({ toggleMenu }) => {
 
   return (
     <Navigation>
-      <Link to="/categories/:categoryName" onClick={() => linkClose()}>
+
+      <Link to="/categories/Beef" onClick={() => linkClose()}>
         Categories
       </Link>
       <Link to="/add" onClick={() => linkClose()}>
@@ -29,6 +30,7 @@ const HeaderNavigation = ({ toggleMenu }) => {
         Shopping list
       </Link>
       <Link to="/search?query" onClick={() => linkClose()}>
+
         <IconWrap>
           <Icon />
         </IconWrap>

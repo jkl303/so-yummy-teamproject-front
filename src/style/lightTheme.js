@@ -6,6 +6,7 @@ export const lightTheme = {
     bgFooter: 'var(--bg-btn)',
     bgModal: 'var(--bg)', //#fafafa => #2a2c36
     input: 'var(--bg-input)', //#d9d9d9 => #1e1f28
+    searchDropdown: 'var(--bg)',
     select: 'var(--bg)', //dropdown #fafafa => accent
     ingr: 'var(--bg-accent)', //light green => #2a2c36
     form: 'var(--bg-sec-dark)', //login, signup, same in dark scheme
@@ -25,5 +26,11 @@ export const lightTheme = {
     txtRecipeInner: 'var(--txt-instructions-light)', //preparation, #000000cc (50%) => #fafafa
     txtBtn: 'var(--txt-dark)', //btn white txt+footer txt, unchanged
     txtInputInactive: 'var(--txt-sec)', //#00000080(50%) => #ffffff99(60%)
+
+    /////////////////////////approved by Daria
+    shopBorder: 'var(--bdr)',
+    shopItemBgr: 'var(--shop-item-bgr)',
+    shopCloseIc: 'var(--shop-close)',
+    txtCopyright: 'var(--txt-copyright)',
   },
 };

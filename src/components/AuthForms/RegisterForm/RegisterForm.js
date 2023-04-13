@@ -18,9 +18,11 @@ import {
 } from './RegisterForm.styled';
 import { signUp } from '../../../redux/auth/authOperations';
 import { getEmailColor, getNameColor, getPasswordColor } from './getInputColor';
+import { useNavigate } from 'react-router';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -76,13 +78,21 @@ export default function RegisterForm() {
 
     dispatch(signUp({ name, email, password }))
       .unwrap()
-      .then(({ user }) =>
+      .then(({ user }) => {
         toast.success(
-          `Welcome, ${user.name}! Confirm your email ${user.email} to complete registration`
-        )
-      )
+          `Welcome, ${user.name}!
+
+          Confirm your email to complete registration`,
+          {
+            duration: 30000,
+          }
+        );
+        navigate('/login', { replace: true });
+      })
       .catch(error => {
-        toast.error(error);
+        toast.error(error, {
+          duration: 12000,
+        });
       });
     event.target.reset();
   };
@@ -100,10 +110,12 @@ export default function RegisterForm() {
 
   const onNameBlur = () => {
     if (!isNameValid && name.length > 0) {
-      toast('Name must contain 3+ letters');
+      toast.error('Name must contain 3+ letters', {
+          duration: 12000,
+        });
       setErrors(prevState => ({
         ...prevState,
-        name: 'the name must be at least 3 letters long',
+        name: 'name is too short',
       }));
     } else {
       setErrors(prevState => ({ ...prevState, name: false }));
@@ -119,7 +131,9 @@ export default function RegisterForm() {
 
   const onEmailBlur = () => {
     if (!isEmailValid && email.length > 0) {
-      toast('Email is invalid');
+      toast.error('Email is invalid', {
+        duration: 12000,
+      });
       setErrors(prevState => ({
         ...prevState,
         email: 'email is invalid',
@@ -154,16 +168,14 @@ export default function RegisterForm() {
     }
   };
 
-  const onPasswordBlur = () => {
-    if (!(passwordValidationState === 'strong') && password.length > 0) {
-      toast(
-        'Password must contain 6+ chars, upper/lowercase letters, numbers, special chars.'
-      );
-    }
+  const onPasswordBlur = () => {    
     if (password.length === 0) {
       setErrors(prevState => ({ ...prevState, password: false }));
     }
     if (passwordValidationState === 'weak' && password.length > 0) {
+      toast.error('password must contain 6+ chars.', {
+        duration: 12000,
+      });
       setErrors(prevState => ({
         ...prevState,
         password: 'Enter a valid Password',

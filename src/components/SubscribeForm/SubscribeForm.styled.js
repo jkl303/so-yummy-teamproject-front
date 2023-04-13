@@ -3,11 +3,18 @@ import { RxEnvelopeClosed } from 'react-icons/rx';
 import { mediaQueries } from 'style/mediaQueries';
 
 export const SubscribeFormWrap = styled.div`
+  margin: 0 auto;
+  max-width: 204px;
+
+  ${mediaQueries('tablet')`
+   max-width: 442px;
+    `};
+
   ${mediaQueries('desktop')`
-    display: flex;
-    width: 339px;
+    max-width: 339px;
     flex-direction: column;
-    justify-content: flex-start;`};
+    justify-content: flex-start;
+     margin: 0;`};
 `;
 
 export const TextBeforeSubscribe = styled.div`
@@ -47,7 +54,8 @@ export const Form = styled.form.attrs({ autocomplete: 'off' })`
     flex-direction: row;
     justify-content: center;
     gap: 12px;
-    margin-bottom: 38px;`};
+    margin-bottom: 38px;
+    `};
 
   ${mediaQueries('desktop')`
     flex-direction: column;
@@ -63,15 +71,16 @@ export const Field = styled.label`
 export const Input = styled.input`
   width: 204px;
   height: 38px;
-  padding: 10px 42px;
+  padding: 10px 10px 10px 42px;
   border: 1px solid var(--txt-dark);
   border-radius: 6px;
   font-weight: 400;
   font-size: 10px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  background-color: ${({ theme: { colors } }) => colors.bgFooter};
   color: var(--txt-dark);
+  background-color: ${({ theme: { colors } }) => colors.bgFooter};
+
   outline: none;
   &:focus,
   &:hover {
@@ -82,13 +91,13 @@ export const Input = styled.input`
   ${mediaQueries('tablet')`
     width: 259px;
     height: 50px;
-    padding: 14.5px 40px 14.5px 51px;
+    padding: 14.5px 10px 14.5px 51px;
     font-size: 14px;`};
 
   ${mediaQueries('desktop')`
     width: 338px;
     height: 59px;
-    padding: 17.5px 70.5px 17.5px 51.5px;
+    padding: 17.5px 10px 17.5px 51.5px;
     font-size: 18px;
     `};
 `;
@@ -122,7 +131,10 @@ export const EmailIcon = styled(RxEnvelopeClosed)`
 export const Button = styled.button`
   width: 204px;
   height: 38px;
-  padding: 11px 71px;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
   font-family: 'Poppins';
   font-style: normal;
@@ -140,13 +152,11 @@ export const Button = styled.button`
   ${mediaQueries('tablet')`
     width: 171px;
     height: 50px;
-    padding: 16px 50px;
     font-size: 16px;
     line-height: 1.12;`};
 
   ${mediaQueries('desktop')`
     width: 339px;
     height: 60px;
-    padding: 21px 134px;
     `};
 `;

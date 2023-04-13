@@ -1,12 +1,12 @@
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
-import { RxCross2 } from 'react-icons/rx';
 import { logOut } from 'redux/auth/authOperations';
 import {
   Backdrop,
   Button,
   CloseButton,
+  CloseButtonIcon,
   ModalWrapper,
   Text,
 } from './LogOutModal.styled';
@@ -33,7 +33,7 @@ export default function LogOutModal({ handleClose }) {
     <Backdrop>
       <ModalWrapper>
         <CloseButton type="button" onClick={handleClose}>
-          <RxCross2 size={22} />
+          <CloseButtonIcon size={22} />
         </CloseButton>
         <Text>Are you sure you want to log out?</Text>
         <div>
