@@ -1,40 +1,43 @@
 import styled from 'styled-components';
 
+export const CategoriesTitle = styled.h1`
+  padding-bottom: 138px;
+  position: relative;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 156px;
+    font-size: 32px;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 44px;
+    padding-bottom: 206px;
+  }
+`;
 
 export const TabWrap = styled.div`
   width: 100%;
+  position: absolute;
+  top: 192px;
   height: 56px;
   padding-left: 19px;
   border-bottom: 1px solid #e0e0e0;
+  @media screen and (min-width: 768px) {
+    top: 218px;
+  }
 
   @media screen and (min-width: 1440px) {
     padding-left: 19px;
-    margin-top: 100px;
+
+    top: 308px;
   }
 `;
 
 export const TabList = styled.ul`
   padding: 0px 0px 0px 10px;
   height: 100%;
-  @media screen and (min-width: 768px) {
-  }
-`;
-
-export const CategoriesTitle = styled.h1`
-  margin-bottom: 50px;
-
-  padding: 0px;
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  @media screen and (min-width: 768px) {
-    font-size: 32px;
-  }
-  @media screen and (min-width: 1440px) {
-    font-size: 44px;
-    margin-bottom: 100px;
-  }
 `;
 
 export const Tab = styled.li`
