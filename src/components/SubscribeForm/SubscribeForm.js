@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
+import { useAuth } from '../../hooks/useAuth';
 import { instance } from 'redux/auth/authOperations';
 
 import {
@@ -18,20 +19,14 @@ import {
 export const SubscribeForm = () => {
   const { width } = useWindowDimensions();
 
-  // const user = useSelector(selectUser);
-  // console.log(user);
-  // console.log(user.email);
+  const { user } = useAuth();
+  console.log({ user });
 
   const [email, setEmail] = useState('');
-  // console.log([email, setEmail]);
+  const isEmailValid = email.trim().length > 6;
 
   const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
-
-  // const subscribeUser = async body => {
-  //   const { data } = await axios.post('/subscribe', body);
-  //   return data;
-  // };
-
+  
   const handleSubmit = async event => {
     event.preventDefault();
     if (!emailRegexp.test(email)) {
@@ -60,25 +55,24 @@ export const SubscribeForm = () => {
           </Text>
         </TextBeforeSubscribe>
       )}
-      <Form
-        onSubmit={handleSubmit}
-        // actions.setSubmitting(false);
-        // actions.resetForm();
-      >
+      <Form onSubmit={handleSubmit}>
         <Field>
           <Input
-            type="email"
+            type="text"
             name="email"
             placeholder="Enter your email address"
-            autoFocus
-            defaultValue={user.email}
+            autoFocus={user.email}
             value={email}
             onChange={event => setEmail(event.target.value)}
-            pattern="^[A-Za-z0-9_.-]+@[A-Za-z0-9_.-]+\.[A-Za-z]{2,4}$"
           />
           <EmailIcon />
         </Field>
-        <Button type="submit">Subscribe</Button>
+        <Button
+          type="submit"
+          disabled={!isEmailValid}
+        >
+          Subscribe
+        </Button>
       </Form>
     </SubscribeFormWrap>
   );
