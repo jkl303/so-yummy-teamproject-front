@@ -8,7 +8,6 @@ export default function CategoriesPage() {
   return (
     <CategoryPageWrap>
       <Categories title={Categories} />
-
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
