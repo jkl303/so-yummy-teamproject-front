@@ -6,25 +6,31 @@ import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchSearched } from './fetchSearched';
 import { MarginWrap } from 'components/search/MarginWrap/MarginWrap';
-import { RecipeCard } from 'components/Main/RecipeCard/RecipeCard';
-import { RecipeList } from 'components/search/RecipeList/RecipeList.styled';
+import { RecipeList } from 'components/search/RecipeList/RecipeList';
 import { PageWrap } from 'components/search/PageWrap/PageWrap';
 import { SearchNotFound } from 'components/search/SearchNotFound/SearchNotFound';
 import { toast } from 'react-hot-toast';
-import { ContainerComponent } from 'components/Container/Container.styled';
 import Container from 'components/Container/Container';
+import useWindowDimensions from 'hooks/useWindowDimensions';
+import Paginator from 'components/Paginator/Paginator';
 
 export default function SearchPage() {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState('');
+  const [itemsPerPage, setItemsPerPage] = useState(null);
   const [recipes, setRecipes] = useState([]);
 
   const options = ['title', 'ingredients'];
   const [filter, setFilter] = useState(options[0]);
   const [isLoading, setIsLoading] = useState(false);
+  const { width } = useWindowDimensions();
 
   // to avoid rerender on filter change
   const filterRef = useRef(filter);
+
+  useEffect(() => {
+    width >= 1440 ? setItemsPerPage(12) : setItemsPerPage(6);
+  }, [width]);
 
   useEffect(() => {
     const queryOuter = searchParams.get('query');
@@ -32,14 +38,14 @@ export default function SearchPage() {
     const fetchRecipes = async () => {
       const result = await fetchSearched({
         query: queryOuter,
-        filter: filterRef,
+        filter: filterRef.current,
       });
-
       (await result?.data.length) && setRecipes(result.data ?? []);
     };
 
     try {
       setIsLoading(true);
+      queryOuter && setQuery(queryOuter);
       queryOuter && fetchRecipes();
       setIsLoading(false);
     } catch (e) {
@@ -66,35 +72,35 @@ export default function SearchPage() {
 
   return (
     <Container>
-      <ContainerComponent>
-        <PageWrap titleText="Search" padT={{ mob: 100 }} padB={{ mob: 200 }}>
-          <MarginWrap
-            mB={{ mob: 24, tab: 28 }}
-            mT={{ mob: 50, tab: 40, desk: 50 }}
-          >
-            <SearchForm
-              handleSubmit={handleSearchSubmit}
-              isLoading={isLoading}
-              initialValue={searchParams.get('query') || ''}
-            />
-          </MarginWrap>
-          <SearchFilter
-            handleFilterSelect={option => {
-              setFilter(option);
-              filterRef.current = option;
-            }}
+      <PageWrap titleText="Search">
+        <MarginWrap
+          mB={{ mob: 24, tab: 28 }}
+          mT={{ mob: 50, tab: 40, desk: 50 }}
+        >
+          <SearchForm
+            handleSubmit={handleSearchSubmit}
+            isLoading={isLoading}
+            initialValue={searchParams.get('query') || ''}
           />
-          {recipes.length > 0 ? (
-            <RecipeList style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {recipes.map(({ _id, thumb, title }) => (
-                <RecipeCard key={_id} id={_id} img={thumb} title={title} />
-              ))}
-            </RecipeList>
-          ) : query ? (
-            <SearchNotFound />
-          ) : null}
-        </PageWrap>
-      </ContainerComponent>
+        </MarginWrap>
+        <SearchFilter
+          handleFilterSelect={option => {
+            setFilter(option);
+            filterRef.current = option;
+          }}
+        />
+        {recipes.length > itemsPerPage ? (
+          <Paginator data={recipes} itemsPerPage={itemsPerPage} noMargin>
+            {currentItems => {
+              return <RecipeList recipes={currentItems} />;
+            }}
+          </Paginator>
+        ) : recipes.length > 0 ? (
+          <RecipeList recipes={recipes} />
+        ) : query ? (
+          <SearchNotFound />
+        ) : null}
+      </PageWrap>
     </Container>
   );
 }

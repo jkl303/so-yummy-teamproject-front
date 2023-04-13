@@ -84,7 +84,7 @@ export const CustomBtn = styled(Link)`
       }
     `}
     ${({ variant, theme: { colors } }) => css`
-    &:hover {
+    &:hover:not([disabled]) {
       background-color: ${variant === 'changeBg' || variant === 'changeAll'
         ? colors.btnHover
         : variant === 'changeBgInvert'

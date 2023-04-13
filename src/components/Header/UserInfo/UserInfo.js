@@ -77,7 +77,12 @@ const UserInfo = () => {
         </Wrap>
       )}
       {userEditModal && (
-        <UserProfile toggleMenu={editProfile} name={name} avatar={avatarURL} />
+        <UserProfile
+          toggleMenu={editProfile}
+          name={name}
+          avatar={avatarURL}
+          onClose={editProfile}
+        />
       )}
       {isLogOutOpenModal && <LogOutModal handleClose={logOutCloseModal} />}
     </UserWrap>

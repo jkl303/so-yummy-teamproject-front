@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PaginatorWrapper = styled.div`
-  margin: 50px auto 100px;
+  margin: ${({ noMargin }) => (noMargin ? '50px auto 0' : '50px auto 100px')};
   width: 324px;
   ul {
     height: 55px;
