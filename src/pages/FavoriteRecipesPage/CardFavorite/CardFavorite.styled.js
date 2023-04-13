@@ -132,6 +132,7 @@ export const WrapperImgTrashLogo = styled.div`
   background: ${({ theme: { colors } }) => colors.btnDelBg};
   border-radius: 4px;
   padding: 5px;
+  cursor: pointer;
 
   ${mediaQueries('tablet')`
     position: absolute;
