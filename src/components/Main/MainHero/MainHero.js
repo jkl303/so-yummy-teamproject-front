@@ -82,7 +82,7 @@ export const MainHero = ({ data }) => {
           </Description>
 
           <LinkToRecipes
-            to={`/categories/${data[0].category}`}
+            to={`/categories/${data[0][0].category}`}
             location={location}
           >
             See recipes <BsArrowRight size="18" />
