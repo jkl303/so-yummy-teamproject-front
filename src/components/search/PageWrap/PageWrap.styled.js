@@ -1,7 +1,7 @@
 import { mediaQueries } from 'style/mediaQueries';
 import styled, { css } from 'styled-components';
 
-export const Page = styled.div`
+export const Page = styled.section`
   ${({ padT = {}, padB = {} }) => css`
     padding-top: ${padT.mob ? padT.mob + 'px' : 0};
     padding-bottom: ${padB.mob ? padB.mob + 'px' : 0};
