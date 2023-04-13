@@ -3,7 +3,7 @@ import { RxEnvelopeClosed } from 'react-icons/rx';
 import { mediaQueries } from 'style/mediaQueries';
 
 export const SubscribeFormWrap = styled.div`
- margin: 0 auto;
+  margin: 0 auto;
   max-width: 204px;
 
   ${mediaQueries('tablet')`
@@ -71,7 +71,7 @@ export const Field = styled.label`
 export const Input = styled.input`
   width: 204px;
   height: 38px;
-  padding: 10px 42px;
+  padding: 10px 10px 10px 42px;
   border: 1px solid var(--txt-dark);
   border-radius: 6px;
   font-weight: 400;
@@ -91,13 +91,13 @@ export const Input = styled.input`
   ${mediaQueries('tablet')`
     width: 259px;
     height: 50px;
-    padding: 14.5px 40px 14.5px 51px;
+    padding: 14.5px 10px 14.5px 51px;
     font-size: 14px;`};
 
   ${mediaQueries('desktop')`
     width: 338px;
     height: 59px;
-    padding: 17.5px 70.5px 17.5px 51.5px;
+    padding: 17.5px 10px 17.5px 51.5px;
     font-size: 18px;
     `};
 `;
@@ -131,7 +131,10 @@ export const EmailIcon = styled(RxEnvelopeClosed)`
 export const Button = styled.button`
   width: 204px;
   height: 38px;
-  padding: 11px 71px;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
   font-family: 'Poppins';
   font-style: normal;
@@ -149,13 +152,11 @@ export const Button = styled.button`
   ${mediaQueries('tablet')`
     width: 171px;
     height: 50px;
-    padding: 16px 50px;
     font-size: 16px;
     line-height: 1.12;`};
 
   ${mediaQueries('desktop')`
     width: 339px;
     height: 60px;
-    padding: 21px 134px;
     `};
 `;
