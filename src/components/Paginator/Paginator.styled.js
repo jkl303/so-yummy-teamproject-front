@@ -10,11 +10,12 @@ export const PaginatorWrapper = styled.div`
     align-items: center;
     background: #fafafa;
     box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.2);
+    background-color: ${({ theme: { colors } }) => colors.bgModal};
     border-radius: 26px;
   }
   li {
     .active {
-      background-color: ${({ theme: { colors } }) => colors.ingr};
+      background-color: ${({ theme: { colors } }) => colors.bgActivePage};
       :hover {
         transform: scale(1);
         cursor: default;
@@ -26,7 +27,7 @@ export const PaginatorWrapper = styled.div`
     width: 27.81px;
     height: 27px;
     background-color: ${({ isActive, theme: { colors } }) =>
-        isActive ? colors.ingr : colors.bgModal}
+        isActive ? colors.bgActivePage : colors.bgModal}
       /* #ebf3d4,#fafafa*/;
     border: none;
     border-radius: 15px;
