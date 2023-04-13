@@ -2,13 +2,13 @@ import { CgSpinner } from 'react-icons/cg';
 import { keyframes } from 'styled-components';
 import styled from 'styled-components';
 
-export default function Spinner() {
+export const Spinner = () => {
   return (
     <>
       <Icon size="25px" className="Spinner" />
     </>
   );
-}
+};
 
 const spin = keyframes`
  0% {

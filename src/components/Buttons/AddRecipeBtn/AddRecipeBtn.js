@@ -4,6 +4,7 @@ export const AddRecipeBtn = () => {
   return (
     <CustomBtn
       as="button"
+      type="submit"
       variant={'changeBg'}
       sizes={{
         m: { w: 129, h: 46, padH: 48, padV: 12, fz: 16 },
