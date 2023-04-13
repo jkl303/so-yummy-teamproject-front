@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiEdit2 } from 'react-icons/fi';
 
 const slideDown = keyframes`
   0% {
@@ -22,9 +22,10 @@ export const UserBox = styled.div`
   align-items: center;
   cursor: pointer;
   position: static;
+  margin-right: 27px;
 
   @media screen and (min-width: 768px) {
-    margin-right: 54px;
+    margin-right: 60px;
   }
   @media screen and (min-width: 1440px) {
     margin-right: 0px;
@@ -37,7 +38,7 @@ export const UserAvatar = styled.img`
   border-radius: 50%;
   width: 34px;
   height: 34px;
-  margin-right: 4px;
+  margin-right: 14px;
   object-fit: cover;
   @media screen and (min-width: 768px) {
     width: 44px;
@@ -49,16 +50,28 @@ export const UserName = styled.p`
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
-  color: #22252a;
+  color: ${({ theme: { colors } }) => colors.txt};
+`;
+
+export const UserNameBlack = styled.p`
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: ${({ theme: { colors } }) => colors.txt};
+
+  @media screen and (min-width: 1440px) {
+    color: #22252a;
+  }
 `;
 
 export const Wrap = styled.div`
-  background-color: #fafafa;
+  border: 1px solid;
+  border-color: ${({ theme: { colors } }) => colors.searchDropdown};
+  background-color: ${({ theme: { colors } }) => colors.bgModal};
   position: absolute;
   top: 80px;
   width: 177px;
   height: 134px;
-  border-style: none;
   border-radius: 8px;
   animation-name: ${slideDown};
   animation-duration: 700ms;
@@ -105,4 +118,12 @@ export const ButtonLogout = styled.button`
 
 export const ArrowIcon = styled(FiArrowRight)`
   margin-left: 6px;
+`;
+
+export const UserBtnText = styled.p`
+  color: ${({ theme: { colors } }) => colors.title};
+`;
+
+export const EditBtn = styled(FiEdit2)`
+  color: ${({ theme: { colors } }) => colors.title};
 `;

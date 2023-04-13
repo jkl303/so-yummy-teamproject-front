@@ -5,6 +5,7 @@ export const lightTheme = {
     bgSec: 'var(--bg-sec)', //cards, #fff => #2a2c36
     bgFooter: 'var(--bg-btn)',
     bgModal: 'var(--bg)', //#fafafa => #2a2c36
+    bgRecipe:'var( --bg-recipe-ing)', //#ebf3d4 => #2A2C36
     input: 'var(--bg-input)', //#d9d9d9 => #1e1f28
     searchDropdown: 'var(--bg)',
     select: 'var(--bg)', //dropdown #fafafa => accent

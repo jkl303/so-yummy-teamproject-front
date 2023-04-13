@@ -5,6 +5,7 @@ export const darkTheme = {
     bgSec: 'var(--bg-sec-dark)', //lists, cards etc
     bgFooter: 'var(--accent)',
     bgModal: 'var(--bg-sec-dark)',
+    bgRecipe: 'var(--bg-sec-dark)',
     input: 'var(--bg-dark)',
     searchDropdown: 'var(--accent)',
     select: 'var(--accent)',

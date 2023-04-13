@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
-
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-import { selectUser } from '../../redux/auth/authSelectors';
-
-import axios from 'axios';
+import { useAuth } from '../../hooks/useAuth';
+import { instance } from 'redux/auth/authOperations';
 
 import {
   SubscribeFormWrap,
@@ -22,24 +19,21 @@ import {
 export const SubscribeForm = () => {
   const { width } = useWindowDimensions();
 
-  const user = useSelector(selectUser);
+  const { user } = useAuth();
+  console.log({ user });
 
   const [email, setEmail] = useState('');
+  const isEmailValid = email.trim().length > 6;
 
   const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
-
-  const subscribeUser = async body => {
-    const { data } = await axios.post('/subscribe', body);
-    return data;
-  };
-
-  const handleSubmit = async value => {
-    //event.preventDefault();
+  
+  const handleSubmit = async event => {
+    event.preventDefault();
     if (!emailRegexp.test(email)) {
       return toast('email is invalid');
     }
     try {
-      await subscribeUser({ email: value.email });
+      await instance.post('auth/subscribe', { email });
       toast.success('You have successfully subscribed');
     } catch (error) {
       if (error.response.status === 409) {
@@ -61,24 +55,24 @@ export const SubscribeForm = () => {
           </Text>
         </TextBeforeSubscribe>
       )}
-      <Form
-        onSubmit={(value, actions) => {
-          handleSubmit(value);
-          actions.setSubmitting(false);
-          actions.resetForm();
-        }}
-      >
+      <Form onSubmit={handleSubmit}>
         <Field>
           <Input
             type="text"
             name="email"
             placeholder="Enter your email address"
-            //value={user.email}
+            autoFocus={user.email}
+            value={email}
             onChange={event => setEmail(event.target.value)}
           />
           <EmailIcon />
         </Field>
-        <Button type="submit">Subscribe</Button>
+        <Button
+          type="submit"
+          disabled={!isEmailValid}
+        >
+          Subscribe
+        </Button>
       </Form>
     </SubscribeFormWrap>
   );
