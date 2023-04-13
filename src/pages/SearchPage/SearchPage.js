@@ -72,11 +72,7 @@ export default function SearchPage() {
 
   return (
     <Container>
-      <PageWrap
-        titleText="Search"
-        padT={{ mob: 100 }}
-        padB={{ mob: 100, tab: 200 }}
-      >
+      <PageWrap titleText="Search">
         <MarginWrap
           mB={{ mob: 24, tab: 28 }}
           mT={{ mob: 50, tab: 40, desk: 50 }}
