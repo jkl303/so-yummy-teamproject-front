@@ -98,3 +98,7 @@ export const RecipeAddToFavotite = styled.button`
     margin-bottom: 48px;
   }
 `;
+
+export const RecipeTime =  styled.p`
+color: #23262A;
+`

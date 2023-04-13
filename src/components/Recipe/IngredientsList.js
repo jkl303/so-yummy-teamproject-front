@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   IngridientsWrap,
   TableHeader,
@@ -10,27 +10,37 @@ import {
   IngridientQuantity,
   IngridientCheck,
 } from './IngredientsList.style';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addShoppingListItemThunkOperation,
   deleteShoppingListItemThunkOperation,
+  fetchShoppingListThunkOperation,
 } from '../../redux/shoppingList/shoppingListOperations';
 
 export function IngredientsList({ ingredients, measure, onIngredientToggle }) {
   const dispatch = useDispatch();
+  const shoppingList = useSelector((state) => state.shoppingList.items);
+
+  useEffect(() => {
+    dispatch(fetchShoppingListThunkOperation());
+  }, [dispatch]);
 
   const handleCheckboxClick = (id, measure, isChecked) => {
     const newItem = { ingredientId: id, ingredientQuantity: measure };
+    let shoppingListItem;
 
     if (isChecked) {
       dispatch(addShoppingListItemThunkOperation(newItem));
     } else {
-      dispatch(deleteShoppingListItemThunkOperation(id));
+      shoppingListItem = shoppingList.find((item) => item.ingredientId._id === id);
+      if (shoppingListItem) {
+        dispatch(deleteShoppingListItemThunkOperation(shoppingListItem._id));
+      }
     }
 
     onIngredientToggle(id, measure, isChecked);
   };
-
+  
   return (
     <IngridientsWrap>
       <TableHeader>
