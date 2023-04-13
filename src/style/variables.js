@@ -7,7 +7,7 @@ export const variables = css`
     --bg: #fafafa;
     --bg-accent: #ebf3d4;
     --bg-btn: #22252a;
-    --bg-btn-hover-dark: #8baa36cc;
+    --bg-btn-hover-dark: #6a8129;
     --bg-dark: #1e1f28;
     --bg-input: #f5f5f5;
     --bg-sec: #ffffff;
