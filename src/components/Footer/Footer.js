@@ -27,7 +27,7 @@ export default function Footer() {
               <LogoLink to="/main">
                 <Logo />
               </LogoLink>
-              <Link>So Yummy</Link>
+              <Link to="/main">So Yummy</Link>
             </LogoWrap>
             {width > 767 && <TextList />}
           </DescroptionWrap>

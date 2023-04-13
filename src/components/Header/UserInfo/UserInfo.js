@@ -17,6 +17,8 @@ import {
   EditBtn,
 } from './UserInfoStyled';
 
+import LogOutModal from 'components/AuthForms/LogOutModal/LogOutModal';
+
 const UserInfo = () => {
   const [userOpenModal, setUserOpenModal] = useState(false);
   const [userEditModal, setUserEditModal] = useState(false);
@@ -39,6 +41,10 @@ const UserInfo = () => {
   const logOutOpenModal = () => {
     setIsLogOutOpenModal(true);
     toggleOpenModal();
+  };
+
+  const logOutCloseModal = () => {
+    setIsLogOutOpenModal(false);
   };
 
   return (
@@ -73,6 +79,7 @@ const UserInfo = () => {
       {userEditModal && (
         <UserProfile toggleMenu={editProfile} name={name} avatar={avatarURL} />
       )}
+      {isLogOutOpenModal && <LogOutModal handleClose={logOutCloseModal} />}
     </UserWrap>
   );
 };
