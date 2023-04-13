@@ -38,7 +38,9 @@ export const deleteShoppingListItemThunkOperation = createAsyncThunk(
     console.log(id);
 
     try {
-      const { data } = await instance.post(`/users/shopping-list/`, { id: id, method: "delete" });
+      const { data } = await instance.delete(`/users/shopping-list/`, {
+        data: { id: id },
+      });
       console.log(data);
       if (data) {
         toast.success('sucessfully deleted!');

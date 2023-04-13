@@ -1,9 +1,27 @@
-import React from 'react';
-import { IngridientsWrap, TableHeader, IngridientsItem, IngridientImage, IngridientInfo, IngridientName, IngridientDetails, IngridientQuantity, IngridientCheck } from './IngredientsList.style';
+import React, { useState } from 'react';
+import {
+  IngridientsWrap,
+  TableHeader,
+  IngridientsItem,
+  IngridientImage,
+  IngridientInfo,
+  IngridientName,
+  IngridientDetails,
+  IngridientQuantity,
+  IngridientCheck,
+} from './IngredientsList.style';
 
 export function IngredientsList({ ingredients, onIngredientToggle }) {
-  const handleIngredientToggle = (id, checked) => {
-    onIngredientToggle(id, checked);
+  const [checkedItems, setCheckedItems] = useState([]);
+
+  const handleIngredientToggle = (id, isChecked) => {
+    onIngredientToggle(id, isChecked);
+
+    if (isChecked) {
+      setCheckedItems((prevItems) => [...prevItems, id]);
+    } else {
+      setCheckedItems((prevItems) => prevItems.filter((item) => item !== id));
+    }
   };
 
   return (
@@ -25,6 +43,7 @@ export function IngredientsList({ ingredients, onIngredientToggle }) {
                   <input
                     type="checkbox"
                     id={_id}
+                    checked={checkedItems.includes(_id)}
                     onChange={(e) => handleIngredientToggle(_id, e.target.checked)}
                   />
                   <label htmlFor={_id}></label>
