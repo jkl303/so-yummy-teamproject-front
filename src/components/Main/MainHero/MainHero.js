@@ -1,5 +1,4 @@
-import { useLocation } from 'react-router-dom';
-
+import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
 import {
   BgLeaveTop,
   HeroWrap,
@@ -25,10 +24,20 @@ import plateTablet from 'images/tablet/main-page-plate768.png';
 import plateTablet2x from 'images/tablet/main-page-plate768-2x.png';
 import plateDesk from 'images/desktop/main-page-plate1440.png';
 import plateDesk2x from 'images/desktop/main-page-plate1440-2x.png';
+import { SearchForm } from 'components/search/SearchForm/SearchForm';
 
 export const MainHero = ({ data }) => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
   const { width } = useWindowDimensions();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const innerQuery = e.target.search.value;
+    navigate(`/search?query=${innerQuery}`, { replace: true });
+  };
 
   return (
     <HeroWrap>
@@ -41,10 +50,7 @@ export const MainHero = ({ data }) => {
           "What to cook?" is not only a recipe app, it is, in fact, your
           cookbook. You can add your own recipes to save them for the future.
         </HeroText>
-        {/* <HeroText>
-            "What to cook?" is not only a recipe app, it is, in fact, your
-            cookbook. You can add your own recipes to save them for the future.
-          </HeroText> */}
+        {width > 767 && <SearchForm handleSubmit={handleSubmit} />}
       </Wrap>
       <ImageWrap>
         {width < 768 ? (
@@ -84,6 +90,12 @@ export const MainHero = ({ data }) => {
 
           <ArrowBox></ArrowBox>
         </DescrWrap>
+        {width < 768 && (
+          <SearchForm
+            handleSubmit={handleSubmit}
+            initialValue={searchParams.get('query') || ''}
+          />
+        )}
       </ImageWrap>
       <BgElement></BgElement>
     </HeroWrap>

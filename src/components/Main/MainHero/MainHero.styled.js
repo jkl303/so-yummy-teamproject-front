@@ -101,11 +101,13 @@ export const HeroText = styled.p`
 
   ${mediaQueries('tablet')`
   width: 340px;
+  margin-bottom: 32px;
    text-align: left;`}
 
   ${mediaQueries('desktop')`
    font-size: 18px;
    width: 465px;
+   margin-bottom: 50px;
     line-height: 24px;`}
 `;
 
@@ -122,10 +124,13 @@ export const ImageWrap = styled.div`
 `;
 
 export const ImageStyled = styled.img`
+  margin-bottom: 24px;
+
   ${mediaQueries('tablet')`
   position: absolute;
   top: -140px;
-  right: 0;`}
+  right: 0;
+   margin-bottom: 0;`}
 
   ${mediaQueries('desktop')`
   top: -260px;
@@ -215,18 +220,19 @@ export const BgElement = styled.div`
   position: absolute;
   z-index: -1;
   left: 70%;
-  bottom: 10%;
+  bottom: 0;
   background-color: var(--bg-accent);
-  width: 506px;
-  height: 542px;
+  width: 606px;
+  height: 842px;
   border-bottom-left-radius: 10%;
-  transform: rotate(32deg);
+  transform: rotate(42deg);
 
   ${mediaQueries('tablet')`
-  bottom: 0;
-   width: 753px;
-    height: 730px;
-    transform: skewX(-5deg) rotate(27deg);`}
+  left: 73%;
+  bottom: 1%;
+   width: 633px;
+    height: 710px;
+    transform: skewX(-9deg) rotate(22deg);`}
 
   ${mediaQueries('desktop')`
   left: 60%;
