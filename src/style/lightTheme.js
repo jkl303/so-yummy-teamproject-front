@@ -17,7 +17,8 @@ export const lightTheme = {
     btnFoot: 'var(--accent)', //accent => #1e1f28
     btnInverted: 'var(--accent)', //green => 22252a
     btnHoverInverted: 'var(--bg-btn)', //22252a => green
-    
+    btnDelBg: 'var(--bg-accent)',
+
     txt: 'var(--txt)', //#23262a => #fafafa
     title: 'var(--txt-title)', //#001833 => #fafafa
     subtitle: 'var(--txt-subtitle)', //#3e4462 => #fafafa
