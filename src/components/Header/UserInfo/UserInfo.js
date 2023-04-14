@@ -29,6 +29,7 @@ const UserInfo = () => {
   const { name, avatarURL } = user;
 
   const isMainPage = window.location.pathname.includes('main');
+  const isRecipePage = window.location.pathname.includes('recipe');
 
   const toggleOpenModal = () => {
     setUserOpenModal(!userOpenModal);
@@ -51,7 +52,7 @@ const UserInfo = () => {
     <UserWrap>
       <UserBox onClick={toggleOpenModal}>
         <UserAvatar alt="User's avatar" src={avatarURL}></UserAvatar>
-        {isMainPage ? (
+        {isMainPage || isRecipePage ? (
           <UserNameBlack>{name}</UserNameBlack>
         ) : (
           <UserName>{name}</UserName>
