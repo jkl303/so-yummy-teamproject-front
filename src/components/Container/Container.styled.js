@@ -11,9 +11,10 @@ import rectBlackDesk from 'images/desktop/rectBlackDesk.png';
 export const ContainerWrap = styled.section`
   flex: 1 1 auto;
   min-width: 375px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
   position: relative;
-  background-color: ${({ theme: { colors } }) => colors.bg};
   background-image: url(${rectGreenMob}), url(${rectBlackMob}),
     url(${rectGreenMob});
   background-position: top 12px left 120px, top 78px left 247px,
@@ -24,6 +25,7 @@ export const ContainerWrap = styled.section`
 
   @media screen and (min-width: 768px) {
     min-width: 768px;
+    /* margin-top: 100px; */
     background-image: url(${rectGreenTab}), url(${rectBlackTab}),
       url(${rectGreenTab});
     background-position: top 21px left 219px, top 91px left 437px,
