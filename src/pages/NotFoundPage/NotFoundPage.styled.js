@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-export const SectionNoFound = styled.section`
-  position: relative;
+export const SectionNotFound = styled.section`
   margin-left: auto;
   margin-right: auto;
   max-width: 375px;
@@ -17,7 +16,7 @@ export const SectionNoFound = styled.section`
   }
 `;
 
-export const TitleNoFound = styled.p`
+export const TitleNotFound = styled.p`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
@@ -113,7 +112,7 @@ export const Third = styled.div`
   }
 `;
 
-export const DescrNoFound = styled.p`
+export const DescrNotFound = styled.p`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
@@ -125,14 +124,16 @@ export const DescrNoFound = styled.p`
   text-align: center;
   color: ${({ theme: { colors } }) => colors.txt};
   opacity: 0.5;
+  margin-bottom: 100px;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 24px;
+    margin-bottom: 204px;
   }
 `;
 
-export const ImgNoFound = styled.img`
+export const ImgNotFound = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
