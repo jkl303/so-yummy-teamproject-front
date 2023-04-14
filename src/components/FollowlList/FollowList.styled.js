@@ -22,48 +22,68 @@ export const List = styled.ul`
 export const Link = styled(NavLink)`
   cursor: pointer;
   color: var(--bg);
-  &:focus,
-  &:hover {
-    color: ${({ theme: { colors } }) => colors.btnFoot};
-  }
 `;
 
 export const FacebookIcon = styled(BsFacebook)`
   width: 20px;
   height: 20px;
   color: ${({ theme: { colors } }) => colors.txt};
+  transition: color 0.3s ease;
 
   ${mediaQueries('tablet')`
   width: 30px;
   height: 30px;`};
+
+  &:focus,
+  &:hover {
+    color: ${({ theme: { colors } }) => colors.btnFoot};
+  }
 `;
 
 export const YoutubeIcon = styled(BsYoutube)`
   width: 20px;
   height: 15px;
   color: ${({ theme: { colors } }) => colors.txt};
+  transition: color 0.3s ease;
 
   ${mediaQueries('tablet')`
   width: 30px;
   height: 30px;`};
+
+  &:focus,
+  &:hover {
+    color: ${({ theme: { colors } }) => colors.btnFoot};
+  }
 `;
 
 export const TwitterIcon = styled(BsTwitter)`
   width: 20px;
   height: 16px;
   color: ${({ theme: { colors } }) => colors.txt};
+  transition: color 0.3s ease;
 
   ${mediaQueries('tablet')`
   width: 30px;
   height: 30px;`};
+
+  &:focus,
+  &:hover {
+    color: ${({ theme: { colors } }) => colors.btnFoot};
+  }
 `;
 
 export const InstagramIcon = styled(BsInstagram)`
   width: 17px;
   height: 17px;
   color: ${({ theme: { colors } }) => colors.txt};
+  transition: color 0.3s ease;
 
   ${mediaQueries('tablet')`
   width: 30px;
   height: 30px;`};
+
+  &:focus,
+  &:hover {
+    color: ${({ theme: { colors } }) => colors.btnFoot};
+  }
 `;
