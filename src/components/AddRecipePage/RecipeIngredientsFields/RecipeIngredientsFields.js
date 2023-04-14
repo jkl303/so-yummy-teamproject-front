@@ -13,55 +13,15 @@ import {
   XIcon,
 } from './RecipeIngredientsFields.styled';
 import { IngredientField } from '../customFields/IngredientField/IngredientField';
-
-const measureOptions = [
-  {
-    value: 'tbs',
-    label: 'tbs',
-  },
-  {
-    value: 'tsp',
-    label: 'tsp',
-  },
-  {
-    value: 'kg',
-    label: 'kg',
-  },
-  {
-    value: 'g',
-    label: 'g',
-  },
-];
-
-const ingredientOptions = [
-  {
-    value: '640c2dd963a319ea671e365f',
-    label: 'Egg',
-  },
-  {
-    value: '640c2dd963a319ea671e3665',
-    label: 'Salmon',
-  },
-  {
-    value: '640c2dd963a319ea671e3661',
-    label: 'Banana',
-  },
-  {
-    value: '640c2dd963a319ea671e365b',
-    label: 'Sugar',
-  },
-];
+import { measureOptions } from './measureOptions';
 
 export const RecipeIngredientsFields = () => {
   const [ingredientFields, setIngredientFields] = useState([0, 1, 2]);
-  const ingredients = useSelector(getIngredients);
 
-  // const ingredientOptions = ingredients.map(ingredient =>
-  //   ingredientOptions.push({
-  //     value: ingredient._id,
-  //     label: ingredient.ttl,
-  //   })
-  // );
+  const ingredients = useSelector(getIngredients).map(ingredient => ({
+    value: ingredient._id,
+    label: ingredient.ttl,
+  }));
 
   const addField = () => {
     setIngredientFields(prevFields => [
@@ -117,7 +77,7 @@ export const RecipeIngredientsFields = () => {
                   <Field
                     name={`ingredients[${field}].id`}
                     component={IngredientField}
-                    options={ingredientOptions}
+                    options={ingredients}
                   />
                   <Field
                     name={`ingredients[${field}].measure`}
