@@ -3,76 +3,14 @@ import { SelectField } from '../customFields/SelectField/SelectField';
 import { FileField } from '../customFields/FileField/FileField';
 import { timeOptions } from './timeOptions';
 import { RecipeDescriptionFieldsStyled } from './RecipeDescriptionFields.styled';
-// import { useSelector } from 'react-redux';
-// import { getCategories } from 'redux/recipes/categories/selectors';
-// import { useEffect } from 'react';
-
-const categoryOptions = [
-  {
-    value: 'Beef',
-    label: 'Beef',
-  },
-  {
-    value: 'Breakfast',
-    label: 'Breakfast',
-  },
-  {
-    value: 'Chicken',
-    label: 'Chicken',
-  },
-  {
-    value: 'Dessert',
-    label: 'Dessert',
-  },
-  {
-    value: 'Goat',
-    label: 'Goat',
-  },
-  {
-    value: 'Lamb',
-    label: 'Lamb',
-  },
-  {
-    value: 'Miscellaneous',
-    label: 'Miscellaneous',
-  },
-  {
-    value: 'Pasta',
-    label: 'Pasta',
-  },
-  {
-    value: 'Pork',
-    label: 'Pork',
-  },
-  {
-    value: 'Seafood',
-    label: 'Seafood',
-  },
-  {
-    value: 'Side',
-    label: 'Side',
-  },
-  {
-    value: 'Starter',
-    label: 'Starter',
-  },
-  {
-    value: 'Vegan',
-    label: 'Vegan',
-  },
-  {
-    value: 'Vegetarian',
-    label: 'Vegetarian',
-  },
-];
+import { useSelector } from 'react-redux';
+import { getCategories } from 'redux/recipes/categories/selectors';
 
 export const RecipeDescriptionFields = () => {
-  // const categories = useSelector(getCategories).map(category =>
-  //   categories.push({
-  //     value: category,
-  //     label: category,
-  //   })
-  // );
+  const categories = useSelector(getCategories).map(category => ({
+    value: category,
+    label: category,
+  }));
 
   return (
     <RecipeDescriptionFieldsStyled>
@@ -89,11 +27,7 @@ export const RecipeDescriptionFields = () => {
         </li>
         <li>
           <label htmlFor="category">Category</label>
-          <Field
-            name="category"
-            component={SelectField}
-            options={categoryOptions}
-          />
+          <Field name="category" component={SelectField} options={categories} />
           <ErrorMessage name="category" />
         </li>
         <li>

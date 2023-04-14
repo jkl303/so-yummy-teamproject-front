@@ -2,6 +2,7 @@ import {} from './RecipePage.styled';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Loader from 'components/Loader/Loader';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import recipeMob from '../../images/mobile/recipe-bg375.jpg';
 import recipeMob2x from '../../images/mobile/recipe-bg375-2x.jpg'
@@ -20,15 +21,18 @@ export default function RecipePage() {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
   const { width } = useWindowDimensions();
+  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     instance
       .get(`/recipes/byId/${recipeId}`)
       .then(response => {
         setRecipe(response.data);
+        setLoading(false);
       })
       .catch(error => {
         console.log(error);
+        setLoading(false);
       });
   }, [recipeId]);
 
@@ -61,8 +65,8 @@ export default function RecipePage() {
   const handleIngredientToggle = (id, measure, isChecked) => {
     // console.log(id, measure, isChecked)
   };
-  if (!recipe) {
-    return <div>Loading...</div>;
+  if (loading) {
+    return <Loader />;
   }
   
   const { title, description, time, ingredients, instructions, thumb, favorites, measure, owner} = recipe.data.recipe;
