@@ -16,19 +16,51 @@ export const StyledContainer = styled.div`
   padding-bottom: 100px;
   background-color: ${({ theme: { colors } }) => colors.bg};
 
-  background: url(${leavesLeftMob}) 100% no-repeat;
-  background-position: 0% 260%;
-  background-clip: padding-box;
-  background-size: auto;
+  ///// !!!!!
+  // background: url(${leavesLeftMob}) 100% no-repeat;
+  // background-position: 0% 260%;
+  // background-clip: padding-box;
+  // background-size: auto;
+  // position: relative;
 
-  @media screen and (min-width: 768px) {
-    background: url(${leavesLeftTab}) 100% no-repeat;
-    background-position: 0% 195%;
-  }
-  @media screen and (min-width: 1440px) {
-    background: url(${leavesLeftDesk}) 100% no-repeat;
-    background-position: 0% 375%;
-  }
+  background-color: transparent;
+
+  // &:before {
+  //   content: '';
+  //   display: block;
+  //   position: absolute;
+  //   left: 0;
+  //   bottom: 0px;
+
+  //   // width: 100%;
+  //   // height: 100px;
+  //   background: url(${leavesLeftMob}) 100% no-repeat;
+  //   background-size: cover;
+  //   height: 100%;
+  //   width: 100%;
+  //   z-index: -1;
+  //   @media screen and (min-width: 768px) {
+  //     height: 100%;
+  //     width: 100%;
+  //     background: url(${leavesLeftTab}) 100% no-repeat;
+  //   }
+
+  //   @media screen and (min-width: 1440px) {
+  //     height: 50%;
+  //     width: 48%;
+  //     background: url(${leavesLeftDesk}) 100% no-repeat;
+  //   }
+  // }
+
+  //// !!!!
+  // @media screen and (min-width: 768px) {
+  //   background: url(${leavesLeftTab}) 100% no-repeat;
+  //   background-position: 0% 195%;
+  // }
+  // @media screen and (min-width: 1440px) {
+  //   background: url(${leavesLeftDesk}) 100% no-repeat;
+  //   background-position: 0% 375%;
+  // }
 
   ${mediaQueries('tablet')`
   padding: 0px 32px 0px 32px;
@@ -46,4 +78,23 @@ export const StyledContainer = styled.div`
  
 
 `}
+`;
+
+export const ContainerWrapperShopping = styled.div`
+  background-color: transparent;
+  position: relative;
+  min-height: 100px;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0px;
+    bottom: -550px;
+    width: 100%;
+    height: 600px;
+    background: url(${leavesLeftDesk}) no-repeat;
+    background-size: contain;
+    z-index: -1;
+    // background-attachment: scroll;
+  }
 `;
