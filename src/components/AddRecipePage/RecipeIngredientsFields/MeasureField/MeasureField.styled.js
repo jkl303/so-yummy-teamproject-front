@@ -21,7 +21,7 @@ export const MeasureFieldStyled = styled.div`
   }
 
   .Select__control {
-    background-color: transparent;
+    background-color: ${({ theme: { colors } }) => colors.input};
     border: none;
     :hover {
       cursor: pointer;
@@ -47,7 +47,8 @@ export const MeasureFieldStyled = styled.div`
     border-radius: 6px;
     font-size: 12px;
     line-height: 18px;
-    color: #00000080;
+    color: ${({ theme: { colors } }) => colors.txtRecipeInner};
+    background-color: ${({ theme: { colors } }) => colors.select};
     box-shadow: none;
     ${mediaQueries('tablet')`width: 123px;`}
     &-list {
@@ -64,15 +65,15 @@ export const MeasureFieldStyled = styled.div`
     }
     :hover {
       cursor: pointer;
-      color: var(--accent);
-      background-color: transparent;
+      color: ${({ theme: { colors } }) => colors.txtRecipeInner};
+      background-color: ${({ theme: { colors } }) => colors.select};
     }
     &--is-focused {
-      background-color: transparent;
+      background-color: ${({ theme: { colors } }) => colors.select};
     }
     &--is-selected {
-      color: var(--accent);
-      background-color: transparent;
+      color: ${({ theme: { colors } }) => colors.txtRecipeInner};
+      background-color: ${({ theme: { colors } }) => colors.select};
     }
   }
 

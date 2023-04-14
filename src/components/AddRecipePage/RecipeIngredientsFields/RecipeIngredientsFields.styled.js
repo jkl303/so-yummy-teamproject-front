@@ -31,7 +31,7 @@ export const AddBtns = styled.div`
   justify-content: space-evenly;
   width: 92px;
   height: 28px;
-  border: 1px solid rgba(51, 51, 51, 0.3);
+  border: 1px solid ${({ theme: { colors } }) => colors.txtRecipeInner};
   border-radius: 18px;
   ${mediaQueries('tablet')`  width: 110px;
   height: 32px;`}
@@ -68,7 +68,7 @@ export const IngredientsStyled = styled.ul`
 `;
 
 export const MinusIcon = styled(FiMinus)`
-  color: #3333334d;
+  color: ${({ theme: { colors } }) => colors.txtRecipeInner};
   :hover {
     cursor: pointer;
     color: var(--accent);
@@ -76,7 +76,7 @@ export const MinusIcon = styled(FiMinus)`
 `;
 
 export const PlusIcon = styled(FiPlus)`
-  color: #3333334d;
+  color: ${({ theme: { colors } }) => colors.txtRecipeInner};
   :hover {
     cursor: pointer;
     color: var(--accent);
@@ -84,7 +84,7 @@ export const PlusIcon = styled(FiPlus)`
 `;
 
 export const XIcon = styled(FiX)`
-  color: #333333;
+  color: ${({ theme: { colors } }) => colors.txt};
   width: 18px;
   height: 18px;
   ${mediaQueries('tablet')`

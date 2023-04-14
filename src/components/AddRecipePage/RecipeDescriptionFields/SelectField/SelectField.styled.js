@@ -7,7 +7,7 @@ export const SelectFieldStyled = styled(Select)`
     border: none;
     border-radius: 0;
     border-bottom: 1px solid var(--bdr);
-    background-color: transparent;
+    background-color: ${({ theme: { colors } }) => colors.input};
     :hover {
       cursor: text;
       border-bottom: 1px solid var(--accent);
@@ -27,6 +27,7 @@ export const SelectFieldStyled = styled(Select)`
 
   .Select__value-container {
     padding: 0;
+    color: ${({ theme: { colors } }) => colors.select};
   }
 
   .Select__menu {
@@ -35,7 +36,8 @@ export const SelectFieldStyled = styled(Select)`
     border-radius: 6px;
     font-size: 12px;
     line-height: 18px;
-    color: #00000080;
+    color: ${({ theme: { colors } }) => colors.txtRecipeInner};
+    background-color: ${({ theme: { colors } }) => colors.select};
     box-shadow: none;
     &-list {
       max-height: 144px;
@@ -50,15 +52,15 @@ export const SelectFieldStyled = styled(Select)`
     }
     :hover {
       cursor: pointer;
-      color: var(--accent);
-      background-color: transparent;
+      color: ${({ theme: { colors } }) => colors.txtRecipeInner};
+      background-color: ${({ theme: { colors } }) => colors.select};
     }
     &--is-focused {
-      background-color: transparent;
+      background-color: ${({ theme: { colors } }) => colors.select};
     }
     &--is-selected {
-      color: var(--accent);
-      background-color: transparent;
+      color: ${({ theme: { colors } }) => colors.txtRecipeInner};
+      background-color: ${({ theme: { colors } }) => colors.select};
     }
   }
 
@@ -70,9 +72,6 @@ export const SelectFieldStyled = styled(Select)`
     border: none;
     outline: none;
     color: var(--accent);
-    /* &::before {
-      content: 'Category ';
-    } */
     :hover {
       color: var(--accent);
     }

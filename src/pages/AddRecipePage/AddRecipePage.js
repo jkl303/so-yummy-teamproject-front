@@ -12,9 +12,13 @@ export default function AddRecipePage() {
     <AddRecipePageStyled>
       <ContainerComponent>
         <MainTitle title={'Add recipe'} />
-        <AddRecipeForm />
-        {width > 1439 && <FollowUs />}
-        <PopularRecipe />
+        <div className="wrapper">
+          <AddRecipeForm />
+          <div className="asideWrapper">
+            {width > 1439 && <FollowUs />}
+            <PopularRecipe />
+          </div>
+        </div>
       </ContainerComponent>
     </AddRecipePageStyled>
   );

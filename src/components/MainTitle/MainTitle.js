@@ -1,13 +1,13 @@
-import { Helmet } from "react-helmet-async";
-import PropTypes from "prop-types";
-import { MainTitleStyled } from "./MainTitle.styled";
+// import { Helmet } from "react-helmet-async";
+import PropTypes from 'prop-types';
+import { MainTitleStyled } from './MainTitle.styled';
 
 export const MainTitle = ({ title }) => {
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>{title}</title>
-      </Helmet>
+      </Helmet> */}
       <MainTitleStyled>{title}</MainTitleStyled>
     </>
   );
