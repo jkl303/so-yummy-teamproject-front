@@ -81,6 +81,6 @@ export const UnderLine = styled.span`
   min-height: 2px;
   background-color: ${props => props.underlined};
   @media screen and (min-width: 768px) {
-    margin-top: 28px;
+    margin-top: 29px;
   }
 `;

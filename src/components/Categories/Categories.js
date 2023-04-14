@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { fetchCategories } from 'services/api/httpRequests';
 import { RecipesbyCategoryName } from './RecipesByCategoryName';
 import { useNavigate } from 'react-router-dom';
-import Loader from '../Loader/Loader';
+import { Spinner } from '../Loader/Spinner';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -83,8 +83,8 @@ export const Categories = ({ title }) => {
       </WrapperSectionTitle>
       <TabWrap>
         <TabList>
+          {isLoading && <Spinner />}
           <Slider {...settings}>
-            {isLoading && <Loader />}
             {categories?.map(category => (
               <Tab key={nanoid()}>
                 <CategoryBtn
