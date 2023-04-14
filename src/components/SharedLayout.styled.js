@@ -7,26 +7,39 @@ export const Layout = styled.div`
   flex: 1 1 auto;
   min-width: 375px;
   margin: 0 auto;
-  outline: solid green;
   position: relative;
-  background-color: ${({ theme: { colors } }) => colors.bg};
-  background-image:  url(${spinachMob});
-  background-position:bottom left;
-  background-size:  contain;
-  filter: blur(4.5px), 0;
-  background-repeat: no-repeat;
 
   @media screen and (min-width: 768px) {
     min-width: 768px;
-    background-image: url(${spinachTab});
-    background-position: bottom left;
-    background-size: contain;
   }
 
   @media screen and (min-width: 1440px) {
     min-width: 1440px;
+  }
+`;
+
+export const BgElement = styled.div`
+  position: absolute;
+  bottom: 300px;
+  left: 0;
+  z-index: -1;
+  width: 346px;
+  height: 482px;
+  background-image: url(${spinachMob});
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media screen and (min-width: 768px) {
+    bottom: 200px;
+    width: 523px;
+    height: 746px;
+    background-image: url(${spinachTab});
+  }
+
+  @media screen and (min-width: 1440px) {
+    bottom: 100px;
+    width: 658px;
+    height: 952px;
     background-image: url(${spinachDesk});
-    background-position: bottom left;
-    background-size: 696px 1032px;
   } ;
 `;

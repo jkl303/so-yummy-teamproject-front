@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { CategoryList, Container, BtnWrap } from './MainPage.styled';
+import { CategoryList, BtnWrap } from './MainPage.styled';
+import { ContainerComponent } from 'components/Container/Container.styled';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-hot-toast';
 
@@ -36,7 +37,7 @@ export default function MainPage() {
       {recipesByCategory.length > 0 && (
         <>
           <MainHero data={recipesByCategory} />
-          <Container>
+          <ContainerComponent>
             <CategoryList>
               {recipesByCategory.map(category => (
                 <MainCategoryItem key={nanoid()} category={category} />
@@ -45,7 +46,7 @@ export default function MainPage() {
             <BtnWrap>
               <OtherCategoriesBtn to={`/categories/Beef`} location={location} />
             </BtnWrap>
-          </Container>
+          </ContainerComponent>
         </>
       )}
       {/* <ButtonPreview /> */}

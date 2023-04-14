@@ -12,7 +12,6 @@ export const ContainerWrap = styled.section`
   flex: 1 1 auto;
   min-width: 375px;
   margin: 0 auto;
-  outline: solid green;
   position: relative;
   background-color: ${({ theme: { colors } }) => colors.bg};
   background-image: url(${rectGreenMob}), url(${rectBlackMob}),
@@ -43,9 +42,13 @@ export const ContainerWrap = styled.section`
 `;
 
 export const ContainerComponent = styled.div`
-  max-width: 375px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 16px;
+
+  @media screen and (min-width: 320px) {
+    max-width: 375px;
+    padding: 0 16px;
+  }
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
