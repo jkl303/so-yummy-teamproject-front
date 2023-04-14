@@ -2,18 +2,19 @@ import styled from 'styled-components';
 
 export const WrapperTitle = styled.div`
   max-width: 345px;
-  margin-top: 50px;
+  margin-top: 70px;
   margin-bottom: 50px;
   position: relative;
 
   @media screen and (min-width: 768px) {
     max-width: 713px;
     margin-top: 72px;
+    margin-top: 100px;
     margin-bottom: 100px;
   }
   @media screen and (min-width: 1440px) {
     max-width: 1240px;
-    margin-top: 100px;
+    margin-top: 110px;
   }
 `;
 
