@@ -66,9 +66,9 @@ export const Categories = ({ title }) => {
     slidesToShow: 5,
     slidesToScroll: 5,
     initialSlide: 0,
-    // autoplay: true,
+    autoplay: true,
     speed: 500,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 8000,
     cssEase: 'linear',
     arrows: false,
   };
