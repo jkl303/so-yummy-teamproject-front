@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { mediaQueries } from 'style/mediaQueries';
 
 export const AddRecipePageStyled = styled.div`
-  padding-top: 50px;
+  padding-top: 100px;
 
   ${mediaQueries('tablet')`padding-top: 70px;`};
 
