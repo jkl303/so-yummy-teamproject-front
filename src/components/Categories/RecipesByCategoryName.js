@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { fetchRecipesByCategory } from '../../services/api/httpRequests';
-import { RecipeCard } from './RecipeCard';
+import { RecipeCard } from 'components/Main/RecipeCard/RecipeCard';
 import toast from 'react-hot-toast';
 import Loader from '../Loader/Loader';
 
@@ -34,8 +34,10 @@ export const RecipesbyCategoryName = () => {
       {isLoading && <Loader />}
       {recipes.length > 0 && !error && !isLoading && (
         <List>
-          {recipes.map(recipe => {
-            return <RecipeCard recipe={recipe} key={recipe._id} />;
+          {recipes.map(({ _id, preview, title }) => {
+            return (
+              <RecipeCard key={_id} id={_id} img={preview} title={title} />
+            );
           })}
         </List>
       )}

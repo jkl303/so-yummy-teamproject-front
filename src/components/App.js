@@ -24,6 +24,8 @@ import { darkTheme } from 'style/darkTheme';
 import { refreshUser } from 'redux/auth/authOperations';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 import { setUser } from 'redux/auth/authSlice';
+import { fetchIngredients } from 'redux/recipes/ingredients/operations';
+import { fetchCategories } from 'redux/recipes/categories/operations';
 
 const AppContext = createContext(null);
 export const useToggleTheme = () => useContext(AppContext);
@@ -41,6 +43,8 @@ export default function App() {
 
   useEffect(() => {
     dispatch(refreshUser());
+    dispatch(fetchIngredients());
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   useEffect(() => {
