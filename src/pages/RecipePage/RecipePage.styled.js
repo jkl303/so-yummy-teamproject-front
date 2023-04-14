@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import { mediaQueries } from '../../style/mediaQueries';
 
 export const RecipeWrap = styled.div`
- margin-top: -70px;
+  margin-top: -70px;
   margin-left: auto;
   margin-right: auto;
+
   ${mediaQueries('mobile')`
     width: 375px;
   `}
@@ -44,7 +45,7 @@ export const RecipeHeroBlock = styled.div`
      padding-left: 131px;
   padding-right: 131px;
   `}
-    ${mediaQueries('desktop')`
+  ${mediaQueries('desktop')`
         padding-left: 392px;
   padding-right: 392px;
   `}
@@ -66,7 +67,7 @@ export const RecipeDescription = styled.p`
   line-height: 1.33;
   letter-spacing: -0.02em;
   margin-bottom: 30px;
-  color: #23262A;
+  color: #23262a;
   ${mediaQueries('tablet')`
   font-size: 18px;
  
@@ -86,7 +87,7 @@ export const RecipeAddToFavotite = styled.button`
   &:hover {
     background-color: ${({ theme: { colors } }) => colors.accent};
     cursor: pointer;
-    color: #FAFAFA;
+    color: #fafafa;
   }
   @media screen and (min-width: 768px) {
     width: 278px;
@@ -100,6 +101,6 @@ export const RecipeAddToFavotite = styled.button`
   }
 `;
 
-export const RecipeTime =  styled.p`
-color: #23262A;
-`
+export const RecipeTime = styled.p`
+  color: #23262a;
+`;

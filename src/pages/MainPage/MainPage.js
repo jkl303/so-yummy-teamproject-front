@@ -10,7 +10,7 @@ import { MainCategoryItem } from 'components/Main/MainCategoryItem/MainCategoryI
 // import ButtonPreview from 'components/Buttons/ButtonPreview';
 import { OtherCategoriesBtn } from 'components/Buttons/OtherCategoriesBtn/OtherCategoriesBtn';
 import Loader from 'components/Loader/Loader';
-import { getRecipesByCategory } from './fetchMainPageRecipes';
+import { getRecipesByCategory } from 'API/fetchMainPageRecipes';
 import { MainHero } from 'components/Main/MainHero/MainHero';
 
 export default function MainPage() {
