@@ -4,7 +4,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import { Spinner } from 'components/Loader/Spinner';
-import { PopularRecipeStyled } from './PopularRecipe.styled';
+import {
+  PopularRecipeImg,
+  PopularRecipeItem,
+  PopularRecipeItemDescr,
+  PopularRecipeList,
+  PopularRecipeStyled,
+  PopularRecipeTitle,
+} from './PopularRecipe.styled';
 
 export const PopularRecipe = () => {
   const [recipes, setRecipes] = useState([]);
@@ -31,23 +38,27 @@ export const PopularRecipe = () => {
   }, []);
   return (
     <PopularRecipeStyled>
-      <h2>Popular recipe</h2>
+      <PopularRecipeTitle>Popular recipe</PopularRecipeTitle>
       {loading && <Spinner />}
       {recipes.length > 0 && (
-        <ul>
+        <PopularRecipeList>
           {recipes.slice(0, numberOfRecipes).map(recipe => {
             const { _id, title, preview, description } = recipe;
             return (
-              <li key={_id}>
+              <PopularRecipeItem key={_id}>
                 <Link to={`/recipe/${_id}`} state={{ from: location }}>
-                  <img src={preview} alt={title}></img>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
+                  <PopularRecipeImg src={preview} alt={title} />
+                  <div>
+                    <p>{title}</p>
+                    <PopularRecipeItemDescr>
+                      {description}
+                    </PopularRecipeItemDescr>
+                  </div>
                 </Link>
-              </li>
+              </PopularRecipeItem>
             );
           })}
-        </ul>
+        </PopularRecipeList>
       )}
     </PopularRecipeStyled>
   );

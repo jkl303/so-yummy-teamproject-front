@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { mediaQueries } from 'style/mediaQueries';
 
 export const AddRecipePageStyled = styled.div`
-  padding-top: 100px;
+  padding-top: 115px;
 
-  ${mediaQueries('tablet')`padding-top: 70px;`};
+  ${mediaQueries('tablet')`padding-top: 135px;`};
 
-  ${mediaQueries('desktop')`padding-top: 100px;`};
+  ${mediaQueries('desktop')`padding-top: 165px;`};
 `;
