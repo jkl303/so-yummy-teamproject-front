@@ -8,6 +8,8 @@ export const CategoryPageWrap = styled.div`
   padding-right: 16px;
   padding-top: 114px;
   padding-bottom: 100px;
+  position: relative;
+  overflow: hidden;
 
   @media screen and (min-width: 320px) {
     max-width: 375px;
