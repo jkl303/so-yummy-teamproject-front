@@ -14,6 +14,7 @@ export const RecipeDescriptionFieldsStyled = styled.div`
     justify-content: space-between;
     margin-top: 32px;
     ${mediaQueries('tablet')`
+    max-width: 393px;
     margin-left: 32px;
     margin-top: 0;`}
     ${mediaQueries('desktop')`
