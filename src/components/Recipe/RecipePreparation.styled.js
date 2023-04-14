@@ -68,15 +68,20 @@ export const PreparationList = styled.ul`
       top: 0;
     }
   }
+  ${mediaQueries('desktop')`
+  margin-bottom: 100px;
+  `}
 `;
 export const PreparationImg = styled.img`
   border-radius: 8px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 100px;
 
   ${mediaQueries('tablet')`
     max-width: 433px;
     max-height: 332px;
     margin: 0;
+    margin-bottom: 200px;
  `}
 `;

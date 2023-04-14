@@ -9,6 +9,12 @@ export const PopularRecipeList = styled.ul`
   gap: 32px;
   
   `}
+ ${mediaQueries('desktop')`
+  display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 319px;
+    `}
 `;
 
 export const PopularRecipeItem = styled.li`
