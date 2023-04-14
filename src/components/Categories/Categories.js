@@ -17,6 +17,12 @@ import {
   CategoryBtn,
   UnderLine,
 } from './Categories.styled';
+import {
+  First,
+  Second,
+  Third,
+  WrapperSectionTitle,
+} from '../../pages/FavoriteRecipesPage/FavoriteRecipesPage.styled';
 
 export const Categories = ({ title }) => {
   const [categories, setCategories] = useState([]);
@@ -69,8 +75,12 @@ export const Categories = ({ title }) => {
 
   return (
     <>
-      <CategoriesTitle>Categories</CategoriesTitle>
-
+      <WrapperSectionTitle>
+        <CategoriesTitle>Categories</CategoriesTitle>
+        <First></First>
+        <Second></Second>
+        <Third></Third>
+      </WrapperSectionTitle>
       <TabWrap>
         <TabList>
           <Slider {...settings}>

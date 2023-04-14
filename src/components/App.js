@@ -10,7 +10,7 @@ import PublicRoute from './PublicRoute';
 import { ThemeProvider } from 'styled-components';
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import CategoriesPage from 'pages/CategoriesPage/CategoriesPage';
-import AddRecipesPage from 'pages/AddRecipesPage/AddRecipesPage';
+import AddRecipePage from 'pages/AddRecipePage/AddRecipePage';
 import MyRecipesPage from 'pages/MyRecipesPage/MyRecipesPage';
 import FavoriteRecipesPage from 'pages/FavoriteRecipesPage/FavoriteRecipesPage';
 import ShoppingListPage from 'pages/ShoppingListPage/ShoppingListPage';
@@ -24,6 +24,8 @@ import { darkTheme } from 'style/darkTheme';
 import { refreshUser } from 'redux/auth/authOperations';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 import { setUser } from 'redux/auth/authSlice';
+import { fetchIngredients } from 'redux/recipes/ingredients/operations';
+import { fetchCategories } from 'redux/recipes/categories/operations';
 
 const AppContext = createContext(null);
 export const useToggleTheme = () => useContext(AppContext);
@@ -41,6 +43,8 @@ export default function App() {
 
   useEffect(() => {
     dispatch(refreshUser());
+    dispatch(fetchIngredients());
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   useEffect(() => {
@@ -126,7 +130,7 @@ export default function App() {
                 element={
                   <PrivateRoute
                     redirectTo="/login"
-                    component={<AddRecipesPage />}
+                    component={<AddRecipePage />}
                   />
                 }
               />

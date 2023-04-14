@@ -1,5 +1,4 @@
 import {} from './RecipePage.styled';
-// import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -10,28 +9,23 @@ import recipeTab from '../../images/tablet/recipe-bg768.jpg';
 import recipeTab2x from '../../images/tablet/recipe-bg768-2x.jpg'
 import recipeDesk from '../../images/desktop/recipe-bg1440.jpg';
 import recipeDesk2x from '../../images/desktop/recipe-bg1440-2x.jpg';
-// import {AddToFavoriteBtn} from '../../components/Buttons/AddToFavoriteBtn/AddToFavoriteBtn';
 import {AiOutlineClockCircle} from 'react-icons/ai';
 import {RecipePreparation} from '../../components/Recipe/RecipePreparation';
 import {IngredientsList} from '../../components/Recipe/IngredientsList'
-import {RecipeWrap, RecipeHeroWrap, RecipeHeroBlock, RecipeTitle, RecipeDescription, RecipeAddToFavotite} from './RecipePage.styled'
+import {RecipeWrap, RecipeHeroWrap, RecipeHeroBlock, RecipeTitle, RecipeDescription, RecipeAddToFavotite, RecipeTime} from './RecipePage.styled'
 import { instance } from '../../redux/auth/authOperations';
 
 export default function RecipePage() {
   const userId = useSelector(state => state.auth.user.id);
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
-  const [isFavorite, setIsFavorite] = useState(false);
   const { width } = useWindowDimensions();
-
   
   useEffect(() => {
     instance
       .get(`/recipes/byId/${recipeId}`)
       .then(response => {
         setRecipe(response.data);
-        console.log(response.data);
-        // console.log(userId)
       })
       .catch(error => {
         console.log(error);
@@ -39,33 +33,39 @@ export default function RecipePage() {
   }, [recipeId]);
 
   const handleFavoriteClick = () => {
-    if (isFavorite) {
-      instance
-        .delete(`/recipes/favorite/${recipeId}`)
-        .then(() => {
-          setIsFavorite(false);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    } else {
-      instance
-        .patch(`/recipes/favorite/${recipeId}`)
-        .then(() => {
-          setIsFavorite(true);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+    const isFavorite = favorites.includes(userId); 
+    
+    const request = isFavorite
+      ? instance.delete(`/recipes/favorite/${recipeId}`)
+      : instance.patch(`/recipes/favorite/${recipeId}`);
+    
+    request
+      .then(() => {
+           setRecipe(prevRecipe => ({
+          ...prevRecipe,
+          data: {
+            ...prevRecipe.data,
+            recipe: {
+              ...prevRecipe.data.recipe,
+              favorites: isFavorite
+                ? prevRecipe.data.recipe.favorites.filter(id => id !== userId)
+                : [...prevRecipe.data.recipe.favorites, userId],
+            },
+          },
+        }));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  const handleIngredientToggle = (id, measure, isChecked) => {
+    // console.log(id, measure, isChecked)
   };
   if (!recipe) {
     return <div>Loading...</div>;
-
   }
-
-  const { title, description, time, ingredients, instructions, thumb, owner, favorites } = recipe.data.recipe;
-
+  
+  const { title, description, time, ingredients, instructions, thumb, favorites, measure, owner} = recipe.data.recipe;
   return (
   
     <>
@@ -81,15 +81,20 @@ export default function RecipePage() {
         <RecipeHeroBlock>
       <RecipeTitle>{title}</RecipeTitle>
       <RecipeDescription>{description}</RecipeDescription>
-      {owner?.toString() !== userId && recipe && (favorites.includes(userId) ? (
-  <RecipeAddToFavotite onClick={handleFavoriteClick}>Delete from favorites</RecipeAddToFavotite>
-) : (
-  <RecipeAddToFavotite onClick={handleFavoriteClick}>Add to favorites</RecipeAddToFavotite>
-))}
-      <p key={recipeId}> <AiOutlineClockCircle/> {time} min</p>
-      </RecipeHeroBlock>
+      {owner?.toString() !== userId && recipe && (
+  <RecipeAddToFavotite onClick={handleFavoriteClick}>
+    {favorites.includes(userId) ? 'Delete from favorites' : 'Add to favorites'}
+  </RecipeAddToFavotite>
+)}
+
+      <RecipeTime key={recipeId}> <AiOutlineClockCircle style={{ marginRight: '8px' }} />{time} min</RecipeTime>
+      </RecipeHeroBlock>А
       </RecipeHeroWrap>
-      <IngredientsList ingredients={ingredients}/>
+      <IngredientsList
+        ingredients={ingredients}
+        measure={measure}
+        onIngredientToggle={handleIngredientToggle}
+      />
       <RecipePreparation instructions={instructions} thumb={thumb} title={title} />
       </RecipeWrap>
     </>

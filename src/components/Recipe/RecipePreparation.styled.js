@@ -25,7 +25,9 @@ export const PreparationSteps = styled.div`
 
 export const PreparationHeder = styled.h3`
   color: ${({ theme: { colors } }) => colors.txt};
-  margin-bottom: 28px;
+  font-family: poppins;
+  font-weight: 600;
+ margin-bottom: 28px;
   ${mediaQueries('tablet')`
     margin-bottom: 32px;
  `}
@@ -41,6 +43,7 @@ export const PreparationList = styled.ul`
     position: relative;
     margin: 0 50px 14px 30px;
     padding-left: 14px;
+    line-height: 28px;
     color: ${({ theme: { colors } }) => colors.txt};
 
     ${mediaQueries('tablet')`
@@ -51,15 +54,15 @@ export const PreparationList = styled.ul`
       content: counter(my-counter);
       counter-increment: my-counter;
       display: inline-block;
-      width: 21px;
-      height: 21px;
+      width: 25px;
+      height: 25px;
       border-radius: 50%;
       background-color: ${({ theme: { colors } }) => colors.accent};
       color: #fff;
       text-align: center;
       font-size: 14px;
       font-weight: 500;
-      line-height: 19px;
+      line-height: 25px;
       position: absolute;
       left: -2em;
       top: 0;

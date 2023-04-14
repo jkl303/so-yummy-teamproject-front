@@ -13,7 +13,7 @@ const shoppingListInitialState = {
   isLoading: false,
 };
 
-const shoppingListSlice = createSlice({
+export const shoppingListSlice = createSlice({
   name: 'shoppingList',
   initialState: shoppingListInitialState,
   extraReducers: {
@@ -52,10 +52,11 @@ const shoppingListSlice = createSlice({
     [deleteShoppingListItemThunkOperation.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-
+      console.log(action.payload.data.id);
       const index = state.items.findIndex(
-        item => item.id === action.payload.id
+        item => item._id === action.payload.data.id
       );
+      console.log(index);
       state.items.splice(index, 1);
     },
     [deleteShoppingListItemThunkOperation.rejected](state, action) {

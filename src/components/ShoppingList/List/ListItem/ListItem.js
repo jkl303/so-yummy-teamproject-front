@@ -8,24 +8,21 @@ import {
   StyledImg,
   StyledImgWrapper,
 } from 'components/ShoppingList/List/List.styled';
-import { useDispatch } from 'react-redux';
-import { deleteShoppingListItemThunkOperation } from 'redux/shoppingList/shoppingListOperations';
+// import { useDispatch } from 'react-redux';
+// import { deleteShoppingListItemThunkOperation } from 'redux/shoppingList/shoppingListOperations';
 import { StyledSpan } from './ListItem.styled';
 
 import { TfiClose } from 'react-icons/tfi';
 
-export const ListItem = ({ data }) => {
-  const dispatch = useDispatch();
+export const ListItem = ({ data, onDeleteClick }) => {
+  // const dispatch = useDispatch();
 
   const { _id, ingredientQuantity: number, ingredientId } = data;
   const { ttl: name, thb: img } = ingredientId;
-  // console.log(_id, name, number, img);
 
-  // 640c2dd963a319ea671e36ae
-
-  const onDeleteClick = id => {
-    dispatch(deleteShoppingListItemThunkOperation(id));
-  };
+  // const onDeleteClick = id => {
+  //   dispatch(deleteShoppingListItemThunkOperation(id));
+  // };
 
   return (
     <ListItemStyled key={_id}>

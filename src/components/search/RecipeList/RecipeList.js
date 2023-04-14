@@ -4,8 +4,8 @@ import { RecipeListStyled } from './RecipeList.styled';
 export const RecipeList = ({ recipes }) => {
   return (
     <RecipeListStyled>
-      {recipes.map(recipe => (
-        <RecipeCard key={recipe._id} recipe={recipe} />
+      {recipes.map(({ _id, thumb, title }) => (
+        <RecipeCard key={_id} id={_id} img={thumb} title={title} />
       ))}
     </RecipeListStyled>
   );
