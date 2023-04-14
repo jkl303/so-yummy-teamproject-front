@@ -25,7 +25,7 @@ export const UserBox = styled.div`
   margin-right: 27px;
 
   @media screen and (min-width: 768px) {
-    margin-right: 60px;
+    margin-right: 54px;
   }
   @media screen and (min-width: 1440px) {
     margin-right: 0px;
