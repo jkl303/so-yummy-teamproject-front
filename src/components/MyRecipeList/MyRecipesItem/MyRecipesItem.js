@@ -18,25 +18,23 @@ const MyRecipesItem = ({ recipe, handleDelete }) => {
 
   return (
     <WrapperItem>
-      <WrapperItem>
-        <Img src={thumb} alt={title} />
-        <WrapperContent>
-          <div>
-            <Title>{title}</Title>
-            <Text>{description}</Text>
-          </div>
-          <TextTime>{time} min</TextTime>
-        </WrapperContent>
-        <WrapperButton>
-          <SeeRecipeBtn
-            to={`/recipe/${_id}`}
-            state={{ from: location }}
-          ></SeeRecipeBtn>
-          <BtnDelete onClick={() => handleDelete(_id)}>
-            <IconDelete />
-          </BtnDelete>
-        </WrapperButton>
-      </WrapperItem>
+      <Img src={thumb} alt={title} />
+      <WrapperContent>
+        <div>
+          <Title>{title}</Title>
+          <Text>{description}</Text>
+        </div>
+        <TextTime>{time} min</TextTime>
+      </WrapperContent>
+      <WrapperButton>
+        <SeeRecipeBtn
+          to={`/recipe/${_id}`}
+          state={{ from: location }}
+        ></SeeRecipeBtn>
+        <BtnDelete onClick={() => handleDelete(_id)}>
+          <IconDelete />
+        </BtnDelete>
+      </WrapperButton>
     </WrapperItem>
   );
 };

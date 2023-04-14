@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
 export const WrapperTitle = styled.div`
-  margin: 0;
+  max-width: 345px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   position: relative;
 
-  @media screen and (max-width: 767px) {
-    max-width: 345px;
-  }
   @media screen and (min-width: 768px) {
     max-width: 713px;
-    margin: 22px 0 97px;
+    margin-top: 72px;
+    margin-bottom: 100px;
   }
   @media screen and (min-width: 1440px) {
     max-width: 1240px;
-    margin: 54px 0 93px;
+    margin-top: 100px;
   }
 `;
 
@@ -25,15 +25,12 @@ export const Title = styled.h2`
   letter-spacing: -0.02em;
   @media screen and (max-width: 767px) {
     font-size: 28px;
-    padding-top: 27px;
   }
   @media screen and (min-width: 768px) {
     font-size: 32px;
-    padding-top: 54px;
   }
   @media screen and (min-width: 1440px) {
     font-size: 44px;
-    padding-top: 44px;
   }
 `;
 
