@@ -19,24 +19,25 @@ export const CategoriesTitle = styled.h1`
 
 export const TabWrap = styled.div`
   width: 100%;
+  max-width: 343px;
   position: absolute;
   top: 192px;
   height: 56px;
   padding-left: 19px;
   border-bottom: 1px solid #e0e0e0;
+
   @media screen and (min-width: 768px) {
     top: 218px;
+    max-width: 704px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-left: 19px;
-
     top: 308px;
+    max-width: 1240px;
   }
 `;
 
 export const TabList = styled.ul`
-  padding: 0px 0px 0px 10px;
   height: 100%;
 `;
 
@@ -80,6 +81,6 @@ export const UnderLine = styled.span`
   min-height: 2px;
   background-color: ${props => props.underlined};
   @media screen and (min-width: 768px) {
-    margin-top: 28px;
+    margin-top: 29px;
   }
 `;

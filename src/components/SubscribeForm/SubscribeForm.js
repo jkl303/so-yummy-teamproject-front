@@ -26,7 +26,7 @@ export const SubscribeForm = () => {
   const isEmailValid = email.trim().length > 6;
 
   const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
-  
+
   const handleSubmit = async event => {
     event.preventDefault();
     if (!emailRegexp.test(email)) {
@@ -36,7 +36,7 @@ export const SubscribeForm = () => {
       await instance.post('auth/subscribe', { email });
       toast.success('You have successfully subscribed');
     } catch (error) {
-      if (error.response.status === 409) {
+      if (error.response.status === 400) {
         toast.error(`This user is already subscribed`);
       } else {
         toast.error(`Something went wrong. Try again...`);
@@ -67,10 +67,7 @@ export const SubscribeForm = () => {
           />
           <EmailIcon />
         </Field>
-        <Button
-          type="submit"
-          disabled={!isEmailValid}
-        >
+        <Button type="submit" disabled={!isEmailValid}>
           Subscribe
         </Button>
       </Form>

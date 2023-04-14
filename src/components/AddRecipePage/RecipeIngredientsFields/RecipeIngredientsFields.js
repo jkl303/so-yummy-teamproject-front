@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Field, ErrorMessage, FieldArray } from 'formik';
-import { SelectField } from '../customFields/SelectField/SelectField';
 import { MeasureField } from '../customFields/MeasureField/MeasureField';
 import { useSelector } from 'react-redux';
 import { getIngredients } from 'redux/recipes/ingredients/selectors';
@@ -63,8 +62,6 @@ export const RecipeIngredientsFields = () => {
   //     label: ingredient.ttl,
   //   })
   // );
-
-  console.log(ingredients);
 
   const addField = () => {
     setIngredientFields(prevFields => [
