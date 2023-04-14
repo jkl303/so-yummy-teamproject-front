@@ -84,13 +84,17 @@ export const CustomBtn = styled(Link)`
       }
     `}
     ${({ variant, theme: { colors } }) => css`
-    &:hover {
+    &:hover:not([disabled]) {
       background-color: ${variant === 'changeBg' || variant === 'changeAll'
         ? colors.btnHover
         : variant === 'changeBgInvert'
         ? colors.btnHoverInverted
         : null};
-      color: ${variant === 'changeOutline' ? colors.accent : colors.textBtn};
+      color: ${variant === 'changeOutline'
+        ? colors.accent
+        : variant === 'changeAll'
+        ? colors.txtBtn
+        : colors.textBtn};
       border-color: ${variant === 'changeOutline' && colors.accent};
     }
   `}

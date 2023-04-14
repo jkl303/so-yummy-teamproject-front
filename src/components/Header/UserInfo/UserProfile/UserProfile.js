@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 import {
   FormContainer,
@@ -14,9 +15,14 @@ import {
   UserPhoto,
 } from './UserProfileStyled';
 
-import UserAvatar from 'images/svg/user.svg';
+import {
+  Backdrop,
+  ModalWrapper,
+} from 'components/AuthForms/LogOutModal/LogOutModal.styled';
 
-const UserProfile = ({ name, toggleMenu }) => {
+const modalRoot = document.querySelector('#modal-root');
+
+const UserProfile = ({ name, toggleMenu, avatar, onClose }) => {
   const [profilePicture, setProfilePicture] = useState(null);
 
   function handleFileUpload(event) {
@@ -34,33 +40,54 @@ const UserProfile = ({ name, toggleMenu }) => {
     event.preventDefault();
   };
 
-  return (
-    <FormContainer onSubmit={handleSubmit}>
-      {profilePicture ? (
-        <UserPhoto src={profilePicture} alt={'Profile Picture'} />
-      ) : (
-        <UserPhoto alt="User's avatar" src={UserAvatar} />
-      )}
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        onClose();
+        window.removeEventListener('keydown', handleKeyDown);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
-      <InputFileWrap>
-        <Input type="file" accept="image/*" onChange={handleFileUpload} />
+  const handleClickBackdrop = e => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
-        <Plus />
-      </InputFileWrap>
-      <InputWrap>
-        <Input type="text" name="name" placeholder={name} />
-        <Edit />
-        <User />
-      </InputWrap>
-      <Button type="submit">Save changes</Button>
-      <ButtonClose
-        onClick={() => {
-          toggleMenu();
-        }}
-      >
-        <IconClose />
-      </ButtonClose>
-    </FormContainer>
+  return createPortal(
+    <Backdrop onClick={handleClickBackdrop}>
+      <ModalWrapper>
+        <FormContainer onSubmit={handleSubmit}>
+          {profilePicture ? (
+            <UserPhoto src={profilePicture} alt={'Profile Picture'} />
+          ) : (
+            <UserPhoto alt="User's avatar" src={avatar} />
+          )}
+
+          <InputFileWrap>
+            <Input type="file" accept="image/*" onChange={handleFileUpload} />
+
+            <Plus />
+          </InputFileWrap>
+          <InputWrap>
+            <Input type="text" name="name" placeholder={name} />
+            <Edit />
+            <User />
+          </InputWrap>
+          <Button type="submit">Save changes</Button>
+          <ButtonClose
+            onClick={() => {
+              toggleMenu();
+            }}
+          >
+            <IconClose />
+          </ButtonClose>
+        </FormContainer>
+      </ModalWrapper>
+    </Backdrop>,
+    modalRoot
   );
 };
 export default UserProfile;

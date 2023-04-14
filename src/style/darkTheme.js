@@ -5,6 +5,7 @@ export const darkTheme = {
     bgSec: 'var(--bg-sec-dark)', //lists, cards etc
     bgFooter: 'var(--accent)',
     bgModal: 'var(--bg-sec-dark)',
+    bgRecipe: 'var(--bg-sec-dark)',
     input: 'var(--bg-dark)',
     searchDropdown: 'var(--accent)',
     select: 'var(--accent)',
@@ -15,7 +16,9 @@ export const darkTheme = {
     btnSec: 'var(--bg-input)', //cancel
     btnFoot: 'var(--bg-dark)',
     btnInverted: 'var(--accent)',
-    btnHoverInverted: 'var(--bg-btn)',
+    btnHoverInverted: 'var(--bg-btn-hover-dark)',
+    btnDelBg: 'var(--bg-dark)',
+    bgActivePage: 'var(--accent)',
 
     txt: 'var(--txt-dark)',
     title: 'var(--txt-dark)',

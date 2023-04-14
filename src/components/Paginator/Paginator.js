@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { PaginatorWrapper } from 'components/Paginator/Paginator.styled';
 import ReactPaginate from 'react-paginate';
 
-const Paginator = ({ data, itemsPerPage, children }) => {
+const Paginator = ({ data, itemsPerPage, noMargin, children }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = data.slice(itemOffset, endOffset);
@@ -16,7 +16,7 @@ const Paginator = ({ data, itemsPerPage, children }) => {
   return (
     <>
       {children(currentItems)}
-      <PaginatorWrapper>
+      <PaginatorWrapper noMargin={noMargin}>
         <ReactPaginate
           breakLabel="..."
           nextLabel=" > "

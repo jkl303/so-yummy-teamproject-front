@@ -13,7 +13,7 @@ const shoppingListInitialState = {
   isLoading: false,
 };
 
-const shoppingListSlice = createSlice({
+export const shoppingListSlice = createSlice({
   name: 'shoppingList',
   initialState: shoppingListInitialState,
   extraReducers: {

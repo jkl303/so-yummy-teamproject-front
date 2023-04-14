@@ -8,22 +8,26 @@ export const SearchFormStyled = styled.form`
   justify-content: center;
   position: relative;
 
-  ${({ isLoading }) =>
-    isLoading &&
-    css`
-      &::after {
-        max-height: 100%;
-        content: 'searching...';
-        color: var(--accent);
-        position: absolute;
-        left: 100%;
-        height: 80px;
-        width: 80px;
-        background-image: url(${loader});
-        background-size: contain;
-        background-color: transparent;
-      }
-    `}
+  @media screen and (min-width: 768px) {
+    ${({ isLoading }) =>
+      isLoading &&
+      css`
+        &::after {
+          max-height: 100%;
+          content: 'searching...';
+          color: var(--accent);
+          position: absolute;
+          left: 100%;
+          height: 80px;
+          width: 80px;
+          font-size: 14px;
+          background-image: url(${loader});
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-color: transparent;
+        }
+      `}
+  }
 `;
 
 export const SearchFormInput = styled.input`
@@ -43,6 +47,7 @@ export const SearchFormInput = styled.input`
   ${({ theme: { colors } }) => css`
     border: 1px solid ${colors.txtInputInactive};
     color: ${colors.subtitle};
+    background-color: ${colors.bg};
 
     &:focus,
     &:hover {

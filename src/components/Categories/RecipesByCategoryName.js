@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { fetchRecipesByCategory } from '../../services/api/httpRequests';
-import { RecipeCard } from '../../components/Main/RecipeCard/RecipeCard';
+import { RecipeCard } from 'components/Main/RecipeCard/RecipeCard';
+import toast from 'react-hot-toast';
 import Loader from '../Loader/Loader';
 
 import { List } from './RecipesByCategoryName.styled.js';
@@ -20,7 +21,7 @@ export const RecipesbyCategoryName = () => {
 
         setRecipes(recipes);
       } catch (error) {
-        setError({ error });
+        setError(toast.error('Sorry, something went wrong...'));
       } finally {
         setIsLoading(false);
       }
@@ -33,13 +34,9 @@ export const RecipesbyCategoryName = () => {
       {isLoading && <Loader />}
       {recipes.length > 0 && !error && !isLoading && (
         <List>
-          {recipes.map(recipe => {
-            console.log(recipe._id);
+          {recipes.map(({ _id, preview, title }) => {
             return (
-              <RecipeCard
-                recipe={(recipe.preview, recipe.title, recipe._id)}
-                key={recipe._id}
-              />
+              <RecipeCard key={_id} id={_id} img={preview} title={title} />
             );
           })}
         </List>

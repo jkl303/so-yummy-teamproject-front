@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { RxCross2 } from 'react-icons/rx';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -22,7 +23,7 @@ export const ModalWrapper = styled.div`
   padding: 44px 20px;
   margin-top: 212px;
   border-radius: 30px;
-  background-color: #fafafa;
+  background-color: ${({ theme: { colors } }) => colors.bgModal};
   animation: isAppearing 300ms ease-in-out;
 
   @keyframes isAppearing {
@@ -79,6 +80,10 @@ export const CloseButton = styled.button`
   }
 `;
 
+export const CloseButtonIcon = styled(RxCross2)`
+  color: ${({ theme: { colors } }) => colors.txt};
+`;
+
 export const Button = styled.button`
   width: 137px;
   height: 49px;
@@ -100,6 +105,7 @@ export const Button = styled.button`
     background-color: #d9d9d9;
     color: #23262a;
     :hover {
+      color: ${({ theme: { colors } }) => colors.subtitle};
       background-color: transparent;
       border: 1px solid #23262a;
     }
