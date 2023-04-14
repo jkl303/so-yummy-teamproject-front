@@ -1,7 +1,6 @@
 import {
   ContainerWrap,
   ContainerComponent,
-  // TitlePage,
 } from './Container.styled';
 
 const Container = ({ children }) => {
@@ -9,7 +8,6 @@ const Container = ({ children }) => {
     <ContainerWrap>
       <ContainerComponent>
         {children}
-        {/* <TitlePage>{children}</TitlePage> */}
       </ContainerComponent>
     </ContainerWrap>
   );

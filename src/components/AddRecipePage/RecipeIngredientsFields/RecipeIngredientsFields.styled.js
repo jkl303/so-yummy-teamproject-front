@@ -51,13 +51,15 @@ export const IngredientsStyled = styled.ul`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    button {
+      height: 100%;
+    }
     ${mediaQueries('desktop')`
     max-width: 610px;}`}
     input::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
-
     ${mediaQueries('tablet')`
     justify-content: flex-start;
     button {margin-left: auto;

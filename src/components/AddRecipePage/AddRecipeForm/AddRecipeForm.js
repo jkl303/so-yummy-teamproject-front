@@ -7,6 +7,7 @@ import { addRecipeSchema } from 'schemas/recipeSchema';
 import { addRecipe } from 'API/addResipe';
 import { AddRecipeBtn } from 'components/Buttons/AddRecipeBtn/AddRecipeBtn';
 import { AddRecipeFormWrapper } from './AddRecipeForm.styled';
+import { toast } from 'react-hot-toast';
 
 const initialValues = {
   title: '',
@@ -22,12 +23,13 @@ export const AddRecipeForm = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={addRecipeSchema}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values, { resetForm, setSubmitting }) => {
         values.ingredients = values.ingredients.filter(
           ingredient => ingredient !== null
         );
-        console.log(values);
         addRecipe(values);
+        resetForm();
+        toast.success('Recipe added!');
         setSubmitting(false);
       }}
     >
@@ -36,7 +38,7 @@ export const AddRecipeForm = () => {
           <AddRecipeFormWrapper>
             <Form>
               <RecipeDescriptionFields />
-              <RecipeIngredientsFields values={values} />
+              <RecipeIngredientsFields />
               <RecipePreparationFields />
               <AddRecipeBtn type="submit">Add</AddRecipeBtn>
             </Form>
