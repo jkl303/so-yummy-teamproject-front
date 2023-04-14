@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useField } from 'formik';
 import Select from 'react-select';
+import { MeasureFieldStyled } from './MeasureField.styled';
 
 export const MeasureField = props => {
   const [field, state, { setValue }] = useField(props.field.name);
@@ -16,8 +17,13 @@ export const MeasureField = props => {
   };
 
   return (
-    <div>
-      <input name={props.field.name} type="number" onChange={addNumber} />
+    <MeasureFieldStyled>
+      <input
+        name={props.field.name}
+        type="number"
+        onChange={addNumber}
+        autoComplete="off"
+      />
       <Select
         {...props}
         onChange={addMeasure}
@@ -25,7 +31,9 @@ export const MeasureField = props => {
           value: 'tbs',
           label: 'tbs',
         }}
+        classNamePrefix="Select"
+        isSearchable={false}
       />
-    </div>
+    </MeasureFieldStyled>
   );
 };

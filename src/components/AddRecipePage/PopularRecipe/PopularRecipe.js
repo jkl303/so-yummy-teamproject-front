@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import { Spinner } from 'components/Loader/Spinner';
+import { PopularRecipeStyled } from './PopularRecipe.styled';
 
 export const PopularRecipe = () => {
   const [recipes, setRecipes] = useState([]);
@@ -29,7 +30,7 @@ export const PopularRecipe = () => {
     getRecipes();
   }, []);
   return (
-    <>
+    <PopularRecipeStyled>
       <h2>Popular recipe</h2>
       {loading && <Spinner />}
       {recipes.length > 0 && (
@@ -48,6 +49,6 @@ export const PopularRecipe = () => {
           })}
         </ul>
       )}
-    </>
+    </PopularRecipeStyled>
   );
 };

@@ -1,7 +1,7 @@
 import { useField } from 'formik';
-import { SelectFieldStyled } from './SelectField.styled';
+import { IngredientFieldStyled } from './IngredientField.styled';
 
-export const SelectField = props => {
+export const IngredientField = props => {
   const [field, state, { setValue, setTouched }] = useField(props.field.name);
 
   const onChange = ({ value }) => {
@@ -9,12 +9,12 @@ export const SelectField = props => {
   };
 
   return (
-    <SelectFieldStyled
+    <IngredientFieldStyled
       {...props}
       onChange={onChange}
       onBlur={setTouched}
       classNamePrefix="Select"
-      placeholder=""
+      placeholder="Start typing here"
     />
   );
 };
