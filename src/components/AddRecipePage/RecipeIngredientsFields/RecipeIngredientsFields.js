@@ -4,6 +4,16 @@ import { SelectField } from '../customFields/SelectField/SelectField';
 import { MeasureField } from '../customFields/MeasureField/MeasureField';
 import { useSelector } from 'react-redux';
 import { getIngredients } from 'redux/recipes/ingredients/selectors';
+import {
+  AddBtns,
+  PlusIcon,
+  MinusIcon,
+  RecipeIngredientsStyled,
+  TtlAndBtns,
+  IngredientsStyled,
+  XIcon,
+} from './RecipeIngredientsFields.styled';
+import { IngredientField } from '../customFields/IngredientField/IngredientField';
 
 const measureOptions = [
   {
@@ -45,14 +55,16 @@ const ingredientOptions = [
 
 export const RecipeIngredientsFields = () => {
   const [ingredientFields, setIngredientFields] = useState([0, 1, 2]);
-  // const categories = useSelector(getIngredients);
+  const ingredients = useSelector(getIngredients);
 
-  // const ingredientOptions = categories.map(ingredient =>
+  // const ingredientOptions = ingredients.map(ingredient =>
   //   ingredientOptions.push({
   //     value: ingredient._id,
   //     label: ingredient.ttl,
   //   })
   // );
+
+  console.log(ingredients);
 
   const addField = () => {
     setIngredientFields(prevFields => [
@@ -72,37 +84,42 @@ export const RecipeIngredientsFields = () => {
   };
 
   return (
-    <div>
-      <h2>Ingredients</h2>
+    <RecipeIngredientsStyled>
       <FieldArray
         name="ingredients"
         render={arrayHelpers => (
           <div>
-            <button
-              type="button"
-              onClick={() => {
-                arrayHelpers.pop();
-                deleteLastField();
-              }}
-            >
-              -
-            </button>
-            <p>{ingredientFields.length}</p>
-            <button
-              type="button"
-              onClick={() => {
-                arrayHelpers.push({});
-                addField();
-              }}
-            >
-              +
-            </button>
-            <ul>
+            <TtlAndBtns>
+              <h2>Ingredients</h2>
+              <AddBtns>
+                <button
+                  type="button"
+                  onClick={() => {
+                    arrayHelpers.pop();
+                    deleteLastField();
+                  }}
+                >
+                  <MinusIcon />
+                </button>
+
+                <span>{ingredientFields.length}</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    arrayHelpers.push({});
+                    addField();
+                  }}
+                >
+                  <PlusIcon />
+                </button>
+              </AddBtns>
+            </TtlAndBtns>
+            <IngredientsStyled>
               {ingredientFields.map(field => (
                 <li key={field}>
                   <Field
                     name={`ingredients[${field}].id`}
-                    component={SelectField}
+                    component={IngredientField}
                     options={ingredientOptions}
                   />
                   <Field
@@ -117,15 +134,15 @@ export const RecipeIngredientsFields = () => {
                       deleteField(field);
                     }}
                   >
-                    -
+                    <XIcon />
                   </button>
-                  <ErrorMessage name="ingredients" />
                 </li>
               ))}
-            </ul>
+            </IngredientsStyled>
+            <ErrorMessage name="ingredients" />
           </div>
         )}
       />
-    </div>
+    </RecipeIngredientsStyled>
   );
 };

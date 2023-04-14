@@ -12,4 +12,7 @@ export const RecipeImgStyled = styled(img)`
   width: 279px;
   height: 268px;
   border-radius: 8px;
+  ${mediaQueries('desktop')`
+  width: 357px;
+  height: 344px;`}
 `;
