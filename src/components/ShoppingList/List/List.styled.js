@@ -73,18 +73,21 @@ export const NumberWrapper = styled.div`
   height: 100%;
   flex-basis: 0;
   width: 100%;
+  text-align: center;
 `;
 export const NumberPadding = styled.div`
   text-align: center;
-  height: 23px;
-  width: 37px;
+  // height: 23px;
+  // width: 37px;
+  display: inline-block;
+  min-width: 68px;
   background-color: ${({ theme: { colors } }) => colors.accent};
   margin-left: auto;
   margin-right: auto;
   border-radius: 4px;
   ${mediaQueries('tablet')`
- width: 68px;
- height: 35px;
+//  width: 68px;
+//  height: 35px;
   `}
 `;
 
