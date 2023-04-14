@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Field, ErrorMessage, FieldArray } from 'formik';
-import { MeasureField } from '../customFields/MeasureField/MeasureField';
+import { MeasureField } from './MeasureField/MeasureField';
 import { useSelector } from 'react-redux';
 import { getIngredients } from 'redux/recipes/ingredients/selectors';
+import { IngredientField } from './IngredientField/IngredientField';
+import { measureOptions } from './measureOptions';
 import {
   AddBtns,
   PlusIcon,
@@ -12,8 +14,7 @@ import {
   IngredientsStyled,
   XIcon,
 } from './RecipeIngredientsFields.styled';
-import { IngredientField } from '../customFields/IngredientField/IngredientField';
-import { measureOptions } from './measureOptions';
+import { CustomErrorMessage } from '../AddRecipeForm/AddRecipeForm.styled';
 
 export const RecipeIngredientsFields = () => {
   const [ingredientFields, setIngredientFields] = useState([0, 1, 2]);
@@ -96,7 +97,7 @@ export const RecipeIngredientsFields = () => {
                 </li>
               ))}
             </IngredientsStyled>
-            <ErrorMessage name="ingredients" />
+            <ErrorMessage name="ingredients" component={CustomErrorMessage} />
           </div>
         )}
       />

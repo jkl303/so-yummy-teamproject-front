@@ -23,6 +23,7 @@ export const MeasureField = props => {
         type="number"
         onChange={addNumber}
         autoComplete="off"
+        placeholder="|"
       />
       <Select
         {...props}

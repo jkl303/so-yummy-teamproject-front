@@ -7,7 +7,8 @@ export const RecipePreparationStyled = styled.div`
     padding: 10px 16px;
     width: 100%;
     height: 154px;
-    border-color: transparent;
+    border-color: #fafafa;
+    border-radius: 6px;
     background-color: transparent;
     resize: none;
     font-size: 18px;

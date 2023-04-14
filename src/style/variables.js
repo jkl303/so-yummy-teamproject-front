@@ -18,7 +18,7 @@ export const variables = css`
     --txt-aside-list: #7e7e7e;
     --txt-content-dark: #ffffff99;
     --txt-dark: #fafafa;
-    --txt-instructions-light: #000000cc;
+    --txt-instructions-light: #00000080;
     --txt-sec: #00000080;
     --txt-sec-dark: #fafafa80;
     --txt-subtitle: #3e4462;

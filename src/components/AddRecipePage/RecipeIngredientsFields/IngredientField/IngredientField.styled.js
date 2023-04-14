@@ -4,11 +4,11 @@ import { mediaQueries } from 'style/mediaQueries';
 
 export const IngredientFieldStyled = styled(Select)`
   .Select__control {
-    border: none;
+    border-color: #fafafa;
     width: 194px;
     height: 53px;
     margin-right: 14px;
-    background-color: transparent;
+    background-color: ${({ theme: { colors } }) => colors.input};
     ${mediaQueries('tablet')`width: 398px;
     height: 59px;`}
     :hover {
@@ -30,11 +30,13 @@ export const IngredientFieldStyled = styled(Select)`
   }
 
   .Select__menu {
+    width: 194px;
     border-radius: 6px;
     font-size: 12px;
     line-height: 18px;
     color: #00000080;
     box-shadow: none;
+    ${mediaQueries('tablet')`width: 398px;`}
     &-list {
       max-height: 154px;
       padding: 8px 18px 8px 14px;

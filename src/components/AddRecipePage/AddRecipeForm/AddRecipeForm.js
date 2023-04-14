@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import { RecipeDescriptionFields } from '../RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipeIngredientsFields } from '../RecipeIngredientsFields/RecipeIngredientsFields';
@@ -19,6 +20,8 @@ const initialValues = {
 };
 
 export const AddRecipeForm = () => {
+  const navigate = useNavigate();
+
   return (
     <Formik
       initialValues={initialValues}
@@ -31,20 +34,17 @@ export const AddRecipeForm = () => {
         resetForm();
         toast.success('Recipe added!');
         setSubmitting(false);
+        navigate('/my', { replace: true });
       }}
     >
-      {({ values }) => {
-        return (
-          <AddRecipeFormWrapper>
-            <Form>
-              <RecipeDescriptionFields />
-              <RecipeIngredientsFields />
-              <RecipePreparationFields />
-              <AddRecipeBtn type="submit">Add</AddRecipeBtn>
-            </Form>
-          </AddRecipeFormWrapper>
-        );
-      }}
+      <AddRecipeFormWrapper>
+        <Form>
+          <RecipeDescriptionFields />
+          <RecipeIngredientsFields />
+          <RecipePreparationFields />
+          <AddRecipeBtn type="submit">Add</AddRecipeBtn>
+        </Form>
+      </AddRecipeFormWrapper>
     </Formik>
   );
 };

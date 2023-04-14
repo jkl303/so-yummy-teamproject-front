@@ -44,7 +44,7 @@ export const RecipeDescriptionFieldsStyled = styled.div`
     label {
       font-size: 14px;
       line-height: 1.5;
-      color: #00000080;
+      color: ${({ theme: { colors } }) => colors.txtRecipeInner};
       ${mediaQueries('tablet')`font-size: 16px;`}
     }
   }
