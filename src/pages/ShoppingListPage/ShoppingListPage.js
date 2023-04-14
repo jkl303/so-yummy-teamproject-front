@@ -1,4 +1,7 @@
-import { StyledContainer } from './ShoppingListPage.styled';
+import {
+  StyledContainer,
+  ContainerWrapperShopping,
+} from './ShoppingListPage.styled';
 import { useEffect } from 'react';
 import { ListBodyReusable } from 'components/ShoppingList/List/List';
 import { ShoppingListHeader } from 'components/ShoppingList/Header/Header';
@@ -15,10 +18,12 @@ export default function ShoppingListPage() {
   }, [dispatch]);
 
   return (
-    <StyledContainer>
-      <ShoppingListHeader />
-      <ListHeader headerItems={headerItems} />
-      <ListBodyReusable />
-    </StyledContainer>
+    <ContainerWrapperShopping>
+      <StyledContainer>
+        <ShoppingListHeader />
+        <ListHeader headerItems={headerItems} />
+        <ListBodyReusable />
+      </StyledContainer>
+    </ContainerWrapperShopping>
   );
 }
