@@ -92,6 +92,7 @@ export default function SearchPage() {
         {recipes.length > itemsPerPage ? (
           <Paginator data={recipes} itemsPerPage={itemsPerPage} noMargin>
             {currentItems => {
+              console.log(itemsPerPage, currentItems);
               return <RecipeList recipes={currentItems} />;
             }}
           </Paginator>

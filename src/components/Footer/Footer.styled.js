@@ -9,6 +9,7 @@ import spinachDesk from 'images/desktop/spinach-bottom-right1440.png';
 export const FooterComponent = styled.footer`
   margin: 0 auto;
   min-width: 375px;
+
   background: ${({ theme: { colors } }) => colors.bgFooter};
 
   ${mediaQueries('tablet')`
