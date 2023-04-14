@@ -4,7 +4,7 @@ export const WrapperList = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 0;
   @media screen and (max-width: 767px) {
     max-width: 345px;
     gap: 18px;

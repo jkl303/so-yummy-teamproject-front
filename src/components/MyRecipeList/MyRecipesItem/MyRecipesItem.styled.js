@@ -1,7 +1,13 @@
 import styled from 'styled-components';
-import { RiDeleteBinLine } from 'react-icons/ri';
+import { FiTrash2 } from 'react-icons/fi';
+
+export const Item = styled.div`
+  background: ${({ theme: { colors } }) => colors.bgSec};
+`;
 
 export const WrapperItem = styled.div`
+  background: ${({ theme: { colors } }) => colors.bgSec};
+  border-radius: 8px;
   display: flex;
   position: relative;
   @media screen and (max-width: 767px) {
@@ -17,11 +23,7 @@ export const WrapperItem = styled.div`
 
 export const Img = styled.img`
   display: block;
-  /* background: url(diliara-garifullina-0lqRhBh0I40-unsplash.jpg); */
   border-radius: 8px;
-  /* flex: none; */
-  /* order: 0; */
-  /* flex-grow: 0; */
   @media screen and (max-width: 767px) {
     width: 124px;
     height: 124px;
@@ -52,7 +54,7 @@ export const WrapperContent = styled.div`
 `;
 
 export const Title = styled.h3`
-  /* font-family: 'Poppins'; */
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   line-height: 1;
@@ -72,7 +74,7 @@ export const Title = styled.h3`
 `;
 
 export const Text = styled.p`
-  /* font-family: 'Poppins'; */
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
   line-height: 1.25;
@@ -91,7 +93,7 @@ export const Text = styled.p`
 `;
 
 export const TextTime = styled.p`
-  /* font-family: 'Poppins'; */
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   line-height: 1.4;
@@ -121,18 +123,24 @@ export const WrapperButton = styled.div`
   height: 100%;
 `;
 
-export const IconDelete = styled(RiDeleteBinLine)`
+export const IconDelete = styled(FiTrash2)`
   color: white;
-  width: 100%;
-  height: 100%;
+  width: 14px;
+  height: 14px;
+
+  @media screen and (min-width: 768px) {
+    width: 22px;
+    height: 22px;
+  }
 `;
 
 export const BtnDelete = styled.button`
-  background: ${({ theme: { colors } }) => colors.accent};
+  background: ${({ theme: { colors } }) => colors.btnFoot};
   border-radius: 4px;
   border: none;
   display: flex;
   align-items: center;
+  justify-content: space-around;
   :hover,
   :focus {
     background: ${({ theme: { colors } }) => colors.btn};

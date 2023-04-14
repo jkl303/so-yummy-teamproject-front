@@ -4,6 +4,8 @@ import MyRecipesList from '../../components/MyRecipeList/MyRecipeList';
 import { instance } from 'redux/auth/authOperations';
 import Loader from 'components/Loader/Loader';
 import Paginator from 'components/Paginator/Paginator';
+import MainPageTitle from 'components/MyRecipeList/MainPageTitle/MainPageTitle';
+import { Section } from './MyRecipesPage.styled';
 
 const MyRecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -40,10 +42,10 @@ const MyRecipesPage = () => {
   };
 
   return (
-    <>
-      {/* <MainPageTitle text={'My recipes'}></MainPageTitle> */}
+    <Section>
+      <MainPageTitle text={'My recipes'}></MainPageTitle>
       {isLoading ? (
-        'Is loading.......'
+        <Loader />
       ) : (
         <Paginator data={recipes} itemsPerPage={4}>
           {currentItems => (
@@ -54,7 +56,7 @@ const MyRecipesPage = () => {
           )}
         </Paginator>
       )}
-    </>
+    </Section>
   );
 };
 export default MyRecipesPage;
