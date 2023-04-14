@@ -12,7 +12,7 @@ import recipeDesk2x from '../../images/desktop/recipe-bg1440-2x.jpg';
 import {AiOutlineClockCircle} from 'react-icons/ai';
 import {RecipePreparation} from '../../components/Recipe/RecipePreparation';
 import {IngredientsList} from '../../components/Recipe/IngredientsList'
-import {RecipeWrap, RecipeHeroWrap, RecipeHeroBlock, RecipeTitle, RecipeDescription, RecipeAddToFavotite} from './RecipePage.styled'
+import {RecipeWrap, RecipeHeroWrap, RecipeHeroBlock, RecipeTitle, RecipeDescription, RecipeAddToFavotite, RecipeTime} from './RecipePage.styled'
 import { instance } from '../../redux/auth/authOperations';
 
 export default function RecipePage() {
@@ -59,13 +59,13 @@ export default function RecipePage() {
       });
   };
   const handleIngredientToggle = (id, measure, isChecked) => {
-    console.log(id, measure, isChecked)
+    // console.log(id, measure, isChecked)
   };
   if (!recipe) {
     return <div>Loading...</div>;
   }
   
-  const { title, description, time, ingredients, instructions, thumb, favorites, measure} = recipe.data.recipe;
+  const { title, description, time, ingredients, instructions, thumb, favorites, measure, owner} = recipe.data.recipe;
   return (
   
     <>
@@ -81,10 +81,13 @@ export default function RecipePage() {
         <RecipeHeroBlock>
       <RecipeTitle>{title}</RecipeTitle>
       <RecipeDescription>{description}</RecipeDescription>
-      <RecipeAddToFavotite onClick={handleFavoriteClick}>
-  {favorites.includes(userId) ? 'Delete from favorites' : 'Add to favorites'}
-</RecipeAddToFavotite>
-      <p key={recipeId}> <AiOutlineClockCircle/> {time} min</p>
+      {owner?.toString() !== userId && recipe && (
+  <RecipeAddToFavotite onClick={handleFavoriteClick}>
+    {favorites.includes(userId) ? 'Delete from favorites' : 'Add to favorites'}
+  </RecipeAddToFavotite>
+)}
+
+      <RecipeTime key={recipeId}> <AiOutlineClockCircle style={{ marginRight: '8px' }} />{time} min</RecipeTime>
       </RecipeHeroBlock>А
       </RecipeHeroWrap>
       <IngredientsList
