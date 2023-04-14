@@ -53,11 +53,11 @@ export const IngredientsStyled = styled.ul`
     justify-content: space-between;
     ${mediaQueries('desktop')`
     max-width: 610px;}`}
-    height: 53px;
     input::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
+
     ${mediaQueries('tablet')`
     justify-content: flex-start;
     button {margin-left: auto;
