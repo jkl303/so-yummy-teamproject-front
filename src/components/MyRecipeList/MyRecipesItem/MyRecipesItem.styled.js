@@ -10,6 +10,7 @@ export const WrapperItem = styled.div`
   border-radius: 8px;
   display: flex;
   position: relative;
+  padding: 40px;
   @media screen and (max-width: 767px) {
     margin: 14px 9px;
   }
@@ -42,6 +43,7 @@ export const WrapperContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
   @media screen and (max-width: 767px) {
     padding: 6px 22px 0px 14px;
   }
@@ -121,6 +123,7 @@ export const WrapperButton = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   height: 100%;
+  padding: 40px;
 `;
 
 export const IconDelete = styled(FiTrash2)`

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Section = styled.section`
   width: 100%;
   margin: 61px auto 42px;
+ 
 
   @media screen and (max-width: 767px) {
     max-width: 345px;
@@ -15,3 +16,4 @@ export const Section = styled.section`
     max-width: 1240px;
   }
 `;
+
