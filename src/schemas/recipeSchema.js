@@ -17,6 +17,13 @@ export const addRecipeSchema = Yup.object().shape({
   youtube: Yup.string(),
   tags: Yup.array(),
   ingredients: Yup.array()
-    .min(1, 'Select one o more ingredients')
-    .required('Required'),
+    .of(
+      Yup.object().shape({
+        reactId: Yup.string(),
+        id: Yup.string(),
+        measure: Yup.string(),
+      })
+    )
+    .min(1, 'Choose at least one ingredient')
+    .required('No array'),
 });

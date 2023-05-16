@@ -1,36 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useField } from 'formik';
 import Select from 'react-select';
 import { MeasureFieldStyled } from './MeasureField.styled';
 
 export const MeasureField = props => {
   const [field, state, { setValue }] = useField(props.field.name);
-  const [num, setNum] = useState(0);
-  const [measure, setMeasure] = useState('tbs');
+  const [num, setNum] = useState(1);
+  const [measure, setMeasure] = useState('pcs');
 
-  const addNumber = e => {
-    measure ? setValue(`${e.target.value} ${measure}`) : setNum(e.target.value);
+  const addAmount = e => {
+    setNum(e.target.value);
   };
 
   const addMeasure = ({ value }) => {
-    num ? setValue(`${num} ${value}`) : setMeasure(value);
+    setMeasure(value);
   };
+
+  useEffect(() => {
+    setValue(`${num} ${measure}`);
+  }, [num, measure]);
 
   return (
     <MeasureFieldStyled>
       <input
-        name={props.field.name}
+        {...props}
         type="number"
-        onChange={addNumber}
+        onChange={addAmount}
         autoComplete="off"
-        placeholder="|"
+        placeholder="1"
       />
       <Select
         {...props}
         onChange={addMeasure}
         defaultValue={{
-          value: 'tbs',
-          label: 'tbs',
+          value: 'pcs',
+          label: 'pcs',
         }}
         classNamePrefix="Select"
         isSearchable={false}

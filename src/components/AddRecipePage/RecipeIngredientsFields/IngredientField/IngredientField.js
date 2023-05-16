@@ -3,7 +3,6 @@ import { IngredientFieldStyled } from './IngredientField.styled';
 
 export const IngredientField = props => {
   const [field, state, { setValue, setTouched }] = useField(props.field.name);
-
   const onChange = ({ value }) => {
     setValue(value);
   };

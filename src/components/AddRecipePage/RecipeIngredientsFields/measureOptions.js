@@ -1,5 +1,9 @@
 export const measureOptions = [
   {
+    value: 'pcs',
+    label: 'pcs',
+  },
+  {
     value: 'tbs',
     label: 'tbs',
   },

@@ -20,12 +20,11 @@ export const SubscribeForm = () => {
   const { width } = useWindowDimensions();
 
   const { user } = useAuth();
-  console.log({ user });
 
   const [email, setEmail] = useState('');
   const isEmailValid = email.trim().length > 6;
 
-  const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // максимально не строгий
+  const emailRegexp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const handleSubmit = async event => {
     event.preventDefault();

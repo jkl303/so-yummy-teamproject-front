@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Field, ErrorMessage, FieldArray } from 'formik';
-import { MeasureField } from './MeasureField/MeasureField';
 import { useSelector } from 'react-redux';
 import { getIngredients } from 'redux/recipes/ingredients/selectors';
-import { IngredientField } from './IngredientField/IngredientField';
+import { nanoid } from 'nanoid';
 import { measureOptions } from './measureOptions';
+import { IngredientField } from './IngredientField/IngredientField';
+import { MeasureField } from './MeasureField/MeasureField';
+import { CustomErrorMessage } from '../AddRecipeForm/AddRecipeForm.styled';
 import {
   AddBtns,
   PlusIcon,
@@ -14,32 +16,14 @@ import {
   IngredientsStyled,
   XIcon,
 } from './RecipeIngredientsFields.styled';
-import { CustomErrorMessage } from '../AddRecipeForm/AddRecipeForm.styled';
 
-export const RecipeIngredientsFields = () => {
-  const [ingredientFields, setIngredientFields] = useState([0, 1, 2]);
-
-  const ingredients = useSelector(getIngredients).map(ingredient => ({
-    value: ingredient._id,
-    label: ingredient.ttl,
+export const RecipeIngredientsFields = ({ ingredients }) => {
+  const ingredientOptions = useSelector(getIngredients).map(({ _id, ttl }) => ({
+    value: _id,
+    label: ttl,
   }));
 
-  const addField = () => {
-    setIngredientFields(prevFields => [
-      ...prevFields,
-      Number(prevFields.slice(-1)) + 1,
-    ]);
-  };
-
-  const deleteField = deletedField => {
-    setIngredientFields(
-      ingredientFields.filter(field => field !== Number(deletedField, 1))
-    );
-  };
-
-  const deleteLastField = () => {
-    setIngredientFields(ingredientFields.slice(0, -1));
-  };
+  console.log(ingredients);
 
   return (
     <RecipeIngredientsStyled>
@@ -54,18 +38,16 @@ export const RecipeIngredientsFields = () => {
                   type="button"
                   onClick={() => {
                     arrayHelpers.pop();
-                    deleteLastField();
                   }}
                 >
                   <MinusIcon />
                 </button>
 
-                <span>{ingredientFields.length}</span>
+                <span>{ingredients.length}</span>
                 <button
                   type="button"
                   onClick={() => {
-                    arrayHelpers.push({});
-                    addField();
+                    arrayHelpers.push({ reactId: nanoid() });
                   }}
                 >
                   <PlusIcon />
@@ -73,23 +55,22 @@ export const RecipeIngredientsFields = () => {
               </AddBtns>
             </TtlAndBtns>
             <IngredientsStyled>
-              {ingredientFields.map(field => (
-                <li key={field}>
+              {ingredients.map((ingredient, index) => (
+                <li key={ingredient.reactId}>
                   <Field
-                    name={`ingredients[${field}].id`}
+                    name={`ingredients[${index}].id`}
                     component={IngredientField}
-                    options={ingredients}
+                    options={ingredientOptions}
                   />
                   <Field
-                    name={`ingredients[${field}].measure`}
-                    options={measureOptions}
+                    name={`ingredients[${index}].measure`}
                     component={MeasureField}
+                    options={measureOptions}
                   />
                   <button
                     type="button"
                     onClick={() => {
-                      arrayHelpers.replace(field, null);
-                      deleteField(field);
+                      arrayHelpers.remove(index);
                     }}
                   >
                     <XIcon />
@@ -103,4 +84,8 @@ export const RecipeIngredientsFields = () => {
       />
     </RecipeIngredientsStyled>
   );
+};
+
+RecipeIngredientsFields.propTypes = {
+  ingredients: PropTypes.array.isRequired,
 };
