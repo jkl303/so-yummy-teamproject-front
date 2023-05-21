@@ -2,17 +2,25 @@ import styled from 'styled-components';
 import { mediaQueries } from 'style/mediaQueries';
 
 export const AddRecipePageStyled = styled.div`
-  padding-top: 115px;
   padding-bottom: 120px;
-  ${mediaQueries('tablet')`
-  padding-top: 135px;
-  padding-bottom: 200px;`};
-
-  ${mediaQueries('desktop')`
-  .wrapper {display: flex;
-    justify-content: space-between;
+  h2 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1;
+    color: ${({ theme: { colors } }) => colors.title};
   }
-  .asideWrapper {display: flex;
-  flex-direction: column;}
-  padding-top: 165px;`};
+  ${mediaQueries('tablet')`
+  padding-bottom: 200px;`};
+`;
+
+export const RecipePageWrapper = styled.div`
+  ${mediaQueries('desktop')`
+  {display: flex;
+  justify-content: space-between;`}
+`;
+
+export const AsideWrapper = styled.div`
+  ${mediaQueries('desktop')` 
+  {display: flex;
+  flex-direction: column;}`}
 `;

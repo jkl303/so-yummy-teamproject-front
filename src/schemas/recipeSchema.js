@@ -24,6 +24,5 @@ export const addRecipeSchema = Yup.object().shape({
         measure: Yup.string(),
       })
     )
-    .min(1, 'Choose at least one ingredient')
-    .required('No array'),
+    .required('Choose at least one ingredient'),
 });

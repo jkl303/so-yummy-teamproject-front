@@ -1,11 +1,24 @@
-import { FollowList } from 'components/FollowlList/FollowlList';
-import { FollowUsStyled } from './FollowUs.styled';
+import { FollowLink, FollowList } from './FollowUs.styled';
+import { BsFacebook, BsYoutube, BsTwitter, BsInstagram } from 'react-icons/bs';
 
 export const FollowUs = () => {
   return (
-    <FollowUsStyled>
+    <div>
       <h2>Follow us</h2>
-      <FollowList />
-    </FollowUsStyled>
+      <FollowList>
+        <FollowLink to="https://www.facebook.com">
+          <BsFacebook />
+        </FollowLink>
+        <FollowLink to="https://www.youtube.com">
+          <BsYoutube />
+        </FollowLink>
+        <FollowLink to="https://twitter.com">
+          <BsTwitter />
+        </FollowLink>
+        <FollowLink to="https://www.instagram.com">
+          <BsInstagram />
+        </FollowLink>
+      </FollowList>
+    </div>
   );
 };

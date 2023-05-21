@@ -3,7 +3,11 @@ import { AddRecipeForm } from '../../components/AddRecipePage/AddRecipeForm/AddR
 import { PopularRecipe } from '../../components/AddRecipePage/PopularRecipe/PopularRecipe';
 import { FollowUs } from '../../components/AddRecipePage/FollowUs/FollowUs';
 import { MainTitle } from '../../components/MainTitle/MainTitle';
-import { AddRecipePageStyled } from './AddRecipePage.styled';
+import {
+  AddRecipePageStyled,
+  AsideWrapper,
+  RecipePageWrapper,
+} from './AddRecipePage.styled';
 import { ContainerComponent } from 'components/Container/Container.styled';
 
 export default function AddRecipePage() {
@@ -12,13 +16,13 @@ export default function AddRecipePage() {
     <AddRecipePageStyled>
       <ContainerComponent>
         <MainTitle title={'Add recipe'} />
-        <div className="wrapper">
+        <RecipePageWrapper className="wrapper">
           <AddRecipeForm />
-          <div className="asideWrapper">
+          <AsideWrapper className="asideWrapper">
             {width > 1439 && <FollowUs />}
             <PopularRecipe />
-          </div>
-        </div>
+          </AsideWrapper>
+        </RecipePageWrapper>
       </ContainerComponent>
     </AddRecipePageStyled>
   );

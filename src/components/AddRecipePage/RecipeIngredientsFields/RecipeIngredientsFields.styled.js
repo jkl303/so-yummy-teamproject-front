@@ -1,6 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FiPlus, FiMinus, FiX } from 'react-icons/fi';
 import { mediaQueries } from 'style/mediaQueries';
+
+const iconsStyle = css`
+  color: ${({ theme: { colors } }) => colors.txtRecipeInner};
+  transition: color 250ms ease-in-out, transform 250ms ease-in-out;
+  :hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    color: var(--accent);
+  }
+`;
 
 export const RecipeIngredientsStyled = styled.div`
   padding: 67px 0;
@@ -8,9 +18,9 @@ export const RecipeIngredientsStyled = styled.div`
   button {
     width: 16px;
     height: 16px;
+    padding: 0;
     border: none;
     border-radius: 50%;
-    padding: 0;
     background-color: transparent;
   }
 `;
@@ -33,7 +43,7 @@ export const AddBtns = styled.div`
   height: 28px;
   border: 1px solid ${({ theme: { colors } }) => colors.txtRecipeInner};
   border-radius: 18px;
-  ${mediaQueries('tablet')`  width: 110px;
+  ${mediaQueries('tablet')`width: 110px;
   height: 32px;`}
   span {
     font-size: 14px;
@@ -51,36 +61,21 @@ export const IngredientsStyled = styled.ul`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    button {
-      height: 100%;
-    }
-    ${mediaQueries('desktop')`
-    max-width: 610px;}`}
     input::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
-    ${mediaQueries('tablet')`
-    justify-content: flex-start;
-    button {margin-left: auto;
-    }`}
+    ${mediaQueries('desktop')`
+    max-width: 610px;`}
   }
 `;
 
 export const MinusIcon = styled(FiMinus)`
-  color: ${({ theme: { colors } }) => colors.txtRecipeInner};
-  :hover {
-    cursor: pointer;
-    color: var(--accent);
-  }
+  ${iconsStyle}
 `;
 
 export const PlusIcon = styled(FiPlus)`
-  color: ${({ theme: { colors } }) => colors.txtRecipeInner};
-  :hover {
-    cursor: pointer;
-    color: var(--accent);
-  }
+  ${iconsStyle}
 `;
 
 export const XIcon = styled(FiX)`

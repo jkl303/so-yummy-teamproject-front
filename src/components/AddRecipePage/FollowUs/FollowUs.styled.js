@@ -1,10 +1,24 @@
 import styled from 'styled-components';
-import { mediaQueries } from 'style/mediaQueries';
+import { Link } from 'react-router-dom';
 
-export const FollowUsStyled = styled.div`
-  padding-top: 115px;
-  ${mediaQueries('tablet')`
-  padding-top: 100px;`};
+export const FollowList = styled.ul`
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+  margin-top: 40px;
+  padding: 0;
+`;
 
-  ${mediaQueries('desktop')``};
+export const FollowLink = styled(Link)`
+  cursor: pointer;
+  svg {
+    width: 30px;
+    height: 30px;
+    color: var(--accent);
+    transition: color 250ms ease-in-out;
+    &:focus,
+    &:hover {
+      color: ${({ theme: { colors } }) => colors.title};
+    }
+  }
 `;

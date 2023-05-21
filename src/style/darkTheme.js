@@ -6,6 +6,7 @@ export const darkTheme = {
     bgFooter: 'var(--accent)',
     bgModal: 'var(--bg-sec-dark)',
     bgRecipe: 'var(--bg-sec-dark)',
+    borderRecipe: 'var(--bg-sec-dark)',
     input: 'var(--bg-dark)',
     searchDropdown: 'var(--accent)',
     select: 'var(--accent)',

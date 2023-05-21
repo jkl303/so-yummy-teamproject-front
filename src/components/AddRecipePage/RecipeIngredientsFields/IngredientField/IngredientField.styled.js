@@ -3,61 +3,62 @@ import Select from 'react-select';
 import { mediaQueries } from 'style/mediaQueries';
 
 export const IngredientFieldStyled = styled(Select)`
+  font-size: 16px;
+  line-height: 1.5;
+  color: ${({ theme: { colors } }) => colors.txt};
+
   .Select__control {
-    border-color: #fafafa;
     width: 194px;
-    height: 53px;
-    margin-right: 14px;
+    padding: 6px 0;
+    border-radius: 8px;
     background-color: ${({ theme: { colors } }) => colors.input};
-    ${mediaQueries('tablet')`width: 398px;
-    height: 59px;`}
+    border-color: ${({ theme: { colors } }) => colors.bgSec};
+    transition: border-color 250ms ease-in-out;
+    ${mediaQueries('tablet')`width: 398px;`}
     :hover {
       cursor: text;
+      border-color: var(--accent);
     }
     &--is-focused {
       box-shadow: none;
+      border-color: var(--accent);
     }
   }
 
-  .Select__input-container {
-    color: #00000080;
-    font-size: 18px;
-    line-height: 1.5;
-  }
-
-  .Select__value-container {
-    padding: 0;
+  .Select__input-container,
+  .Select__single-value {
+    color: ${({ theme: { colors } }) => colors.txt};
   }
 
   .Select__menu {
-    width: 194px;
     border-radius: 6px;
-    font-size: 12px;
-    line-height: 18px;
-    color: #00000080;
+    font-size: 14px;
+    line-height: 1.5;
     box-shadow: none;
+    color: ${({ theme: { colors } }) => colors.txtRecipeInner};
+    background-color: ${({ theme: { colors } }) => colors.bg};
     ${mediaQueries('tablet')`width: 398px;`}
     &-list {
-      max-height: 154px;
+      max-height: 172px;
       padding: 8px 18px 8px 14px;
     }
   }
 
   .Select__option {
     padding: 0;
+    transition: color 250ms ease-in-out;
     :not(:last-child) {
       margin-bottom: 6px;
     }
     :hover {
       cursor: pointer;
       color: var(--accent);
-      background-color: transparent;
     }
     &--is-focused {
       background-color: transparent;
     }
     &--is-selected {
-      color: var(--accent);
+      color: ${({ theme: { colors } }) => colors.txtRecipeInner};
       background-color: transparent;
     }
   }
@@ -67,10 +68,9 @@ export const IngredientFieldStyled = styled(Select)`
   }
 
   .Select__dropdown-indicator {
-    border: none;
-    outline: none;
     color: var(--accent);
     :hover {
+      cursor: pointer;
       color: var(--accent);
     }
     &--is-focused {

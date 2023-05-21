@@ -10,8 +10,6 @@ export const FileField = props => {
   const [picture, setPicture] = useState(null);
   const { width } = useWindowDimensions();
 
-  function handleFileUpload(event) {}
-
   const onChange = e => {
     setValue(e.target.files[0]);
     const file = e.target.files[0];

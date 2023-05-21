@@ -1,16 +1,14 @@
-import { getPopularRecipes } from 'API/getPopularRecipes';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import useWindowDimensions from 'hooks/useWindowDimensions';
+import { getPopularRecipes } from 'API/getPopularRecipes';
 import { Spinner } from 'components/Loader/Spinner';
 import {
-  PopularRecipeImg,
-  PopularRecipeItem,
-  PopularRecipeItemDescr,
+  PopularRecipeLink,
   PopularRecipeList,
   PopularRecipeStyled,
-  PopularRecipeTitle,
+  TextWrapper,
 } from './PopularRecipe.styled';
 
 export const PopularRecipe = () => {
@@ -36,26 +34,30 @@ export const PopularRecipe = () => {
     };
     getRecipes();
   }, []);
+
   return (
     <PopularRecipeStyled>
-      <PopularRecipeTitle>Popular recipe</PopularRecipeTitle>
+      <h2>Popular recipe</h2>
       {loading && <Spinner />}
       {recipes.length > 0 && (
         <PopularRecipeList>
           {recipes.slice(0, numberOfRecipes).map(recipe => {
             const { _id, title, preview, description } = recipe;
             return (
-              <PopularRecipeItem key={_id}>
-                <Link to={`/recipe/${_id}`} state={{ from: location }}>
-                  <PopularRecipeImg src={preview} alt={title} />
-                  <div>
-                    <p>{title}</p>
-                    <PopularRecipeItemDescr>
-                      {description}
-                    </PopularRecipeItemDescr>
-                  </div>
-                </Link>
-              </PopularRecipeItem>
+              <li key={_id}>
+                <PopularRecipeLink
+                  to={`/recipe/${_id}`}
+                  state={{ from: location }}
+                >
+                  <img src={preview} alt={title} />
+                  <TextWrapper>
+                    <h3>{title}</h3>
+                    <p>
+                      {description.slice(0, width < 1440 ? 112 : 90) + '...'}
+                    </p>
+                  </TextWrapper>
+                </PopularRecipeLink>
+              </li>
             );
           })}
         </PopularRecipeList>

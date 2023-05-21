@@ -4,25 +4,35 @@ import { mediaQueries } from 'style/mediaQueries';
 export const MeasureFieldStyled = styled.div`
   display: flex;
   align-items: center;
-  width: 84px;
-  background-color: transparent;
+  width: 120px;
+  border-radius: 8px;
+  background-color: ${({ theme: { colors } }) => colors.input};
+  border: 1px solid ${({ theme: { colors } }) => colors.bgSec};
+  transition: border-color 250ms ease-in-out;
   ${mediaQueries('tablet')`
   width: 123px;
-  margin-left: 32px;`}
+  margin-right: 150px;`}
+  ${mediaQueries('desktop')`
+  margin-right: 50px;`}
+  :hover, :focus {
+    border-color: var(--accent);
+    outline: none;
+  }
   input {
-    padding-right: 2px;
-    max-width: 28px;
-    background-color: transparent;
+    width: 100%;
     border: none;
+    outline: none;
+    color: ${({ theme: { colors } }) => colors.txt};
+    background-color: transparent;
     text-align: right;
-    :focus {
-      outline: none;
-    }
+    line-height: 1.5;
   }
 
   .Select__control {
     background-color: ${({ theme: { colors } }) => colors.input};
     border: none;
+    border-radius: 8px;
+    padding: 6px 0;
     :hover {
       cursor: pointer;
     }
@@ -31,49 +41,43 @@ export const MeasureFieldStyled = styled.div`
     }
   }
 
-  .Select__value-container {
-    padding: 0;
-    max-width: 30px;
-  }
-  .Select__input-container {
-    margin: 0;
-    font-size: 18px;
-    line-height: 1.5;
+  .Select__single-value {
+    color: ${({ theme: { colors } }) => colors.txt};
+    text-align: center;
   }
 
   .Select__menu {
     right: 0;
-    min-width: 84px;
+    width: 82px;
     border-radius: 6px;
-    font-size: 12px;
-    line-height: 18px;
-    color: ${({ theme: { colors } }) => colors.txtRecipeInner};
-    background-color: ${({ theme: { colors } }) => colors.select};
     box-shadow: none;
-    ${mediaQueries('tablet')`width: 123px;`}
+    font-size: 14px;
+    line-height: 1.5;
+    color: ${({ theme: { colors } }) => colors.txtRecipeInner};
+    background-color: ${({ theme: { colors } }) => colors.bg};
+    ${mediaQueries('tablet')`width: 84px;`}
     &-list {
-      max-height: 154px;
       padding: 8px 18px 8px 14px;
     }
   }
 
   .Select__option {
     padding: 0;
-    text-align: center;
+    padding-left: 4px;
+    transition: color 250ms ease-in-out;
     :not(:last-child) {
       margin-bottom: 4px;
     }
     :hover {
       cursor: pointer;
-      color: ${({ theme: { colors } }) => colors.txtRecipeInner};
-      background-color: ${({ theme: { colors } }) => colors.select};
+      color: var(--accent);
     }
     &--is-focused {
-      background-color: ${({ theme: { colors } }) => colors.select};
+      background-color: transparent;
     }
     &--is-selected {
       color: ${({ theme: { colors } }) => colors.txtRecipeInner};
-      background-color: ${({ theme: { colors } }) => colors.select};
+      background-color: transparent;
     }
   }
 
@@ -82,9 +86,7 @@ export const MeasureFieldStyled = styled.div`
   }
 
   .Select__dropdown-indicator {
-    padding: 8px 4px;
-    border: none;
-    outline: none;
+    padding: 8px 8px 8px 0;
     color: var(--accent);
     :hover {
       color: var(--accent);

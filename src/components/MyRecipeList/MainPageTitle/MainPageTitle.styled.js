@@ -5,10 +5,7 @@ export const WrapperTitle = styled.div`
   margin-top: 70px;
   margin-bottom: 50px;
   padding-top: 50px;
-
   position: relative;
-  
-
 
   @media screen and (min-width: 768px) {
     max-width: 713px;

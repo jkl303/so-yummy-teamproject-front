@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 import { measureOptions } from './measureOptions';
 import { IngredientField } from './IngredientField/IngredientField';
 import { MeasureField } from './MeasureField/MeasureField';
-import { CustomErrorMessage } from '../AddRecipeForm/AddRecipeForm.styled';
+import { CustomErrorMessage } from '../AddRecipeForm/CustomErrorMessage';
 import {
   AddBtns,
   PlusIcon,
@@ -22,8 +22,6 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
     value: _id,
     label: ttl,
   }));
-
-  console.log(ingredients);
 
   return (
     <RecipeIngredientsStyled>
@@ -75,6 +73,10 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
                   >
                     <XIcon />
                   </button>
+                  <ErrorMessage
+                    name={`ingredients[${index}]`}
+                    component={CustomErrorMessage}
+                  />
                 </li>
               ))}
             </IngredientsStyled>
@@ -87,5 +89,11 @@ export const RecipeIngredientsFields = ({ ingredients }) => {
 };
 
 RecipeIngredientsFields.propTypes = {
-  ingredients: PropTypes.array.isRequired,
+  ingredients: PropTypes.arrayOf(
+    PropTypes.shape({
+      reactId: PropTypes.string.isRequired,
+      id: PropTypes.string,
+      measure: PropTypes.string,
+    })
+  ).isRequired,
 };

@@ -8,7 +8,6 @@ import { RecipeDescriptionFields } from '../RecipeDescriptionFields/RecipeDescri
 import { RecipeIngredientsFields } from '../RecipeIngredientsFields/RecipeIngredientsFields';
 import { RecipePreparationFields } from '../RecipePreparationFields/RecipePreparationFields';
 import { AddRecipeBtn } from 'components/Buttons/AddRecipeBtn/AddRecipeBtn';
-import { AddRecipeFormWrapper } from './AddRecipeForm.styled';
 import { nanoid } from 'nanoid';
 
 const initialValues = {
@@ -31,6 +30,9 @@ export const AddRecipeForm = () => {
       initialValues={initialValues}
       validationSchema={addRecipeSchema}
       onSubmit={(values, { resetForm, setSubmitting }) => {
+        values.ingredients = values.ingredients.filter(
+          ingredient => ingredient.id
+        );
         addRecipe(values);
         resetForm();
         setSubmitting(false);
@@ -39,14 +41,12 @@ export const AddRecipeForm = () => {
       }}
     >
       {({ values }) => (
-        <AddRecipeFormWrapper>
-          <Form>
-            <RecipeDescriptionFields />
-            <RecipeIngredientsFields ingredients={values.ingredients} />
-            <RecipePreparationFields />
-            <AddRecipeBtn type="submit">Add</AddRecipeBtn>
-          </Form>
-        </AddRecipeFormWrapper>
+        <Form>
+          <RecipeDescriptionFields />
+          <RecipeIngredientsFields ingredients={values.ingredients} />
+          <RecipePreparationFields />
+          <AddRecipeBtn type="submit">Add</AddRecipeBtn>
+        </Form>
       )}
     </Formik>
   );
