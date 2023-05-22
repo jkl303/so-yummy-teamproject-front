@@ -1,22 +1,6 @@
-# Getting Started with Create React App and Redux
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-![57831531-73819d8ce8f5413cac42cf1c907bc37a](https://github.com/jkl303/so-yummy-teamproject-front/assets/103362175/7606c996-d93c-4fde-baf2-77a684fa5a92)
-
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+An application for working with food recipes, where user can search recipes by title or category, add recipes to favorites or create his own recipe, that other people can use. User also can work with an ingredients for selected recipe(add them to shopping list, check if you had one etc.). Each ingredient has image from our database.  Site has 3 breakpoints for mobile, tablet and desktop screens. You can change between light and dark theme. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.![Desktop Screenshot 2023 05 22 - 18 04 05 50](https://github.com/jkl303/so-yummy-teamproject-front/assets/103362175/75302e4f-a608-4895-a310-6414f39c54da)
+There was a learning team project with own [backend](https://github.com/jkl303/so-yummy-teamproject-back.git) and database created with MongoDB.
+![Desktop Screenshot 2023 05 22 - 18 01 59 51](https://github.com/jkl303/so-yummy-teamproject-front/assets/103362175/d517ca66-7d12-4f22-b7c7-e970adc12313)
+In front-end part of app I was responsible for Add recipe page. I used react hooks, redux, formik, react select and other libraries in my work.
+![Desktop Screenshot 2023 05 22 - 18 14 09 78](https://github.com/jkl303/so-yummy-teamproject-front/assets/103362175/247465eb-8133-49fa-9a4b-ca651629d49f)
+Here user can add his own recipe to BD. User can add picture, description, category and cooking time. User can add any number of ingredients: click on - or + changes number of  ingredient fields. Fields validates by Formik with Yup  schema. After adding recipe user navigates to page with list of all his recipes.
