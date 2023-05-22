@@ -31,7 +31,9 @@ export const SelectFieldStyled = styled(Select)`
   .Select__menu {
     right: 0;
     width: 160px;
+    border-left: 1px solid var(--accent);
     border-radius: 6px;
+    box-shadow: none;
     font-size: 14px;
     line-height: 1.5;
     color: ${({ theme: { colors } }) => colors.txtRecipeInner};

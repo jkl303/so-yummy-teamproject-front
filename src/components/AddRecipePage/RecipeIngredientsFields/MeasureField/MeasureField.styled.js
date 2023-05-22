@@ -48,14 +48,14 @@ export const MeasureFieldStyled = styled.div`
 
   .Select__menu {
     right: 0;
-    width: 82px;
-    border-radius: 6px;
+    width: 86px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
     box-shadow: none;
     font-size: 14px;
     line-height: 1.5;
     color: ${({ theme: { colors } }) => colors.txtRecipeInner};
     background-color: ${({ theme: { colors } }) => colors.bg};
-    ${mediaQueries('tablet')`width: 84px;`}
     &-list {
       padding: 8px 18px 8px 14px;
     }

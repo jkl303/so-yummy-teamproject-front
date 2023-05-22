@@ -31,10 +31,11 @@ export const IngredientFieldStyled = styled(Select)`
   }
 
   .Select__menu {
+    border-left: 1px solid var(--accent);
     border-radius: 6px;
+    box-shadow: none;
     font-size: 14px;
     line-height: 1.5;
-    box-shadow: none;
     color: ${({ theme: { colors } }) => colors.txtRecipeInner};
     background-color: ${({ theme: { colors } }) => colors.bg};
     ${mediaQueries('tablet')`width: 398px;`}
